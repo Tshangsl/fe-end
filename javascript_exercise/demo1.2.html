@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 练习</title>
+</head>
+
+<body>
+    <script>
+        //3.1
+        // 随机生成两个小数给变量x.y，然后显示这两个数中的最大值。
+        //（提示：语句“var x=Math.random();”
+        //可为变量生成一个随机小数：另外，使用条件运算符‘'?:")
+        // var x = Math.random();
+        // var y = Math.random();
+        // console.log(x,y);
+        // console.log(x>y?x:y);
+
+        //3.2
+        //         如果某年的年份值是4的倍数并且不是100的倍数，或者该年份值是400的倍数，那么这一年就是闰年。请编制一个页面，该页面显示当天是否处于闰年。
+        // 提示：使用以下语句，可使变量year的值就是当天所属的年份值。
+        // var today = new Date();   //获取当天日期
+        // var year = today.getFullYear();   //获取当天年份
+        // var today = new Date();
+        // var year = today.getFullYear();
+        // function leapYear(year){
+        //     if((year%4==0&&y%100!=0)||year%400==0){
+        //         return true;
+        //     }
+        //     return false;
+        // }
+        // if(function(year){}){
+        //     console.log('leap yaer');
+        // }else{
+        //     console.log('not a leap year');
+        // }
+
+        // var x = prompt('please input your age','18');
+        // console.log(typeof(x));
+        // if(x<20){
+        //     console.log('teenager');
+        // }
+
+        //4.2
+        // 2.编写程序，根据用户输入的一个数字(0~6)．
+        //通过警示对话框显示对应的星期几
+        //(0: 星期日; 1: 星期一;……6: 星期六;)。
+        // var x = prompt('please input a number (1~7)','1');
+        // console.log(x);
+        // var num = parseInt(x);
+        // switch (num){
+        //     case 1:
+        //         console.log('Monday');
+        //         break;
+        //     case 2:
+        //         console.log('Tuesday');
+        //         break;
+        //     case 3:
+        //         console.log('Wednesday');
+        //         break;
+        //     case 4:
+        //         console.log('Thursday');
+        //         break;
+        //     case 5:
+        //         console.log('Friday');
+        //         break;
+        //     case 6:
+        //         console.log('Satusday');
+        //         break;
+        //     case 7:
+        //         console.log('Sunday');
+        //         break;
+        //     default:
+        //         console.log('uncorrect inputform,please input under the rule');
+        // }
+
+        //4.3
+        // 3.编写程序，计算10!(即 1*2*3＊·…10）的结果(10的阶乘)。
+        // var x =10;
+        // var result = 1;
+        // function fac(x){
+        //     for(var i =1;i<=x;i++){
+        //         result*=i;
+        //     }
+        //     return result;
+        // }
+        // console.log(fac(10));
+
+        //4.4
+        //4.编写程序，计算 1!+2!+3!+…..＋10！的结果。
+        // var x = prompt('please input a number', '3');
+        // console.log(x);
+        // var x;
+        // function fac(x) {
+        //     var sum = 0;
+        //     for (var i = 1; i <= x; i++) {
+        //         var result = 1;
+        //         for (var j = 1; j <= i; j++) {
+        //             result *= j;
+        //         }
+        //         sum += result;
+        //     }
+        //     return sum;
+        // }
+        // console.log(fac(10));
+
+        //4.4递归实现
+        // var result = 0;
+        // function fac(n){
+        //     if(n == 1||n==0){
+        //         return 1;
+        //     }else{
+        //         return n*fac(n-1);
+        //     }
+        // }
+        // for(var i = 0 ;i<10;i++){
+        //     result+=fac(i);
+        // }
+        // console.log(result);
+
+        //4.4递归实现
+        // var fac = 1;
+        // var sum = 0;
+        // for (var i = 1; i <= 3; i++) {
+        //     fac*=i;
+        //     sum+=fac;
+        // }
+        // console.log(sum);
+
+        //4.5 递归
+        //5.在页面上输出如下数字图案。
+        // 1
+        // 1 2
+        // 1 2 3
+        // 1 2 3 4
+        // 1 2 3 4 5
+        // 其中，每行的数字之间有一个空格间隔。
+        // for (var i = 1; i <= 5; i++) {
+        //     for (var j = 1; j <= i; j++) {
+        //         document.write(j + ' ');
+        //     }
+        //     document.write('<br>');
+        // }
+
+        //4.6
+        //在页面上输出如下图案。
+        // 其中，每行的星号"*"之间有一个空格间隔。
+        // for(var i =1;i<=5;i++){
+        //     for(var j =5-i;j>0;j--){
+        //         document.write('&nbsp;');
+        //     }
+        //     for(var j = 1;j<=i;j++){
+        //         document.write('* ');
+        //     }
+        //     document.write('<br>');
+        // }
+
+        //4.7
+        //有一个三位数x，被4除余2，被7除余3，被9除余5，请求出这个数。
+        // for (var i = 100; i <= 999; i++) {
+        //     if (i % 4 == 2 && i % 7 == 3 && i % 9 == 5) {
+        //         console.log(i + ' ');
+        //     }
+        // }
+
+        //4.8
+        //    求所有满足条件的四位数ABCD，它是13的倍数，
+        //且第3位数加上第2位数等于第4位数（即：A=B+C）。
+        //（提示：对于四位数的整数x，通过Math.floor(x/1000)可求出第4位的数字，
+        //其他位数的提取也类似）
+
+        //这里的 Math.floor()方法和c语言里的/和%求各个位上的数字很像 
+        //可能是因为js中没有严格的数据类型 才会封装这样一个方法？
+
+        // for (var i = 1000; i <= 9999; i++) {
+        //     if (Math.floor(i / 100%10) + Math.floor(i / 10%10) == Math.floor(i / 1000) && i % 13 == 0) {
+        //         console.log(i);
+        //     }
+        // }
+        // for(var i = 1000;i <=9999;i++){
+        //     var a=Math.floor(i/1000);
+        //     var b=Math.floor(i/100)%10;
+        //     var c=Math.floor(i/10)%10;
+        //     if(i%13==0&&(a == b+c)){
+        //         document.write(i+' ');
+        //     }
+        // }
+
+        //5.1
+
+        //迷惑于js的隐式数据类型转换
+
+        //1.编写一个函数 f(x) = 4x2+3x+2，使用户通过提示对话框输入x的值，能得到相应的计算结果。
+        // var x = prompt('please input x:','x');
+        // // var num = parseInt(x);
+        // var result = 4*x*x+3*x+2;
+        // // console.log(result);
+        // alert(result);
+
+        //5.2
+        //2.编写一个函数Min(x,y)求出x,y这两个数中的最小值，
+        //要求x,y的值由用户通过提示对话框输入。
+        // function Min(x,y){
+        //     return x<y?x:y;
+        // }
+        // var x = prompt('please input x:','x');
+        // var y = prompt('please input y:','y');
+        // alert(Min(x,y));
+
+        //5.3
+        //3.编写一个判断某个非负整数是否能够同时被3,5,7整除的函数，
+        //然后在页面上输出1~1000之间所有能同时被3,5,7整除的整数，并要求每行显示6个这样的数。
+
+        // function fn() {
+        //     var j = 0;
+        //     for (var i = 1; i <= 1000; i++) {
+        //         if (i % 3 == 0 && i % 5 == 0 && i % 7 == 0){
+        //             document.write(i+' ');
+        //             j++;
+        //             //注意这个if语句的位置
+        //             if(j%6==0){
+        //                 document.write('<br>');
+        //             }
+        //         }
+        //     }
+        // }
+        // fn();
+
+        //5.4
+        //在页面上编程输出100~1000之间的所有素数，并要求每行显示6个素数
+        // function ifPrime(x){
+        //     for(var i = 2 ;i<x;i++){
+        //         if(x%i==0){
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // } 
+        // var count = 0;
+        // for(var i =100;i<=1000;i++){
+        //     if(ifPrime(i)){
+        //         document.write(i+' ');
+        //         count++;
+        //         if(count%6==0){
+        //             document.write('<br>');
+        //         }
+        //     }
+        // }
+
+        //5.5
+        //编写一个非递归函数factorial(n)，计算12!-10!的结果。
+        // function fac(n){
+        //     var result = 1;
+        //     for(var i = 1;i<=n;i++){
+        //         result*=i;
+        //     }
+        //     return result;
+        // }
+        // // console.log(fac(12));
+        // // console.log(fac(10));
+        // document.write(fac(12)-fac(10));
+
+        //斐波那契数列递归实现  
+        // function fib(n) {
+        //     if (n == 1 || n == 2) {
+        //         return 1;
+        //     } else {
+        //         return fib(n - 1) + fib(n - 2);
+        //     }
+        // }
+        // console.log(fib(3));
+
+        //斐波那契数列非递归实现
+        //    function fib(n){
+        //         var fib1 = 1;
+        //         var fib2 = 1;
+        //         var temp = 0;
+        //         for(var i = 3 ;i<=n;i++){
+        //             temp = fib1+fib2;
+        //             fib1 = fib2;
+        //             fib2 = temp;
+        //         }
+        //         return fib2;
+        //    } 
+        //    console.log(fib(5));
+
+        //5.8
+        //编写函数，用下面的公式计算π的近似值。
+        //在页面上输出当n=100，500，1000，10000时π的近似值。
+
+        // function cal(n){
+        //     var pi = 0;
+        //     for(var i =1;i<=n;i++){
+        //         if(i%2==1){
+        //             pi+=4/(2*i-1);
+        //         }else{
+        //             pi-=4/(2*i-1);
+        //         }
+        //     }
+        //     return pi;
+        // }
+        // document.write(cal(100)+'<br>');
+        // document.write(cal(500)+'<br>');
+        // document.write(cal(1000)+'<br>');
+        // document.write(cal(10000)+'<br>');
+
+        //5.9
+        //利用全局变量和函数，设计模拟幸运数字机游戏。
+        //设幸运数字为8，每次由计算机随机产生3个1-9之间(包括1和9）的随机数
+        //，当这3个随机数中有一个数字为8时，
+        //就算赢了一次，要求利用函数计算获胜率。
+
+        // var arr = [];
+        // function random() {
+        //     arr[0] = Math.floor(Math.random() * 9) + 1;
+        //     arr[1] = Math.floor(Math.random() * 9) + 1;
+        //     arr[2] = Math.floor(Math.random() * 9) + 1;
+        //     return arr;
+        // }
+        // function winRate(arr) {
+        //     var count = 0;
+        //     for (var i = 0; i < 3; i++) {
+        //         // console.log(arr[i]);
+        //         if (arr[i] == 8) {
+        //             count++;
+        //         }
+        //     }
+        //     // console.log(count);
+        //     return count / arr.length;
+        // }
+        // random();
+        // // console.log(arr[0]);
+        // // console.log(arr[1]);
+        // // console.log(arr[2]);
+        // var x = winRate(arr);
+        // console.log(x);
+        // console.log(winRate(random()));
+
+        //6.3
+        //3.设计一个页面，
+        //在页面上显示信息“现在是XXXX年XX月XX日Xx点XX分XX秒（星期X)，
+        //欢迎您的到访！“。
+        // var today = new Date();
+        // document.write('现在是'+today.getFullYear()+'年'+(today.getMonth()+1)+'月'
+        // +today.getDate()+'日'+today.getHours()+'时'+today.getMinutes()+'分'+
+        // today.getSeconds()+'秒'+'星期'+(today.getDay()+1));
+
+        //6.4
+        //4.编制一个从字符串中收集数字字符
+        //（"0"',"1"，…"9"）的函数CollectDigits(s)，
+        //它从字符串s中顺序取出数字，
+        //并且合并为一个独立的字符串作为函数的返回值。
+        //例如函数调用CollectDigits("1abc23def4"）
+        //的返回值是字符串"1234"。
+
+        // var x =prompt('please input');
+        // var s = prompt('please input:');
+        // var a ='';
+        // function CollectDigits(s){
+        //     for(var i = 0;i<s.length;i++){
+        //         if(s[i]>='0'&&s[i]<='9'){
+        //             a+=s[i];
+        //         }
+        //     }
+        //     // console.log(a);
+        //     return a;
+        // }
+        // document.write(CollectDigits(s));
+
+        //6.8
+        //8.设计一个函数DayOfYear(d)，它接收一个日期参数d，
+        //返回一个该日期是所在年份的第几天，如DayOfYear(2000,2,8)的返回值是39.
+        //（提示：①定义一个数组months=new Array（31,28,31,30,31,30,31,31,30,31，30,31）记录每个月少天：
+        //②定义一个辅助函数IsLeapYear(y)判定某个年份是否闰年，以确定2月份的天数是28还是29。）
+
+        var today = new Date();
+        var sum = 0;
+        function DayOfYear(d){
+            var year = d.getFullYear();
+            var month = d.getMonth()+1;
+            var day = d.getDate();
+            for(var i = 1;i<month;i++){
+                switch(i){
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        sum+=31;
+                        continue;
+                    case 4:
+                    case 6:
+                    case 9:
+                        sum+=30;
+                        continue;
+                }
+            }
+            if(month>2){
+                if(year%400==0||(year%4==0&&year%100!=0)){
+                    sum+=29;
+                }else{
+                    sum+=28;
+                }
+            }
+            sum+=day;
+            return sum;
+        }
+        document.write(DayOfYear(today));
+    </script>
+</body>
+
+</html>
