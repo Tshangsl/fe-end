@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>_call_apply_bind</title>
+</head>
+<body>
+    <script>
+        function test(name,age){
+            console.log(this);
+            console.log(name);
+            console.log(age);
+        }
+        //一个普通函数 默认情况下 window对象的方法 window全局变量 可不写
+        //window.test();
+        //底层是这样调用的
+        //call的作用可以改变函数中的this指针 指向call的第一个参数
+        //test.call({name:'lisi'},'lisi',23);
+        //test.apply({name:'wangwu'},['lisi',23]);
+        
+        //bind() 能使一个函数拥有预设的初始参数。这些参数（如果有的话）作为 bind() 的第二个参数跟在 this 后面，
+        //之后它们会被插入到目标函数的参数列表的开始位置，传递给绑定函数的参数会跟在它们的后面。
+        // test.bind({name:'zhouwu'})();
+
+        //加()立即就调用了
+        var fn = function(){
+            console.log(this);
+        }
+        setTimeout(fn.bind({name:'lisi'}),2000);
+    </script>
+</body>
+</html>

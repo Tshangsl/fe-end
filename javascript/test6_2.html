@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象/this/js内存分配机制</title>
+</head>
+<body>
+    <script>
+        //所有的基本数据类型的数据都是存在栈内存中
+        //变量存在的位置就是数据存储的位置
+        // var a = 5;
+        // var b = "abc";
+        // var c = true;
+
+        // var o = new Object();
+        // var o2 = {};
+        //new Object创建对象
+        // var o1 = new Object();
+        // o1.name = 'lisi';
+        // o1.age = 23;
+        // o1.sayHello = function(){
+        //     console.log('hello world');
+        // };
+
+        //对象直接量 推荐此方法？
+        // var o1 ={
+        //     name:'lisi',
+        //     age:23,
+        //     sayHello:function(){
+        //         //this永远指向当前对象
+        //         console.log(this.name + ',hello world');
+        //     }
+        // };
+
+        // o1.sayHello();
+
+        //只要是new出来的对象 数据一模一样 但是就是两个空间/对象
+        // var o1 = {
+        //     name:'lisa',
+        //     age:23
+        // }
+        // var o2 = {
+        //     name:'lisa',
+        //     age:23
+        // }
+        // var o2 =o1;
+        // o2.name='wangwu';
+        // console.log(o1.name);
+
+        // var a = 5;
+        // function test(x){
+        //     x = 6;
+        //     console.log(x);
+        // }
+        // test(a);
+        // console.log(a);
+
+        //引用数据类型
+        // var a = {
+        //     name:'lisi'
+        // };
+        // function test(x){
+        //     x = {
+        //         name:'wangwu'
+        //     };
+        //     console.log(x);
+        // }
+        // test(a);
+        // console.log(a);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

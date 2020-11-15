@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数式编程</title>
+</head>
+<body>
+    <script>
+        // function sayHello(name,age){
+        //     console.log(name,age);
+        // }
+        // var d = sayHello("rabbit",12);
+        // console.log(d);
+        // // 系统自动返回undefined
+        // function add(a,b){
+        //     return a+b;
+        // }
+        // var c = add(3,4);
+        // console.log(c);
+
+        //函数声明
+        // function test(){
+
+        // }
+        // test();
+        //函数表达式 =右面叫表达式 本身又是函数 所以叫函数表达式 
+        //等号右面的表达式一定是一个值 函数表达式 是对象类型
+        //在js中函数是一个对象
+        // var test =function(){
+        //     console.log('haha');
+        // }
+        // test();
+
+        // function test(a){
+        //     a(function(c){
+        //         c();
+        //     });
+        // }
+        // test(function(b){
+        //     b(function(){
+        //         console.log('hh');
+        //     });
+        // });
+
+        function test2(a){
+            return function(b){
+                return a+b;
+            };
+        }
+        var x = test2(3);//x是一个函数 可以再调用
+        var y = x(4);
+
+        var z = test2(3)(4);//同上相同
+
+        console.log(z);
+        console.log(y);
+        //---------------------------
+        // var fn1 = function(){
+        //     console.log('a');
+        // }
+        function test(a){
+            a(function(){
+            console.log('a');
+        });
+        }
+        test(function(b){
+            console.log('a');
+        });
+
+        function test(){
+            return function(){
+                
+            };
+        }
+        var x = test();
+    </script>
+</body>
+</html>

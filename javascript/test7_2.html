@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = 'btn'>game start</button>
+    <script>
+        //人到图书馆借书 面向对象思想 OOA
+        //有什么对象 对象的属性和方法
+
+        //人
+        //属性：姓名 身份证号
+
+        //书
+        //属性：书名 编号ISBN
+
+        //图书馆
+        //属性：馆名 地址
+
+        //管理员：
+        //方法：登记()
+
+        //对象直接量创建一个对象literal
+        // var person = {
+        //     name:'lisi',
+        //     idCard:'678564444'
+        // };
+        // var book = {
+        //     name:'cet4',
+        //     ISBN:'567433'
+        // }
+        // var library = {
+        //     name:'学府书店',
+        //     adress:'学府路'
+        // }
+        // var manager = {
+        //     regist:function(person,book){
+        //         console.log('姓名:'+person.name+'',',身份证'+person.idCard+',书名'+book.name+',编号'+book.ISBN);
+        //     }     
+        // }
+        // manager.regist(person,book);
+
+        //贪吃蛇
+        //蛇
+        // var snake = {
+        //     direction:'right',
+        //     speed:1,
+        //     move:function(){
+        //         console.log('snake is moving');
+        //     },
+        //     eat:function(){},
+        //     die:function(){}
+        // };
+        // //食物
+        // var food = {
+        //     pos:{
+        //         left:Math.random(),
+        //         right:Math.random()
+        //     }
+        // };
+        // //草场
+        // var ground = {
+        //     createFodd:function(){
+
+        //     }
+        // };
+        // //游戏 把游戏的操作 再做一个对象 
+        // var game = {
+        //     start:function(){
+        //         snake.move();
+        //     },
+        //     stop:function(){},
+        //     paused:function(){}
+        // };
+
+
+
+        // var bth = document.getElementById('bth');
+        // btn.onclick = function(){
+        //     game.start();
+        // };
+        // var o1 = {
+        //     name:'lisi',
+        //     age:23
+        // };
+        // var o2 = Object.create(o1);
+        // console.log(o2);
+        // console.log(o2 == o1);
+
+        // var fn = function(){
+        //     console.log(this.name);
+        // };
+
+        //如何在js中创建一个类
+        function Person(name,age){//类
+            this.name = name;
+            this.age = age;
+            // this.sayHello = fn;
+            //性能更优
+            //如此是100个Person和1个函数对象
+            //之前100个Person 100个函数对象
+        }
+        Person.prototype.sayHello = function(){
+             console.log(this.name);
+        };
+        var p1 = new Person('lisi',23);//构造函数调用
+        p1.sayHello();
+        var p2 = new Person('yyy',23);
+        p2.sayHello();
+        //实例对象
+        //new 后面那个东西 构造函数
+        Person();//普通函数调用        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

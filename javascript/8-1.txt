@@ -1,0 +1,11 @@
+js习题部分
+
+这两种方式声明变量 都属于window对象
+不同点：
+不可直接delete 
+var c = 0
+window打印
+可直接delete
+d = 1
+window打印
+

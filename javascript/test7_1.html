@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //后面括号可省略 建议写
+        //Object类
+        var obj = new Object();
+        obj.name = 'lisi';
+        obj.age = 23;
+        obj.brother = {
+            name: 'lisan',
+            age:34,
+            wife:{
+             name:'zhang'   
+            }
+        };
+        //两种创建属性并赋值的方法
+        obj['gender'] = 'male';
+        var x = 'name';
+        obj.sayHello = function(){
+            console.log(this.name + ',hello!');
+        };
+        obj.sayHello();
+        console.log(obj.brother.wife);
+        //语句块  不需要加分号
+        // function test(){
+            
+        // }
+        //语句 需要加分号
+        //函数表达式
+        // var test = function(){};
+        //console.log(obj[x]);
+        //console.log(obj['x']);
+
+        //实现一个小功能 属性打印 方法调用
+
+        // for (var prop in obj){
+        //     if(typeof obj[prop] == 'function'){
+        //         obj[prop]();
+        //     }
+        //     else if(typeof obj[prop] == 'object'){
+        //         for (var prop1 in obj[prop]){
+        //             if(typeof obj[prop][prop1] == 'function'){
+        //                 obj[prop][prop1]();
+        //             }
+        //             else{
+        //                 console.log(prop1 + '=' +obj[prop][prop1]);
+        //             }
+        //         }
+        //     }
+        //     else{
+        //         console.log(prop + "=" + obj[prop]);
+        //     }
+        // }
+
+        //递归遍历
+    //    function printObject(obj){
+    //        for(prop in obj){
+    //            if(typeof obj[prop] == 'function'){
+    //                obj[prop]();
+    //            }
+    //            else if(typeof obj[prop] == 'object'){
+    //                 printObject(obj[prop]);
+    //            }
+    //            else{
+    //                 console.log(prop + '=' +obj[prop]);
+    //            }
+    //        }
+    //    } 
+    //    printObject(obj);
+
+        //递归遍历
+        function printObject(obj){
+            for(prop in obj){
+                if(typeof obj[prop] == 'function'){
+                    obj[prop]();
+                }
+                else if(typeof obj[prop] == 'object'){
+                    printObject(obj[prop]);
+                }
+                else{
+                    console.log(prop + '=' +obj[prop]);
+                }
+            }
+        }
+        printObject(obj);
+    </script>
+</body>
+</html>

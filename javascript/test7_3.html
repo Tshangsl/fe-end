@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+</head>
+<body>
+    <script>
+        // var fn = function(){
+        //     console.log('ss');
+        // };
+        //new出来一个函数对象 js中一个内置的函数对象
+        //函数对象和人没什么不同 名字不同
+        // var fn = new Function('Console.log('ss')');
+        // fn();
+
+        //定义对象
+        //1.new Object() new 后面的就是构造函数
+        var o1 = new Object();
+        //2.对象直接量 与第一种一样 不过是简写了
+        var o2 = {
+            name:'lisa'
+        }
+        //3.Object.create();
+        //4.new Constructor();
+        function Person(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        //Person.prototype.gender = 'male';//继承
+        //Person.prototype.brother = {
+        //    name:'lixx'
+        //};
+        //函数自上向下执行 只在界面加载时执行一次
+        Person.prototype.sayHello=function(){
+            console.log(this.name + ',hello');
+        };
+        var p1 = new Person('lisi',3);
+        var p2 =new Person('wangwu',23);
+        function Student(name,age){
+            
+        //this永远指向当前对象 this 指向正在new的Student对象
+        //相当于属性继承
+            Person.call(this,name,age);
+        }
+        //prototype默认会有constructor属性 
+        //把Person的constructor属性赋给Student
+
+        //基于原型的继承方法
+        // Student.prototype = new Person();
+        //基于原型的寄生组合方式 基于Person的prototype原型创建一个新对象
+        Student.prototype = Object.create(Person.prototype);
+        Student.prototype.constructor = Student();
+        //增加内存 
+
+        //Student.prototype = Person.prototype;
+        s1 = new Student('wangwu',23);
+        console.log(s1.constructor);
+
+        
+        //console.log(s1);
+        //p2.gender = 'female';
+        //属性不要放在原型中 如果是引用数据类型 可能会被改
+        //没有查找的过程 还是赋值 
+        //把其原型屏蔽掉了
+        // p2.brother = {
+        //     name:'tianqi'
+        // };
+        //直接赋值 没有查找过程 直接给p2加了一个gender属性 赋值
+        //把原型那个屏蔽掉了
+        //给p2增加了一个自有属性
+        // console.log(p1.gender);
+        // p1.sayHello();
+       // p2.brother.name = 'zhaoliu';
+        //有查找过程 先找到brother 再修改name
+        // console.log(p1.brother.name);
+        // console.log(p2);
+        //原型链的查找过程 访问对象属性
+        //构造函数 原型 是否有父类（父类原型中找到） 最高找到Object没有返回undefined 找到即返回
+        //Object默认是所有类的父类
+    </script>
+</body>
+</html>
