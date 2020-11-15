@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋转合并照片墙</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* * */
+        html,body{
+            height: 100%;
+        }
+        #container{
+            /* css的问题要审查元素 */
+            height: 100%;
+            background: url();
+        }
+        #btn{
+            width: 50px;
+            height: 100px;
+            background: url() #fff no-repeat center;
+        }
+        #prev{
+            border-radius: 0 15px 15px 0;
+            position: relative;
+            top: 50%;
+            transform: translate(-50);
+        }
+        #next{
+            background: url() #fff no-repeat center;
+            border-radius: 15px 0 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- img js动态创建 -->
+        <div id="btn">
+            <div id="prev"></div>
+            <div id="next"></div>
+        </div>
+    </div>
+</body>
+</html>

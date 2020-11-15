@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom查找</title>
+</head>
+
+<body>
+    <!-- dom会有很多兼容问题
+    webkit chrome safari opera edge
+            firefox -->
+
+    <!-- 查找过程是自顶而上 自外而内 -->
+    <button id="btn">
+        click me
+    </button>
+    <h1 id='btn'></h1>
+    <ul id="ul1">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+    <ul id="ul2">
+        <li>item4</li>
+        <li>item5</li>
+    </ul>
+    <script>
+        //1.getElementById:通过元素的id获取该元素对象 oBtn一个此对象 
+        //任何浏览器无兼容性问题
+
+        //**此只有用document. 因为id文档中是唯一的
+        var oBtn = document.getElementById('oBbtn');
+        console.log(oBtn);
+        // dom中没有找到 返回一个null
+        // console.log( typeof(null));
+        //null空对象 
+
+        //2.getElementsByTagName:通过元素的标签名称获取元素 oLi一个li的数组
+        //任何浏览器无兼容性问题 返回一个htmlCollection
+
+        //aLi是一个伪数组  没有push方法 只有可以往里存东西的 和获取长度的方法
+        // var aLi = document.getElementsByTagName('li');
+        var oUl1 = document.getElementById('ul1');
+        var aLi = oUl.getElementByTagName('li');
+        console.log(aLi);
+        for (var i = 0; i < aLi.length; i++) {
+            console.log(aLi[i]);
+        }
+
+        //3.getElementsByClassname:通过元素的class获取元素
+        //早期ie可能有兼容性问题 ie8及以下
+        //封装自己的getElementsByClassName方法
+        //**js中方法也是一种属性 特殊的属性
+        /**
+        *
+        *@param className 要查找的类的名称
+        *@param tagName 限定的标签名称
+        *@param context 搜索的上下文（搜索范围）
+        */
+        function getByClassName(className, tagName, context) {
+            var elements = [];
+            context = context || document;
+            //先检测一下当前浏览器是否支持getElementsByClassName 如果支持直接调用 否则调用后面自己的方法
+            //if()有 true
+            //多类选择器不好使
+
+            //正则表达式 处理各种复杂的字符串
+            if (document.getElementsByClassName) {
+                elements = document.getElementsByClassName(classname);
+            } else {
+                var arr = context.getElementsByTagName(tagName);
+                for (var i = 0; i < arr.length; i++) {
+                    //class是关键字 所以用className
+                    //此处需要使用正则处理
+                    if (arr[i].className.indexof(className) != -1) {
+                        elements.push(arr[i]);
+                    }
+                }
+            }
+            return elements;
+        }
+        var aLi = getByClassName('item', 'li', oUl1);
+        // var aLi = oUl1.getElementsByClassName('item');
+        // for (var i = 0; i < aLi.length; i++) {
+        //     //console.log(aLi[i]);
+        //     aLi[i].style.background = 'red';
+        // }
+
+        //网页中只有输入框才有name
+
+        //4.querySelector css选择器就是selector 查询出来一个元素
+        //是元素 不是数组 只能找到第一个
+        //var oBtn = document.querySelector('#btn');
+        //console.log(oBtn);
+        
+        //5.querySelectorAll
+        var aLi = document.querySelectorAll('.item');
+        for(var i = 0;i<aLi.length;i++){
+            aLi[i].style.background = 'red';
+        }
+    </script>
+</body>
+
+</html>

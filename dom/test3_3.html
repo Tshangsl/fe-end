@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件冒泡给对象数组动态绑定事件</title>
+</head>
+<body>
+    <button id="btn1">添加</button>
+    <ul id="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        var oUl1 = document.getElementById('ul1');
+        var aLi = oUl1.getElementsByTagName('li');
+        var oBtn1 = document.getElementById('btn1');
+        console.log(aLi);
+        //不能直接给数组绑定事件 只能对具体元素绑定事件
+        //执行时间和事件触发时间不一样
+        //时间差问题十分重要 需要注意!!!
+        // for(var i = 0 ;i <aLi.length;i++){
+        //     aLi[i].onclick = function(e){
+        //         console.log(this.innerHTML);
+        //     }
+        // }
+        oBtn1.onclick = function(){
+            var oLi = document.createElement('li');
+            oLi.innerHTML = Math.random();
+            oUl1.appendChild(oLi);
+            // oLi.onclick = function(e){
+            //     console.log(this.innerHTML);
+            // }
+        }
+        //利用事件冒泡进行处理 父元素子元素牵绊
+        oUl1.onclick = function(e){
+            //事件源 什么触发的该事件 事件绑定在oU1 触发的是oLi
+            //找最直接触发的元素
+            //e有兼容性问题
+            //兼容标准浏览器和IE浏览器 按顺序
+            //标准浏览器 会在事件触发时 传一个事件对象e/event
+            //这样处理比较完美
+            e = e || window.event;
+            //target也有兼容性问题 标准浏览器 IE浏览器
+            var target = e.target||e.srcElement;
+            console.log(e.target.innerHTML);
+            //undefined 在判断时会跳过
+        }
+    </script>
+</body>
+</html>

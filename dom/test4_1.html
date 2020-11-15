@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        /* 通配符 所有元素都选中 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        /* 块级元素默认宽度是父元素的100% */
+        #container {
+            margin: 50px auto;
+            width: 750px;
+            position: relative;
+        }
+
+        #img-box img {
+            display: none;
+        }
+
+        #img-box img:first-child {
+            display: block;
+        }
+
+        #tab li {
+            width: 20px;
+            height: 20px;
+            /* 透明度是一个0到1之间的数 */
+            background: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+            float: left;
+            margin-right: 5px;
+        }
+
+        /* relative相对定位此空间不能被释放 */
+        #tab {
+            position: absolute;
+            right: 50px;
+            bottom: 40px;
+        }
+
+        #tab li.active {
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+
+        .btn {
+            /* 尖括号本来就相对于文字往下一点 */
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 50px;
+            text-align: center;
+            line-height: 50px;
+            position: absolute;
+            /* 方法1 */
+            /* top: 50%;
+            margin-top: -25px; */
+            /* 方法2 */
+            top: calc(50% - 25px);
+            /* 方法3 css3写法 */
+            /* transform: translateY(-50%); */
+        }
+
+        #prev {
+            left: 0;
+        }
+
+        #next {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="img-box">
+            <img src="imgs/1.jpg" alt="">
+            <img src="imgs/2.jpg" alt="">
+            <img src="imgs/3.jpg" alt="">
+            <img src="imgs/4.jpg" alt="">
+            <img src="imgs/5.jpg" alt="">
+        </div>
+        <ul id="tab">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <!-- 用实体转一下 -->
+        <span class="btn" id="prev">&lt;</span>
+        <span class="btn" id="next">&gt;</span>
+    </div>
+    <script>
+        var curIndex = 0;
+        var oContainer = document.getElementById('container');
+        // id只能通过document来找 一个documnet只有一个 不能通过其他去找
+        var oTab = document.getElementById('tab');
+        var aLi = oTab.getElementsByTagName('li');
+        var oImgBox = document.getElementById('img-box');
+        var aImg = oImgBox.getElementsByTagName('img');
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        function changeImg(){
+            //清空列表类名和图片样式
+            for (var j = 0; j < aLi.length; j++) {
+                    aLi[j].className = '';
+                    aImg[j].style.display = 'none';
+                }
+            aLi[curIndex].className = 'active';
+            aImg[curIndex].style.display = 'block';
+        }
+        //设置点击li 到相应的图片
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+            aLi[i].onclick = function () {
+                curIndex = this.index;
+                changeImg()
+            }
+        }
+        //设置点击右边的图标进行图片切换
+        oNext.onclick = function(){
+            curIndex++;
+            if(curIndex > 4){
+                curIndex = 0;
+            }
+            changeImg()
+        }
+        //设置点击左边的图标进行图片切换
+        oPrev.onclick = function(){
+            curIndex--;
+            if(curIndex < 0){
+                curIndex = 4;
+            }
+            changeImg()
+        }
+        //声明一个定时器 实现定时切换图片的效果
+        var timer1;
+        function go(){
+            timer1 = setInterval(function(){
+                oNext.onclick();
+            },1000)
+        }
+        go()
+        //使用mouseover 对计时器进行清除
+        oContainer.onmouseover = function(){
+            clearInterval(timer1);
+        }
+        //使用mouseout事件 调用go()函数 新建一个函数
+        oContainer.onmouseout = function(){
+           go()
+        }
+    </script>
+</body>
+
+</html>

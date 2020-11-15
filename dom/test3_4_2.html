@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现选项卡练习2</title>
+    <style>
+        #container {
+            width: 300px;
+            height: 600px;
+            margin: 50px auto;
+        }
+
+        #menu {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            width: 300px;
+            height: 40px;
+            border-bottom: #000 1px solid;
+        }
+
+        #menu li {
+            list-style: none;
+            float: left;
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background-color: #ccc;
+        }
+
+        #menu .active {
+            background-color: black;
+            color: #fff;
+        }
+
+        #content div {
+            width: 300px;
+            height: 200px;
+            background-color: #ccc;
+            display: none;
+        }
+
+        #content div:first-child {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <ul id="menu">
+            <li class="active">菜单1</li>
+            <li>菜单2</li>
+            <li>菜单3</li>
+        </ul>
+        <div id="content">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+    </div>
+    <script>
+        // var oMenu = document.getElementById('menu');
+        // var aLi = oMenu.getElementsByTagName('li');
+        // var oContent = document.getElementById('content');
+        // var aDiv = oContent.getElementsByTagName('div');
+        // for (var i = 0; i < aLi.length; i++) {
+        //     aLi[i].index = i;
+        //     aLi[i].onclick = function(){
+        //         //首先循环一遍 把className都置空
+        //         for(var j = 0;j<aLi.length;j++){
+        //             aLi[j].className = '';
+        //             aDiv[j].style.display = 'none';
+        //         }
+        //         //设置相应的元素类名和display方式
+        //         aLi[this.index].className = 'active';
+        //         aDiv[this.index].style.display = 'block';
+        //     }
+        // } 
+        var oMenu = document.getElementById('menu');
+        var aLi = oMenu.getElementsByTagName('li');
+        var oContent = document.getElementById('content');
+        var aDiv = oContent.getElementsByTagName('div');
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+            aLi[i].onclick = function () {
+                for (var j = 0; j < aLi.length; j++) {
+                    aLi[i].className = '';
+                    aDiv[i].style.display = 'none';
+                }
+                aLi[this.index] = 'active';
+                //为了同时把div切换
+                aDiv[this.index].style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

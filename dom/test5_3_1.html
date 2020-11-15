@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜练习</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #small {
+            float: left;
+            position: relative;
+        }
+
+        #big {
+            float: left;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+
+        #big img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #drag {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="small">
+        <img src="imgs/s.png" alt="">
+        <div id="drag"></div>
+    </div>
+    <div id="big">
+        <img src="imgs/b.png" alt="">
+    </div>
+    <script>
+        var oBig = document.getElementById('big');
+        var oSmall = document.getElementById('small');
+        var oDrag = document.getElementById('drag');
+        var oBigImage = oBig.getElementsByTagName('img')[0];
+        oSmall.onmouseover = function () {
+            oBig.style.display = 'block';
+            oDrag.style.display = 'block';
+        }
+        oSmall.onmousemove = function (e) {
+            //实现移动?
+            oDrag.style.left = e.clientX - oDrag.offsetWidth / 2 + 'px';
+            oDrag.style.top = e.clientY - oDrag.offsetHeight / 2 + 'px';
+            //限定范围
+            var left = oDrag.offsetLeft;
+            var top = oDrag.offsetTop;
+            var maxLeft = oSmall.offsetWidth - oDrag.offsetWidth;
+            var maxTop = oSmall.offsetHeight - oDrag.offsetHeight;
+            if (left < 0) {
+                oDrag.style.left = 0;
+            }
+            if (top < 0) {
+                oDrag.style.top = 0;
+            }
+            if (left > maxLeft) {
+                oDrag.style.left = maxLeft + 'px';
+            }
+            if (top > maxTop) {
+                oDrag.style.top = maxTop + 'px';
+            }
+            var maxBigLeft = oBigImage
+        }
+        oSmall.onmouseout = function () {
+            oBig.style.display = 'none';
+            oDrag.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

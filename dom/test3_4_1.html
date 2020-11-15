@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现选项卡练习1</title>
+    <style>
+        #container{
+            /* 块级元素不设置宽高 默认宽度为父元素宽度 */
+            width: 300px;
+            height: 600px;
+            margin: 50px auto;
+        }   
+        #menu{
+            width: 300px;
+            height: 40px;
+            overflow: hidden;
+            /* 为什么设置padding会有这样的影响 */
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #000;
+        }
+        #menu li{
+            list-style: none;
+            float: left;
+            width: 100px;
+            height: 40px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 40px;
+        }  
+        #menu li.active{
+            color: #fff;
+            background-color: black;
+        }
+        #content div{
+            background-color: #ccc;
+            height: 200px;
+            display: none;
+        }
+        /* 伪类选择器 选中content第一个子元素 */
+        #content div:first-child{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="menu">
+            <li class="active">菜单1</li>
+            <li>菜单2</li>
+            <li>菜单3</li>
+        </ul>
+        <div id="content">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+    </div>
+    <script>
+        //获取ul下的li伪数组
+        var oMenu = document.getElementById('menu');
+        var aLi = oMenu.getElementsByTagName('li');
+        //获取id为content的div下的div数组
+        var oContent = document.getElementById('content');
+        var aDiv = oContent.getElementsByTagName('div');
+        for(var i = 0;i <aLi.length;i++){
+            //给每一个dom元素都加一个index属性
+            aLi[i].index = i;
+            aLi[i].onclick = function(){
+                //绑定点击事件 点击时触发事件 把li类名设置为空
+                for(var j = 0;j<aLi.length;j++){
+                    aLi[j].className = '';
+                    aDiv[j].style.display= 'none';
+                }
+                aLi[this.index].className = 'active';
+                aDiv[this.index].style.display = 'block';
+            }
+        }  
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件绑定的两种方式</title>
+</head>
+<body>
+    <button id="btn1">click me</button>
+    <!-- 事件绑定 -->
+    <!-- 事件
+    事件源：该事件是由哪个元素触发的
+    事件处理函数：如何处理这个事件的函数（当你触发了这个事件以后具体要做什么）
+    事件对象：该对象包含了跟这个事件有关的所有信息 -->
+    <script>
+        //事件源 onclick 事件处理函数 function 事件对象 e
+        var oBtn1 = document.getElementById('btn1');
+        //e是浏览器传的参数
+        oBtn1.onclick = function(e){
+            //约定俗成的习惯 e|event
+            console.log('clicked');
+            console.log(e);
+        }
+    // 绑定事件的方法 on+事件名
+    //覆盖
+    oBtn1.onclick = function(){
+        console.log(222);
+    }
+    //通过此种方式绑定事件 可以重复绑定
+    //事件监听函数 可以绑定多个事件
+    //false为冒泡阶段 true为监听阶段
+    oBtn1.addEventListener('click',function(){
+        console.log(333);
+    },false);
+
+    //此方法不好使 新建了一个function
+    // oBtn1.removeEventListener('click',function(){
+    //     console.log(333);
+    // },false);
+
+    //可以通过将一个函数赋值给变量的方式进行移除
+
+    //两种方式绑定事件的方法 .onclick 事件监听的方式
+
+    </script>
+</body>
+</html>

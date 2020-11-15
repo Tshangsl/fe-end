@@ -1,0 +1,90 @@
+课程体系(其中用到的唯一语言是javascript)mdn
+--------------------------------------------
+javascript核心：
+词法结构
+类型 值 变量
+全局对象 window
+包装对象
+
+var c = 'abc';
+c = new String(c);
+c.xxx();因为有此行才有上一行的转换 否则不需要 等到此行执行完成后 将其对象销毁（权威指南中：可以这样理解）
+类型转换 
+隐式类型转换 
+强制类型转换
+var a = 5;
+将该基本数据类型转换成引用数据类型
+a = new Number(5);
+a = Number(5);
+-----------------------------------
+客户端javascript 
+页游的开发也属于数据可视化 canvas
+js本身是单线程（thread）
+
+dom(document object model,文档对象模型)
+1.学习javascript的目的 
+用来完成网页的交互 即用js动态操纵html css
+把document中所有东西都看作对象(把html和css看作对象)
+
+dom被拆分成3个部分 XML包含 html 包含 core
+核心 core DOM
+html DOM（是XML的一个子集）
+主要用来描述网页的内容 不是用来描写数据的
+XML(extensible markup language)可扩展的标记语言 
+可以被浏览器读取被识别的一种文件 DOM （提供了一些API）
+数据结构描述 每一个标签都是有特定语义的
+
+针对xml的所有api对html都有效 但是反过来不行
+w3c为xml提供了一大堆api针对xml进行操作 但是用在html上有点麻烦 就创造了dom来进行操作
+
+
+<users>
+    <user>
+        <name>lisi</name>
+        <age>13<age>
+    </user>
+    <user>
+        <name>wangwu</name>
+        <age>8<age>
+    </user>
+</users>
+
+-----------------------------------
+服务端jacascript（node.js）
+
+
+
+--------------------------
+学习dom主要学习哪些api
+1.dom查找 直接根据id
+类名 标签都是找到伪数组
+网页中最常用的就是那三个
+2.dom遍历 第三方库存在的意义 解决此类兼容性问题
+ 父母兄弟 给一个div 让查找子元素/父元素 不知道div的id等信息
+给你一个元素 找其他元素 有很多方法 基本都有兼容性问题
+
+html元素和节点是一个意思 节点 xml角度 元素 html角度
+所有的元素全是节点
+
+xml dom节点类型
+节点有类型之分 12种
+常用3种 elements 元素1 attr 属性2 text文本3
+网页种换行空格都是文本 文本也是节点
+3.dom操纵 增删改查
+
+书 精通javascript
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

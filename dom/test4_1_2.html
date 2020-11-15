@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图练习</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #container{
+            width: 750px;
+            height: 291px;
+            margin: 50px auto;
+            position: relative;
+            /* overflow: hidden; */
+        }
+        #img-box img{
+            display: none;
+        }
+        /* 这个伪类元素的用法？ */
+        #img-box img:first-child{
+            display: block;
+        } 
+        #tab{
+            position: absolute;
+            right: 30px;
+            bottom: 30px;
+        }
+        #tab li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            color: #ffffff;
+            background-color: rgba(0,0, 0, 0.5);
+            text-align: center;
+            line-height: 20px;
+            margin-left: 3px;
+        }
+        #tab li.active{
+            background-color: rgba(255, 0, 0, 0.6);
+        }
+        .btn{
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0,0, 0, 0.5);
+            text-align: center;
+            font-size: 30px;
+            color: #fff;
+            line-height: 50px;
+            position: absolute;
+            /* 中间符号不能连起来写 */
+            top: calc(50% - 25px);
+        }
+        #prev{
+            left: 0;
+        }
+        #next{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="img-box">
+            <img src="imgs/1.jpg" alt="">
+            <img src="imgs/2.jpg" alt="">
+            <img src="imgs/3.jpg" alt="">
+            <img src="imgs/4.jpg" alt="">
+            <img src="imgs/5.jpg" alt="">
+        </div>
+        <ul id='tab'>
+            <li class = "active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <span class="btn" id="prev">&lt;</span>
+        <span class="btn" id="next">&gt;</span>
+    </div>
+    <script>
+       var curIndex = 0;
+
+       var oContainer = document.getElementById('container');
+
+       var oImgBox=document.getElementById('img-box');
+       var aImg = oImgBox.getElementsByTagName('img');
+
+       var oTab = document.getElementById('tab');
+       var aLi = oTab.getElementsByTagName('li');
+
+       var oPrev =document.getElementById('prev');
+       var oNext = document.getElementById('next'); 
+       
+       function changeImg(){
+            for(var i = 0;i<aImg.length;i++){
+                aLi[i].className = '';
+                aImg[i].style.display = 'none';
+            }
+            aLi[curIndex].className = 'active';
+            aImg[curIndex].style.display = 'block';
+       }
+       for(var i = 0;i<aLi.length;i++){
+            aLi[i].index = i;
+            aLi[i].onclick = function(){
+                //同样是设置curIndex的数值
+                curIndex = this.index;
+                changeImg()
+            }
+       }
+       oPrev.onclick = function(){
+           curIndex--;
+           if(curIndex<0){
+               curIndex = 4;
+           }
+           changeImg()
+       }
+       oNext.onclick = function(){
+            curIndex++;
+            if(curIndex>4){
+                curIndex = 0;
+            }
+            changeImg()
+       }
+       var timer1;
+       function go(){
+            timer1 = setInterval(function(){
+                oNext.onclick()
+            },2000)    
+       }
+       go()
+       oContainer.onmouseover = function(){
+            clearInterval(timer1)    
+       }
+       oContainer.onmouseout = function(){
+           go()
+       }
+    </script>
+</body>
+</html>

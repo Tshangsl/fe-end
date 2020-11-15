@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            width: 300px;
+            height: 600px;
+            margin: 50px auto;
+        }
+        #menu {
+            height: 40px;
+            width: 300px;
+            border-bottom: 1px solid #000;
+            overflow: hidden;
+        }
+        li {
+            list-style: none;
+            float: left;
+            width: 100px;
+            height: 40px;
+            background: #ccc;
+            text-align: center;
+            line-height: 40px;
+        }
+        li.active {
+            color: #fff;
+            background-color: black;
+        }
+        #content div {
+            background-color: #ccc;
+            height: 200px;
+            display: none;
+        }
+        /* 伪类选择器  选中content第一个子元素*/
+        #content div:first-child {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <ul id="menu">
+            <li class="active">菜单1</li>
+            <li>菜单2</li>
+            <li>菜单3</li>
+        </ul>
+        <div id="content">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+    </div>
+    <script>
+        //target 事件属性可返回事件的目标节点（触发该事件的节点）
+        //，如生成事件的元素、文档或窗口。
+        var oMenu = document.getElementById('menu');
+        var aLi = oMenu.getElementsByTagName('li');
+        var oContent = document.getElementById('content');
+        var aDiv = oContent.getElementsByTagName('div');
+        //给每一个li绑定事件
+        for (var i = 0; i < aLi.length; i++) {
+            //给每一个dom元素都加一个index属性
+            aLi[i].index = i;
+            //为每一个li分别添加了一个onclick事件
+            aLi[i].onclick = function () {
+                //清空class 都设置为none
+                for (var j = 0; j < aLi.length; j++) {
+                    aLi[j].className = '';
+                    aDiv[j].style.display = 'none';
+                }
+                //点相应的元素加class 给点的设置类block
+                aLi[this.index].className = 'active';
+                aDiv[this.index].style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

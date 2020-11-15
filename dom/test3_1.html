@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>几个常用事件属性</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+
+    </div>
+    <a href="https://www.baidu.com" id="go">跳转</a>
+    <script>
+        // 事件属性 e的属性?
+        var oDiv1 = document.getElementById('div1');
+        oDiv1.onclick = function(e){
+            // 1console.log(e);
+            //触发时距离浏览器距离
+            console.log(e.clientX);
+            console.log(e.clientY);
+        }
+        document.onkeydown = function(e){
+            //2当处于聚焦 键盘按下 显示出相应键盘的码
+            console.log(e.keyCode);
+        }
+        var oA = document.getElementById('go');
+        oA.onclick = function(e){
+            //3使链接失效？
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html>

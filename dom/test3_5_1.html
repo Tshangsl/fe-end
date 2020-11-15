@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托实现选项卡练习</title>
+    <style>
+        #container {
+            width: 300px;
+            height: 600px;
+            margin: 50px auto;
+        }
+        #menu {
+            height: 40px;
+            width: 300px;
+            padding: 0;
+            border-bottom: 1px solid #000;
+            margin: 0;
+            overflow: hidden;
+        }
+        li {
+            list-style: none;
+            float: left;
+            width: 100px;
+            height: 40px;
+            background: #ccc;
+            text-align: center;
+            line-height: 40px;
+        }
+        li.active {
+            color: #fff;
+            background-color: black;
+        }
+        #content div {
+            background-color: #ccc;
+            height: 200px;
+            display: none;
+        }
+        /* 伪类选择器  选中content第一个子元素*/
+        #content div:first-child {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="menu">
+            <li class="active">菜单1</li>
+            <li>菜单2</li>
+            <li>菜单3</li>
+        </ul>
+        <div id="content">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+    </div>
+    <script>
+        var oMenu = document.getElementById('menu');
+        var aLi = oMenu.getElementsByTagName('li');
+        var oContent = document.getElementById('content');
+        var aDiv = oContent.getElementsByTagName('div');
+        //对ul进行事件绑定
+        oMenu.onclick = function (e) {
+            //处理e和target兼容性问题
+            e = e || window.event;
+            //e是target的一个属性
+            var target = e.target || e.srcElement;
+            //判断是否是li触发的相关事件
+            if (target.tagName == 'LI') {
+                //循环清空所有li的className 所有div的display
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                    aDiv[i].style.display = 'none';
+                }
+                //给触发点击事件的li设置className 
+                target.className = 'active';
+                aDiv[target.index].style.display = 'block';
+            }
+        }
+         //给每一个li添加一个dom属性 先于事件触发执行
+         for (var i = 0; i < aLi.length; i++) {
+                aLi[i].index = i;
+         }
+    </script>
+</body>
+
+</html>

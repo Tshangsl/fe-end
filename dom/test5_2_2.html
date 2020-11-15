@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        
+    </div>
+    <script>
+        var oDiv1 = document.getElementById('div1');
+        oDiv1.onmousedown = function(e){
+            var left = oDiv1.offsetLeft;
+            var top = oDiv1.offsetTop;
+            var x = e.clientX;
+            var y = e.clientY;
+            //document是事件源 对oDiv1的left和top设置是事件处理函数
+            document.onmousemove = function(e){
+                //就是要绝对定位的 相对于body进行绝对定位
+                oDiv1.style.left = e.clientX - x +left+'px';
+                oDiv1.style.top = e.clientY - y +top+'px';
+            }
+        }
+        document.onmouseup = function(){
+            oDiv1.onmousemove = null;
+        }
+    </script>
+</body>
+</html>

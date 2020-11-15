@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* #box1{
+            width: 500px;
+            height: 500px;
+            background-color: blue;
+            position: relative;
+        } */
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div id="div1">
+            
+        </div>
+    </div>
+    <script>
+        var oDiv1 = document.getElementById('div1');
+        oDiv1.onmousedown = function (e) {
+            var left = oDiv1.offsetLeft;
+            var top = oDiv1.offsetTop;
+            var x = e.clientX;
+            var y = e.clientY;
+            //防止速度过快 移出div1的距离
+            document.onmousemove = function(e){
+                //写在style标签里
+                oDiv1.style.left = e.clientX - x +left + 'px';
+                oDiv1.style.top = e.clientY - y + top +'px';
+                //获取鼠标
+                // console.log(e.clientX);
+                // console.log(e.clientY);
+            }   
+        }
+        oDiv1.onmouseup =function(){
+            document.onmousemove = null;
+        }
+        //相对于最近已定位父元素的距离
+        //获得的是数字 不是加px的字符串
+        //获取元素宽度
+        console.log(div1.offsetWidth);
+        //获取元素left值
+        console.log(div1.offsetLeft); 
+    </script>
+</body>
+
+</html>

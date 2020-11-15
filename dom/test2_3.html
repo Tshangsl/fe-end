@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 把信息提交到该网址 -->
+    <form id = 'username'action="https://www.baidu.com">
+        <input type="text" name="username" id="">
+        <button type = 'submit'>提交</button>
+    </form>
+    -----------
+    <p>
+        <input id = 'ipt1'type="text" value="请输入名字">
+    </p>
+    <p>
+        <select name="" id="sex">
+            <option value="male">男</option>
+            <option value="female">女</option>
+        </select>
+    </p>
+    <p>
+        <input type="text" id = 'search'>
+    </p>
+    <div id="div1"></div>
+    <button id = 'btn1'>提交</button>
+    <script>
+        //1.事件focus|blur
+        var oIpt1 = document.getElementById('ipt1');
+        //得到焦点
+        oIpt1.onfocus = function(){
+            if(oIpt1.value == '请输入名字'){
+                oIpt1.value = '';
+            }
+        }
+        //失去焦点
+        oIpt1.onblur = function(){
+            if(oIpt1.value == '')
+            oIpt1.value='请输入名字';
+        }
+
+        //2.change事件就是用于表单的
+        var oSex = document.getElementById('sex');
+        oSex.onchange = function(){
+            console.log(this.value);     
+        }
+        //3.keydown keyup  
+        var oSearch = document.getElementById('search');
+        oSearch.onkeydown = function(){
+            console.log(this.value);
+        }
+        oSearch.onkeyup = function(){
+            console.log(this.value);
+        }
+        //4.事件 mouseover | mouseout 
+        //mousemove 
+        //mousedown | mouseup
+        var oDiv1 = document.getElementById('div1');
+        oDiv1.onmouseover = function(){
+            console.log('i am in');
+        }
+        oDiv1.onmouseout = function(){
+            console.log('i am out');
+        }
+        oDiv1.onmousemove = function(){
+            console.log('hahaha');
+        }
+        oDiv1.onmousedown = function(){
+            console.log('按下');
+        }
+        oDiv1.onmouseup = function(){
+            console.log('抬起');
+        }
+        //5.mouseup mousedown click
+        var oBtn1 = document.getElementById('btn1');
+        oBtn1.onclick = function(){
+            console.log('click');
+        }
+        //6.submit
+        var oForm =document.getElementById('username');
+        oForm.onsubmit = function(){
+            console.log(88);
+            //不跳转网页
+            return false;
+        }
+    </script>
+</body>
+</html>
