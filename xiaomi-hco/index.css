@@ -1,0 +1,421 @@
+/* 通用样式设置 */
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font:14px "HanHei SC","PingFang SC","Avenir Next",Avenir,"Helvetica Neue",Helvetica,"Lantinghei SC","Hiragino Sans GB","Microsoft YaHei",微软雅黑,STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;
+}
+ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/* 清除浮动类 伪元素*/
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* header开始 */
+/* header{
+    height: 40px;
+    background-color: #333333;
+    font-size: 12px;
+    color: #fff;
+    line-height: 40px;
+}
+.wrapper{ */
+    /* 左右两边间距的来源 */
+    /* width: 1200px;
+    margin: 0 auto;
+} */
+/* .wrapper .header-list{
+    float: left;
+}
+.wrapper .header-login{
+    float: right;
+} */
+/* demo里用的是div 和 a标签实现 所以不用再浮动 
+此中a和span外面还套了一个li
+*/
+/* .wrapper li{
+    float: left;
+}
+.wrapper li a{
+    color: #fff;
+}
+.wrapper span{
+    margin: 0 5px;
+}
+.header-login span{
+    margin: 0 5px;
+} */
+/* padding-right: 5px; */
+/* .wrapper li a:hover{
+    color: #e5e5e5;
+} */
+/* header结束 */
+/* header开始 */
+header{
+    height: 40px;
+    background-color: #333;
+    font-size: 12px;
+    color: #fff;
+    line-height: 40px;
+}
+.wrapper{
+    margin: 0 auto;
+    width: 1200px;
+}
+.header-left{
+    float: left;
+}
+.header-right{
+    float: right;
+}
+header a{
+    color: #fff;
+}
+header span{
+    padding: 2px;
+}
+/* header结束 */
+/* nav开始 */
+nav{
+    height: 100px;
+    margin: 0 32px;
+}
+.logo{
+    float: left;
+    margin-top: 23px;
+}
+.logo img{
+    width: 187px; 
+    height: 55px;
+}
+.nav{
+    float: right;
+    margin: 36px -23px 0 0;
+}
+.nav > li{
+    float: left;
+    /* overflow: hidden; */
+    padding: 0 23px;
+    height: 40px;
+}
+.nav > li a{
+    font-size: 18px;
+    /* line-height: 100px; */
+    color: #212121;
+}
+.nav li a:hover{
+    color: #e94400;
+}
+/* .nav li:last-child{
+    margin-right: -25px;
+} */
+.nav .sub-father{
+    position: relative;
+}
+.nav .sub-father:hover .sub{
+    display: block;
+}
+.nav .sub-father .sub{
+    display: none;
+    position: absolute;
+    width: 150px;
+    height: 102px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    border-radius: 3px;
+    top: 40px;
+    left: -31px;
+}
+.nav .sub:before{
+    content: "";
+    border: 1px solid #e5e5e5;
+    width: 7px;
+    height: 7px;
+    left: 72px;
+    top: -5px;
+    position: absolute;
+    transform: rotate(45deg);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    background: #fff;
+}
+.nav .sub li{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #575757;
+    /* border-bottom: 1px solid #ececec; */
+}
+.nav .sub li a{
+    font-size: 16px;
+}
+.nav .sub li:hover{
+    background: #eee;
+}
+.nav .sub li a:hover{
+    color: #e94400;
+}
+
+/* nav结束 */
+/* banner开始 */
+.banner{
+    height: 640px;
+    background: url(images/banner.jpg) center 0;
+    text-align: center;
+}
+.banner h2{
+    font-size: 54px;
+    font-weight: 300;
+    color: #fff;
+    padding-top: 193px;
+}
+.download_btn{
+    margin-top:36px;
+}
+.download_btn a{
+    color:#fff;
+    font-size: 24px;
+    background: #F93F2B;
+    width: 260px;
+    height: 60px;
+    line-height: 60px;
+    /* 设置block是为了能给a元素设置宽高 
+    inline应该是可以让text-align也作用于它
+    */
+    display: inline-block;
+    border-radius: 5px;
+}
+/* .banner button{
+    font-size: 24px;
+    color: #fff;
+    background-color: #F93F2B;
+    border: none;
+    border-radius: 5px;
+    width: 260px;
+    height: 60px;
+    margin-top: 36px;
+}
+.banner button:hover{
+    background-color: #aa291b;
+    cursor: pointer;
+} */
+/* banner结束 */
+/* main开始 */
+/* main{
+    width: 1170px;
+    border: solid 1px #e6e6e6; */
+    /* 为什么我的此处不加不行 */
+    /* margin: 0 auto;
+    padding: 30px 0 0 30px;
+    margin-top: -80px;
+    background-color: #fff;
+    overflow: hidden;
+}
+main a{
+    color: #fff;
+}
+main li{
+    color: #666;
+    font-size: 16px;
+    margin: 20px 0 0;
+}
+main li span{
+    color: #ea5600;
+}
+.main-list{
+    float: left;
+    margin-right: 30px;
+    width: 360px;
+    margin-top: 5px;
+}
+.main-list .main-img{
+    background: url(images/bg1.png) 0 0 no-repeat;
+    background-size: 360px 180px;
+    font-size: 33px;
+    height: 180px;
+    overflow: hidden;
+}
+.main-title{
+    margin: 44px 0 0 30px;
+    font-weight: 400;
+}
+.main-desc{
+    margin: 16px 0 0 30px;
+}
+.main-ul{
+    padding: 10px 30px 0 30px; */
+    /* border-bottom: 1px solid #ececec; */
+/* }
+.blue-list .main-img{
+    background-image: url(images/bg2.png);
+}
+.blue-list span{
+    color: #4481c8;
+}
+.main-more{
+    text-align: center;
+    padding: 20px 0;
+    font-size: 16px;
+    border-top: 1px solid #ececec;
+    color: #fd3911;
+    margin:40px 0 20px;
+} */
+/* main结束 */
+
+/* main开始 */
+main{
+    margin: 0 auto;
+    width: 1170px;
+    border: solid 1px #e6e6e6;
+    background-color: #fff;
+    margin-top: -80px;
+    padding: 30px 0 0 30px;
+    overflow: hidden;
+}
+main a{
+    color: #fff;
+}
+.main-list{
+    float: left;
+    margin-right: 30px;
+    width: 360px;
+}
+.main-img{
+    height: 180px;
+    /* 这里的0 0 是什么意思 */
+    background: url(images/bg1.png) 0 0 no-repeat;
+    background-size: 360px 180px;
+    /* 此处为什么要加overflow:hidden; */
+    overflow: hidden;
+    font-size: 33px;
+    font-weight: 400;
+}
+.main-blue .main-img{
+    background-image: url(images/bg2.png);
+}
+.main-img .main-title{
+    margin: 44px 0 0 30px;
+}
+.main-img .main-desc{
+    margin: 16px 0 0 30px;
+}
+.main-info{
+    font-size: 16px;
+    padding: 10px 30px;
+}
+.main-info div{
+    margin-top: 20px;
+}
+.main-info a{
+    color: #666;
+}
+.main-info span{
+    color: #ea5600;
+}
+.main-blue .main-info span{
+    color: #4481c8;
+}
+.main-blue .main-info .info-more span{
+    color: #fd3911;
+}
+.main-info .info-more{
+    border-top: 1px solid #ececec;
+    color: #fd3911;
+    text-align: center;
+    margin: 40px 0 10px;
+    height: 62px;
+    line-height: 62px;
+}
+/* main结束 */
+
+
+/* footer开始 */
+footer{
+    height: 209px;
+    /* overflow: hidden; */
+    /* overflow: hidden;
+    margin-top: 100px;
+    margin-left: 30px;
+    margin-right: 30px; */
+}
+.footer-left{
+    margin-top: 109px;
+    float: left;
+    overflow: hidden;
+}
+.footer-right{
+    float: right;
+    color: #575757;
+    margin-top: 90px;
+}
+.footer-left img{
+    float: left;
+    width: 46px;
+    height: 46px;
+    margin-right: 8px;
+}
+.footer-left-message{
+    float: left;
+    /* overflow: hidden;
+    color: #575757; */
+}
+.footer-left-message li{
+    float: left;
+    border-right: 1px solid #575757;
+    padding: 0 8px;
+}
+.footer-left-message li:last-child{
+    border-right: none;
+}
+.footer-left-message li a{
+    color:#575757;
+    font-size: 14px;
+    height: 14px;
+    line-height: 14px;
+    display: block;
+}
+.about{
+    color: #575757;
+    padding: 3px 0 10px;
+    overflow: hidden;
+}
+.contact li{
+    font-size: 12px;
+    height: 14px;
+    line-height: 14px;
+    color:#6D6D6D;
+}
+
+.footer-right .right-title{
+    font-size: 14px;
+}
+.footer-right .right-tel{
+    font-size: 26px;
+    color: #eb4519;
+}   
+.footer-right .right-time{
+    font-size: 12px;
+}
+/* footer结束 */
+
+
+
+
+
+
+
+
+
+
+
+
+
