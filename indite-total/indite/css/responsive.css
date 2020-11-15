@@ -1,0 +1,210 @@
+/* 语句的应用范围一定要从小到大排列 否则会覆盖*/
+@media screen and (max-width:1024px){
+    #container{
+        margin-top: 0;
+        border-radius: 0;
+    }
+}
+@media screen and (max-width:960px){
+    #container{
+        flex-direction: column;
+        padding-right: 80px;
+    }
+    /* header区域开始 */
+    header{
+        width: 100%;
+    }
+    /* 改变导航的布局方式 */
+    #nav-ul{
+        display: flex;
+    }
+    #nav-header{
+        padding-bottom: 20px;
+    }
+    /* #nav-header .nav-toggle{
+        display: none;
+    } */
+    #nav-header .menu-item a{
+        padding: 16px 24px 16px 0;
+        margin: 0;
+        /* auto 自适应 宽度由内容撑开 */
+        width: auto;
+    }
+    #nav-header .menu-item a:hover{
+        background-color: #fff;
+    }
+    #nav-header .menu-item a.active::before{
+        display: none;
+    }
+    /* 调整画像 */
+    #profile{
+        border-top: 1px solid #eee;
+        margin: 0 -50px;
+        padding: 30px 50px 20px 0;
+    }
+    #profile .profile-img{
+        height: 120px;
+        width: 100px;
+        margin-left: 0;
+        /* 浮动 文字环绕效果 */
+        float: left;
+    }
+    /* #profile .profile-img img{ */
+        /* width: 100px;
+        height: 100px; */
+    /* } */
+    #profile .profile-description,
+    #profile .profile-name{
+        padding-left: 160px;
+    }
+    header .sidebar{
+        display: none;
+    }
+    /* header区域结束 */
+    main section article img{
+        width: 100%;
+    }
+    main .content-sidebar{
+        background-color: #fff;
+    }
+    /* 更改move-sidebar位置 */
+    #move-sidebar{
+        position: fixed;
+        top: 0;
+        right: 0;
+        /* vh和vw设置 */
+        height: 100vh;
+        z-index: 2;
+    }
+    #move-sidebar .social-tooltip:hover::before,
+    #move-sidebar .social-tooltip:hover::after{
+        display: none;
+    }
+}
+@media screen and (max-width:720px){
+    #container{
+        padding-right: 0;
+    }
+    header .site-title{
+        text-align: center;
+        padding: 10px 0;
+        margin-top: -20px;
+    }
+    header .site-description{
+        display: none;
+    }
+    #nav-header{
+        position: relative;
+        margin: 0 -50px;
+        padding-bottom: 0;
+        border-top: 1px solid #eee;
+        min-height: 40px;
+    }
+    #nav-header .nav-toggle{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60px;
+        height: 48px;
+        text-align: center;
+    }
+    #nav-header .nav-toggle i{
+        font-size: 24px;
+        padding: 10px 0;
+    }
+    #nav-header .nav-toggle .close{
+        background-color: #fff;
+    }
+    #nav-header ul{
+        margin-top: 48px;
+        display: none;
+        padding-bottom: 50px;
+    }
+    /* targer选择器此元素处于被选中的状态 class不行 必须id*/
+    #nav-ul:target{
+        display: block;
+    }
+    #nav-header .menu-item a{
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.7);
+        padding: 8px 20px;
+        border-bottom: 1px solid #f1f1f1;
+        display: block;
+    }
+    #nav-header .menu-item .sub-menu{
+        display: block;
+        position: relative;
+        border: none;
+        box-shadow: none;
+        margin-left: 40px;
+        width: 100%;
+    }
+    #nav-header .menu-item .sub-menu::before{
+        display: none;
+    }
+    #nav-header .menu-item .sub-menu a{
+        font-size: 15px;
+        font-weight: 300;
+        padding: 6px 15px;
+    }
+    #move-sidebar{
+        position: relative;
+        border: none;
+        height: auto;
+        width: 100%;
+    }
+    #move-sidebar .toggle-search{
+        display: none;
+    }
+    #move-sidebar .social-links{
+        display: flex;
+        justify-content: center;
+        margin-top: 0;
+    }
+    #move-sidebar .social-links-item::before{
+        display: none;
+    }
+    #move-sidebar .social-tooltip{
+        margin: 0;
+    }
+    main{
+        padding: 40px 20px;
+    }
+    main .content-title{
+        font-size: 28px;
+    }
+    main .content-description{
+        font-size: 15px;
+    }
+    main .content .more-links{
+        font-size: 15px;
+    }
+    main .content-sidebar .sidebar-item{
+        padding-left :40px;
+        padding-right: 40px;
+    }
+    main .footer-sidebar{
+        display: block;
+        padding-bottom: 30px;
+    }
+    main .footer-sidebar .sidebar-item{
+        width: 100%;
+        padding: 20px 0;
+    }
+}
+@media screen and (max-width:480px){
+    main{
+        padding: 30px 0;
+    }
+    main section article{
+        border-radius: 0;
+    }
+    main .content-box{
+        position: relative;
+        padding: 34px 20px 20px;
+    }
+    main .content-sidebar,
+    main .footer-sidebar{
+        margin: 0 -20px;
+    }
+}
