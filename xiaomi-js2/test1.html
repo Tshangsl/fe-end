@@ -1,0 +1,43 @@
+<!-- 对象的合并 -->
+<script>
+    var obj1 = {
+        name :'lisi',
+        age:23
+    }
+    var obj2 = {
+        name:'wangwu',
+        gender:'男',
+        brother:{
+            name:'wangwu'
+        }
+    }
+    //此处的p是属性的名字
+    // for(var p in obj2){
+    //     //对象的深克隆浅克隆 对象合并 浅克隆
+    //     //引用传递 把obj1.brother地址给了obj2.brother
+    //     //只是传递了指针
+    //     obj1[p] = obj2[p];
+    // }    
+    // // console.log(obj1);
+    // obj1.brother.name = 'zhaoliu';
+    // console.log(obj2.brother.name);
+
+        //深copy的实现
+    //extend函数 将obj对象中的所有的(基本数据类型，引用数据类型（全新的的对象复制过去）)属性复制给target
+    function extend(target,obj){
+        for(var p in obj){
+            if(typeof obj[p] == 'object'){
+                target[p] = extend({},obj[p]);
+            }else{
+                target[p] = obj[p];
+            }
+        }
+        return target;
+    }
+    var o = extend(obj1,obj2);
+    console.log(o);
+
+    obj1.brother.name = 'liu';
+    console.log(obj2.brother.name);
+
+</script>

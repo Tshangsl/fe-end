@@ -1,0 +1,34 @@
+<!-- 对象合并 深拷贝封装（适用对象数组属性） -->
+<script>
+    var obj1 = {
+        name :'zhangsan',
+        age: 23
+    }
+    var obj2 = {
+        name:'lisi',
+        gender:'男',
+        brother:{
+            name:'liu'
+        },
+        xx:[1,2,3]
+    }
+    //编写函数extend实现深拷贝
+    //数组本身也是一种引用类型 new出来的
+    //数组对象要加以辨别
+    //引用数据类型又分为对象和数组
+    function extend(target,obj){
+        for(var p in obj){
+            //typeof方法不够健壮 区分不开数组和对象
+            //使用constructor属性判断是对象还是数组
+            if(typeof obj[p] =='object'){
+                target[p] = extend(obj[p].constructor == Array?[]:{},obj[p]);
+            }else{
+                target[p] = obj[p];
+            }
+        }
+        return target;
+    }
+    extend(obj1,obj2);
+    obj1.xx[0] = 8;
+    console.log(obj2.xx[0]);
+</script>
