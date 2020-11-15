@@ -1,0 +1,27 @@
+/* 通用样式设置 */
+/* 通配符选择器可以选择网页中所有的元素 */
+/* 样式重置 css reset */
+/* 不同浏览器或者浏览器版本 */
+/* 适用于所有的网站 */
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font:14px "HanHei SC","PingFang SC","Avenir Next",Avenir,"Helvetica Neue",Helvetica,"Lantinghei SC","Hiragino Sans GB","Microsoft YaHei",微软雅黑,STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;
+}
+button{
+    font:14px "HanHei SC","PingFang SC","Avenir Next",Avenir,"Helvetica Neue",Helvetica,"Lantinghei SC","Hiragino Sans GB","Microsoft YaHei",微软雅黑,STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;
+}
+ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+/* 清除浮动类 伪元素*/
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}

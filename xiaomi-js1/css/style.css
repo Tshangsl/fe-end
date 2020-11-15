@@ -1,0 +1,221 @@
+/* 放本网页中可重用的部分 */
+
+/* header开始 */
+/* header{
+    height: 40px;
+    background-color: #333333;
+    font-size: 12px;
+    color: #fff;
+    line-height: 40px;
+}
+.wrapper{ */
+    /* 左右两边间距的来源 */
+    /* width: 1200px;
+    margin: 0 auto;
+} */
+/* .wrapper .header-list{
+    float: left;
+}
+.wrapper .header-login{
+    float: right;
+} */
+/* demo里用的是div 和 a标签实现 所以不用再浮动 
+此中a和span外面还套了一个li
+*/
+/* .wrapper li{
+    float: left;
+}
+.wrapper li a{
+    color: #fff;
+}
+.wrapper span{
+    margin: 0 5px;
+}
+.header-login span{
+    margin: 0 5px;
+} */
+/* padding-right: 5px; */
+/* .wrapper li a:hover{
+    color: #e5e5e5;
+} */
+/* header结束 */
+/* header开始 */
+header{
+    height: 40px;
+    background-color: #333;
+    font-size: 12px;
+    color: #fff;
+    line-height: 40px;
+}
+.wrapper{
+    margin: 0 auto;
+    width: 1200px;
+}
+.header-left{
+    float: left;
+}
+.header-right{
+    float: right;
+}
+header a{
+    color: #fff;
+}
+header span{
+    padding: 2px;
+}
+/* header结束 */
+/* nav开始 */
+nav{
+    height: 100px;
+    /* margin: 0 32px; */
+}
+.logo{
+    float: left;
+    margin-top: 23px;
+}
+.logo img{
+    width: 187px; 
+    height: 55px;
+}
+.nav{
+    float: right;
+    margin: 36px -23px 0 0;
+}
+.nav > li{
+    float: left;
+    /* overflow: hidden; */
+    padding: 0 23px;
+    height: 40px;
+}
+.nav > li a{
+    font-size: 18px;
+    /* line-height: 100px; */
+    color: #212121;
+}
+.nav > li a:hover{
+    color: #e94400;
+}
+/* .nav li:last-child{
+    margin-right: -25px;
+} */
+.nav .sub-father{
+    position: relative;
+}
+/* 对div进行的绝对定位 */
+.nav .sub-father .sub{
+    display: none;
+    position: absolute;
+    width: 150px;
+    height: 102px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    border-radius: 2px;
+    top: 40px;
+    left: -31px;
+}
+.nav .sub-father:hover .sub{
+    display: block;
+}
+.nav .sub ul{
+    padding: 10px 0;
+}
+.nav .sub li{
+    /* 块级元素子元素默认占父元素100% */
+    /* width: 100%; */
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    /* border-bottom: 1px solid #ececec; */
+}
+.nav .sub li a{
+    color: #434343;
+    font-size: 16px;
+}
+.nav .sub li:hover{
+    background: #eee;
+}
+.nav .sub li a:hover{
+    color: #e94400;
+}
+.nav .sub:before{
+    content: "";
+    border: 1px solid #e5e5e5;
+    width: 7px;
+    height: 7px;
+    left: 72px;
+    top: -5px;
+    position: absolute;
+    transform: rotate(45deg);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    background: #fff;
+}
+/* nav结束 */
+/* footer开始 */
+footer{
+    height: 209px;
+    /* overflow: hidden; */
+    /* overflow: hidden;
+    margin-top: 100px;
+    margin-left: 30px;
+    margin-right: 30px; */
+}
+.footer-left{
+    margin-top: 109px;
+    float: left;
+    overflow: hidden;
+}
+.footer-right{
+    float: right;
+    color: #575757;
+    margin-top: 90px;
+}
+.footer-left img{
+    float: left;
+    width: 46px;
+    height: 46px;
+    margin-right: 8px;
+}
+.footer-left-message{
+    float: left;
+    /* overflow: hidden;
+    color: #575757; */
+}
+.footer-left-message li{
+    float: left;
+    border-right: 1px solid #575757;
+    padding: 0 8px;
+}
+.footer-left-message li:last-child{
+    border-right: none;
+}
+.footer-left-message li a{
+    color:#575757;
+    font-size: 14px;
+    height: 14px;
+    line-height: 14px;
+    display: block;
+}
+.about{
+    color: #575757;
+    padding: 3px 0 10px;
+    overflow: hidden;
+}
+.contact li{
+    font-size: 12px;
+    height: 14px;
+    line-height: 14px;
+    color:#6D6D6D;
+}
+
+.footer-right .right-title{
+    font-size: 14px;
+}
+.footer-right .right-tel{
+    font-size: 26px;
+    color: #eb4519;
+}   
+.footer-right .right-time{
+    font-size: 12px;
+}
+/* footer结束 */

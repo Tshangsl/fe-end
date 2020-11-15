@@ -1,0 +1,188 @@
+/* 每个页面特有的 */
+
+/* banner开始 */
+.banner{
+    height: 640px;
+    background: url(../images/banner.jpg) center 0;
+    text-align: center;
+}
+.banner h2{
+    font-size: 54px;
+    font-weight: 300;
+    color: #fff;
+    padding-top: 193px;
+}
+.download_btn{
+    margin-top:36px;
+}
+.download_btn a{
+    color:#fff;
+    font-size: 24px;
+    background: #F93F2B;
+    width: 260px;
+    height: 60px;
+    line-height: 60px;
+    /* 设置block是为了能给a元素设置宽高 
+    inline应该是可以让text-align也作用于它
+    */
+    display: inline-block;
+    border-radius: 5px;
+}
+/* .banner button{
+    font-size: 24px;
+    color: #fff;
+    background-color: #F93F2B;
+    border: none;
+    border-radius: 5px;
+    width: 260px;
+    height: 60px;
+    margin-top: 36px;
+}
+.banner button:hover{
+    background-color: #aa291b;
+    cursor: pointer;
+} */
+/* banner结束 */
+/* main开始 */
+/* main{
+    width: 1170px;
+    border: solid 1px #e6e6e6; */
+    /* 为什么我的此处不加不行 */
+    /* margin: 0 auto;
+    padding: 30px 0 0 30px;
+    margin-top: -80px;
+    background-color: #fff;
+    overflow: hidden;
+}
+main a{
+    color: #fff;
+}
+main li{
+    color: #666;
+    font-size: 16px;
+    margin: 20px 0 0;
+}
+main li span{
+    color: #ea5600;
+}
+.main-list{
+    float: left;
+    margin-right: 30px;
+    width: 360px;
+    margin-top: 5px;
+}
+.main-list .main-img{
+    background: url(images/bg1.png) 0 0 no-repeat;
+    background-size: 360px 180px;
+    font-size: 33px;
+    height: 180px;
+    overflow: hidden;
+}
+.main-title{
+    margin: 44px 0 0 30px;
+    font-weight: 400;
+}
+.main-desc{
+    margin: 16px 0 0 30px;
+}
+.main-ul{
+    padding: 10px 30px 0 30px; */
+    /* border-bottom: 1px solid #ececec; */
+/* }
+.blue-list .main-img{
+    background-image: url(images/bg2.png);
+}
+.blue-list span{
+    color: #4481c8;
+}
+.main-more{
+    text-align: center;
+    padding: 20px 0;
+    font-size: 16px;
+    border-top: 1px solid #ececec;
+    color: #fd3911;
+    margin:40px 0 20px;
+} */
+/* main结束 */
+
+/* main开始 */
+main{
+    margin: 0 auto;
+    width: 1170px;
+    border: solid 1px #e6e6e6;
+    background-color: #fff;
+    margin-top: -80px;
+    padding: 30px 0 0 30px;
+    overflow: hidden;
+}
+main a{
+    color: #fff;
+}
+.main-list{
+    float: left;
+    margin-right: 30px;
+    width: 360px;
+}
+.main-img{
+    height: 180px;
+    /*在css文件夹中*/
+    background: url(../images/bg1.png) 0 0 no-repeat;
+    background-size: 360px 180px;
+    /* 此处为什么要加overflow:hidden; */
+    overflow: hidden;
+    font-size: 33px;
+    font-weight: 400;
+}
+.main-blue .main-img{
+    background-image: url(../images/bg2.png);
+}
+.main-img .main-title{
+    margin: 44px 0 0 30px;
+}
+.main-img .main-desc{
+    margin: 16px 0 0 30px;
+}
+.main-info{
+    font-size: 16px;
+    padding: 10px 30px;
+}
+.main-info div{
+    margin-top: 20px;
+}
+.main-info a{
+    color: #666;
+}
+.main-info span{
+    color: #ea5600;
+}
+.main-blue .main-info span{
+    color: #4481c8;
+}
+.main-blue .main-info .info-more span{
+    color: #fd3911;
+}
+.main-info .info-more{
+    border-top: 1px solid #ececec;
+    color: #fd3911;
+    text-align: center;
+    margin: 40px 0 10px;
+    height: 62px;
+    line-height: 62px;
+}
+/* main结束 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

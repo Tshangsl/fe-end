@@ -1,0 +1,62 @@
+/* modal 弹层 */
+/* bootstrap 很多封装好的组件 */
+.modal{
+    /* a 是 alpha阿尔法 rgba的取值就是0-255*/
+    /* ie6和ie6之前不支持 */
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    /* 使用opacity会导致子元素随父元素透明 */
+    /* opacity: 0.8; */
+}
+/* 大型项目中css文件要压缩 所有文件折成一行 
+提高文件在网络上的传输速率 */
+.modal-dialog{
+    width: 600px;
+    height: 400px;
+    background: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* 写死了 不够灵活 必须要知道宽度高度*/
+    /* margin-left: -300px;
+    margin-top: -200px; */
+    /* transform变形 */
+    /* transform ie8和ie8之前都不好使 */
+    transform: translate(-50%,-50%);
+}
+.modal-header{
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+.modal-header .close{
+    border: 0;
+    position: absolute;
+    top: 10px;
+    right: 0;    
+}
+.modal-body{
+    padding: 10px;
+}
+/* 一旦给一个块级元素定位 宽度就是内容撑开的 */
+/* 给一个元素设置width的宽度时是设置内容的宽度 */
+.modal-footer{
+    border-top: 1px solid #ccc;
+    /* body是没有设宽高的所以给footer绝对定位 设置布局*/
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    /* 默认值是content-box 
+    标准盒模型:width设置的是content的宽度
+    怪异盒模型:width设置的是边框+内边距+内容
+    */
+    /* ie8和ie8之前不兼容 */
+    box-sizing: border-box;
+}
