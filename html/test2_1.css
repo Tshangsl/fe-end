@@ -1,0 +1,22 @@
+/* 选择器 */
+h1{
+    color:#ff0000;
+    font-size:18px;
+    font-style: italic;
+}
+#h1{color:rgb(255,255,255);font-size:16px;}
+p{
+    color:purple;
+    font-style:italic;
+}
+.ti{
+    background-color: aqua;
+    text-align: center;
+    border: 1px dotted #000000;
+}
+.ti{
+    /* background-color: bisque; */
+}
+h1,p{}
+
+#div p{}

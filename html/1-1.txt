@@ -1,0 +1,48 @@
+// 前端基础 高级 后端 刷题 面试
+//时间安排计划 每周四周五晚7h-9h/9.5h
+
+catlog
+git与github的使用 
+
+html/css使用 --1 98% javascript
+
+git:代码管理工具和团队协作的工具 分布式 相对安全 不带锁
+cmd 目录配置到环境变量
+
+gitbash命令打开控制终端
+git clone 命令 将刚才复制的地址进行粘贴 将此项目克隆到本地
+git pull 更新github上的代码到本地
+借助vscode一个终端 将项目上传到github中  git add . 添加到git一个 -m缓存区域 隐藏文件夹
+git commit -m '注释'提交时必须写注释
+git push 往服务器端推送
+
+vscode中使用git
+1.图形化界面
+	左边第三个打开对应文件夹
+2.使用命令进行操作
+
+git code中目录 放在非c盘 名字纯英文或数字
+
+https://github.com/johnnysw/fellow43.git
+
+gitbash 是虚拟linux命令 但是windows命令是相同的
+
+linux中右键粘贴
+
+git这个工具就是linux中自带的工具 作者姓名linux 
+
+苹果操作系统基于unix
+
+
+case1---
+CRM custom realtionship management
+ERP 
+金土工程 
+SVN/类似git一个代码管理工具 cvs相对比较早 
+带锁方式 串行方式修改文件 适合小团队 效率比较低 相对安全
+
+github：一个网站 云端多人合作 open source免费 私有项目收费 github被微软收购 基本免费
+	gitlab 最开始 开源免费 国内一个大学维护 
+	码云
+
+unfinished:register github 网址

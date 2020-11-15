@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性响应式</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        section{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        article{
+            /* ie里面的怪异盒模型 宽高是基于border区域开始算的*/
+            box-sizing: border-box;
+            padding: 20px;
+            margin: 20px;
+            /* 此处设置宽度不成功 内容太多 */
+            height: 200px;
+            width: 500px;
+            border: #0000ff 3px solid;
+            /* flex 由以下三个组成
+            flex-grow 弹性项目是否要瓜分行内的富余空间，以及如何瓜分
+            flex-shrink 弹性项目是否要瓜分行内的负债空间，以及如何瓜分
+            flex-basis 分配弹性项目的长度 是width属性的替代品 优先级比width高*/
+            flex: 0 1 300px; 
+            /* 0 没有平分富余空间 1 平分负债空间 300px设置宽度 */
+        }
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <article>
+            <h1>全唐诗</h1>
+            <p>春江潮水连海平，海上明月共潮生</p>
+        </article>
+        <article>
+            <h1>全唐诗</h1>
+            <p>春江潮水连海平，海上明月共潮生</p>
+        </article>
+        <article>
+            <h1>全唐诗</h1>
+            <p>春江潮水连海平，海上明月共潮生</p>
+        </article>
+        <article>
+            <h1>全唐诗</h1>
+            <p>春江潮水连海平，海上明月共潮生</p>
+        </article>
+        <article>
+            <h1>全唐诗</h1>
+            <p>春江潮水连海平，海上明月共潮生</p>
+        </article>
+        <article>
+            <h1>全唐诗</h1>
+            <p>春江潮水连海平，海上明月共潮生</p>
+        </article>
+        <article>
+            <h1>全唐诗</h1>
+            <p>春江潮水连海平，海上明月共潮生</p>
+        </article>
+        <article>
+            <h1>全唐诗</h1>
+            <p>春江潮水连海平，海上明月共潮生</p>
+        </article>
+    </section>
+    <div id="box1"></div>
+</body>
+</html>

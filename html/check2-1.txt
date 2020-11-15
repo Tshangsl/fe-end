@@ -1,0 +1,54 @@
+bootstrap ui组件
+meta里面的元素含义
+viewport 视口
+width = device-width 宽度等于设备的宽度
+initial-scale = 1.0首次加载的缩放比
+user-scalable=no 禁止用户缩放
+maximum-scale =1.0 最大缩放比
+minimum-scale=1.0 最小缩放比
+两个都设置成1.0禁止页面缩放
+css基本单位
+相对单位
+em 
+相对于font-size 计算大小 
+先找自己的css中是否设置font-size
+没有则最近的已设置的祖先元素的字体大小 
+响应字体大小就是1em
+直到找到或者相对于浏览器16px
+rem(更倾向于使用)
+相对于根元素html的字体大小计算的
+根元素字体大小就表示1rem
+假设 html font-size = 100px 
+100px ->1rem
+
+rem.js
+根据当前设备的大小 计算根元素html中font-size的大小
+reset.css
+再在body设置一个font-size
+
+vw vh相对于浏览器窗口大小设置
+八浏览器的宽或者高平均分成100份
+vw 窗口宽度 1vw = 1/100窗口宽度
+vh 窗口高度 1vh = 1/100窗口高度
+
+%设置是相对于父元素
+
+mediaquery
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

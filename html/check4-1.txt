@@ -1,0 +1,11 @@
+浏览器内核的前缀
+firefox -mox-
+chrome safari -webkit-
+ie -ms-
+opera(欧鹏浏览器)-o- 
+
+transform和transition要加浏览器前缀
+
+2d/3d转换属性 transform (translate rotate perspective)
+过渡属性 transition 
+动画属性 animation

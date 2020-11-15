@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            display: inline-block;
+        }
+        #a{
+            background-color: aqua;
+        }
+        #b{
+           background-color: blanchedalmond; 
+           position: relative;
+            left:250px;
+            top:250px;
+            /* position: absolute;
+            left: 50px;
+            right: 50px; */
+        }
+        #c{
+            background-color: aquamarine;
+        }
+        #outer{
+            width:500px;
+            height:500px;
+            background-color: blue;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id = "a">a</div>
+        <div id = "b">b</div>
+        <div id = "c">c</div>
+    </div>
+</body>
+</html>

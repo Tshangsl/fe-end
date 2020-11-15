@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水平导航菜单1</title>
+    <style>
+        #menu{
+            list-style: none;
+        }
+        #menu li{
+            float: left;
+            width: 200px;
+            height: 30px;
+            margin-right: 1px;
+            background-color:orange;
+            /* float: left;
+            width: 200px;
+            height: 30px;
+            margin-right: 1px;
+            background-color: orange; */
+        }
+        #menu li a{
+            /* display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            line-height: 30px; */
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            line-height: 30px;
+        }
+        #menu li a:hover{
+            background-color: purple;
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu" class="clearfix">
+        <li><a href="">Link 1</a></li>
+        <li><a href="">Link 2</a></li>
+        <li><a href="">Link 3</a></li>
+    </ul>
+    <!-- <ul id="menu" class = "clearfix">
+        <li><a href="">Link 1</a></li>
+        <li><a href="">Link 2</a></li>
+        <li><a href="">Link 3</a></li>
+    </ul> -->
+    <h1>hello world!</h1>
+</body>
+</html>

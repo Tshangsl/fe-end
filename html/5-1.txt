@@ -1,0 +1,132 @@
+数据类型/运算符/命名规范/语句
+catlog
+
+js语言简介：
+javascript是一门脚本语言 而非编程语言
+js是一种解释型的语言
+Node.js
+
+1
+数据类型：
+基本数据类型：
+number
+string
+boolean
+undefined
+null 
+引用数据类型：
+object
+
+2
+运算符：
+数学运算符
+逻辑运算符
+比较运算符
+位运算符
+
+4
+判断语句
+if
+switch
+循环语句
+
+--------------------------
+c++ -> c/s(client/server)、desktop 需要客户机和服务器交互使用
+java->android/web后端
+Node->web后端
+javascript->前端（基于浏览器的前端开发）
+
+var :variable
+js是弱类型的语言 c/c++是强类型的语言
+typescript 用来完善
+
+js中单引号双引号没什么区别
+
+-----------------------------------
+java中数据类型有什么：基本数据类型 引用数据类型
+javascript中数据类型有什么：基本数据类型 引用数据类型
+
+基本数据类型：
+number
+string
+boolean
+undefined
+null 
+空 什么都没有 一个占位（符）null 空 空对象
+typeof 测试 null 返回一个object 是设计者的一个错误 被延续下来了
+对一个空对象的引用
+
+引用数据类型：
+
+----------------------------------------
+运算符
+数学运算
+**任何其他数据类型与string+最后都是字符串
+只有+号特殊
+其他的都是数学运算
+NaN(not a number) 不能转换进行数学运算
+
+比较运算
+===
+**js这种语言 会尽量隐式转化成同一个数据类型 然后比较 尽量不报错
+
+**js条件判断时隐式类型转换
+
+如果比较的两者中有布尔值(Boolean)，
+会把 Boolean 先转换为对应的 Number，即 0 和 1，然后进行比较。
+
+如果比较的双方中有一方为 Number，可以转化成NaN
+一方为 String时，会把 String 通过 Number() 方法转换为数字，然后进行比较。
+
+如果比较的双方中有一方为 Boolean，
+一方为 String时，则会将空字符串""转换为 false，除此外的一切字符串转换为 true，然后进行比较。
+空字符串"" null undefined 0 相当于false
+除此之外都相当于true
+
+如果比较的双方中有一方为 Number，
+一方为Object时，则会调用 valueOf 方法将Object转换为数字，然后进行比较。
+
+**===不仅要比较值 还要比较数据类型 可以防止隐式数据转换 更安全
+逻辑运算
+
+**a||b 返回一个有效的 而不是直接true/false
+
+位运算
+
+javascript高级语言设计第三版
+javascript权威指南第六版
+
+**变量的命名规则
+变量名 _开头 警示别人这个变量是私有的
+
+**php中命名规范 不同单词之间使用_进行进行连接
+
+if语句
+switch语句 case后面只能是一个固定数值
+switch(){
+	case "a";
+	case "A";
+}
+
+**prompt函数永远返回一个字符串 switch不会发生隐式数据类型转换
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

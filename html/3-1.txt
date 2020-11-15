@@ -1,0 +1,157 @@
+常见css样式 background/text/font/list
+盒模型/框模型 box model
+css定位与浮动
+
+块元素: 默认宽度为父元素的内容的宽度，可以设置宽和高，垂直分布
+行元素：默认宽度是内容撑开的，不可以设置宽和高，水平分布
+
+一切皆为框 分：行框 块框
+
+catalog
+
+background 所有背景属性都不能继承
+属性
+color 
+repeat 
+attachment 背景图像不滚动
+size 
+position
+
+文本 text
+属性
+text-align 水平居中 没有垂直居中的标签
+单行文本垂直居中的最简单方式 行高为元素块高度
+text-decoration
+text-indent 首行缩进
+
+字体 font
+属性
+
+列表 list
+ol
+ul
+li
+
+css框模型/盒模型
+margin
+border
+padding
+1上下左右 所有
+2上下 左右
+3 上 左右 下
+4上右下左
+element
+
+两个标签并列时
+外边距合并 按照最大的外边距设置外边距
+父子标签
+外边距则会相加
+
+
+解决方法
+1.给外面的div加一个边框 可以实现相对margin 可以对border用transparent属性
+2.给外面的div定位 一定位 和下面的h1就不在一个层上了 h1就上去了 
+3.可对内层div实现2同样操作
+4.外层 overflow:hidden; 溢出隐藏
+
+css 涉及dfc css 引擎解析
+
+定位：
+浏览器的默认行为 可以通过display进行设置 none inline block
+**块元素：默认宽度为父元素的内容的宽度，可以设置宽和高，垂直分布
+**行元素：默认宽度是内容撑开的 不可以设置宽高 水平分布 可以使用inline-block变块元素设置宽高
+body外边距8px 默认 任何浏览器都是如此
+
+不写position 默认值就是static
+
+center是对于text-align
+
+定位会带来重绘重描的问题 定位慎用
+
+**CSS 有三种基本的定位机制：普通流、浮动和绝对定位。
+
+static -----------------------------------------------普通流 空间不释放
+relative----------------------------------------------空间保留不释放
+**相对定位
+设置为相对定位的元素框会偏移某个距离。
+元素仍然保持其未定位前的形状，
+它原本所占的空间仍保留。 
+空间不释放
+absolute-------------------------------------------从文档流中删除 空间释放
+**绝对定位
+相对于离他最近的已定位的祖先元素 
+如果没有最近的定位的祖先元素 相对于body html
+空间释放
+fixed------------------------------------------------空间释放
+**固定定位
+相对于body 相对于视窗
+
+little tip:
+块级元素（行级元素是内容撑开的）
+不加宽度 宽度是自适应的 不代表是100% 
+
+padding+element 与父元素宽度一致
+加了宽度 相对于父元素的宽度（margin border padding element）
+element与父元素一致
+
+块级元素 没有设置宽高 定位后 内容撑开 不建议加padding 
+
+定位之后才能改变层级
+想要使用index改变层级 一定要定位(定位类型不重要)
+元素一旦定位 z-index值默认是0 越大越靠上 xyz轴
+
+
+-----
+display：inline-block 一旦有一个空格 中间都会有间隙 ie6中不支持	
+float：没有间隙 作横向的导航最方便 一浮动 空间释放了 h1会上来
+解决方法：clear:left/right/both 对要应用的元素
+----------
+
+position定的是元素的位置
+background-position 定的是背景图片的位置
+
+display 设置inline后 不能设置宽高
+inline-block 在ie6里不好使 行元素并且能设置宽高
+
+块级元素 水平居中最简单方式 marigin 0 auto
+html中用image标签引入
+本次是用div中的css的background属性（css中的html属性）
+
+webp是图片的一种新的网络格式 但是在网络上不能正常体现
+background-position 第一个是水平距离 第二个是垂直距离
+
+background 可以通过各种属性分别设置
+可以在一个background属性中对其进行设置
+
+一定要注意使用的属性在各个浏览器不同版本中的兼容性问题
+caniuse.com 兼容性查询网站
+css.doyoe.com
+
+正则表达式
+
+[]中括号是可选的
+*代表0个或多个
+{1,2}一次或两次
+多个背景图片 多个bgsize
+
+background-size 只设置一个 设置的是宽 等比例缩放 如果设置两个可能会变形
+cover属性 ：将背景图像等比缩放到完全覆盖容器，背景图像有可能超出容器。
+contain属性：将背景图像等比缩放到宽度或高度与容器的宽度或高度相等，背景图像始终被包含在容器内。
+
+background-position应该不是相对于div？而是相对于整个浏览器窗口
+
+设计师会设计图片大于主页面 周围会融入?
+
+能不用image就不用 因为会涉及到js算法
+background 不涉及算法会好很多
+
+GPU显卡
+英伟达 做显卡的公司
+因特尔 作芯片的公司
+
+
+
+
+
+
+

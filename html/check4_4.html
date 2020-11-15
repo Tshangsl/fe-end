@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 需要调用 */
+            /* infinite 一直运行
+            alternate 交替 */
+            /* animation: ease rotateBox 2s 
+            infinite alternate; */
+            animation: ease rotateBox 2s 
+            forwards;
+        }
+        #box1:hover{
+            animation-play-state: paused;
+        }
+        @keyframes rotateBox{
+            0%{
+                width: 200px;
+            }
+            30%{
+                width: 600px;
+            }
+            70%{
+                transform: rotate(0);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使div充满整个浏览器</title>
+    <style>
+        /* 第一种方法 */
+        /* html,body{
+            margin:0;
+            html相对于就是document 相对于document撑开100% 
+            body又相对html撑开100%
+            width: 100%;
+            height: 100%;
+        } */
+        /* #a{
+            块元素 默认宽度为父元素的内容的宽度 可以设置宽高 垂直分布
+            background-color: red;
+            width: 100%;
+            height: 100%;
+        } */
+        /* body{
+            margin: 0;
+        }
+        #a{
+            background-color: red;
+            具体可看3-1绝对定位意义
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        } */
+        body{
+            margin: 0;
+        }
+        #a{
+            background-color: red;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;     
+        }
+    </style>
+</head>
+<body>
+    <div id = "a"></div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+catlog
+相关知识扩展
+
+stackoverflow网站 ：全球最大的技术论坛
+每年发布开发者报告
+
+手机移动端 
+ios：swift（Objective-c进阶） Objective-c
+android（goole开发维护）：java（Oracle开发的）kotlin（JetBrains开发向下兼容代替java）
+
+做业务 不通用
+做组件（造轮子的） 如轮播图
+做浏览器底层开发
+做js语言开发者
+
+kissy网站:keep it simple stupid,yeah 阿里巴巴一个团队
+bootstrap网站：twitter
+echars：曾经是百度的，现在进入apache
+
+canvas写的 做数据可视化 
+
+apache：全世界最大的开源组织
+
+大厂 对应届生 基础更重要 相对框架
+小公司 框架相对多
+
+javascript java c# php jquery python android ios

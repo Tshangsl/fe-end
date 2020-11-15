@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水平导航菜单</title>
+    <style>
+        #menu{
+            list-style: none;
+            /* overflow: hidden; */
+        }
+        #menu .menu-item{
+            /* display: inline-block; */
+            float:left;
+            width: 120px;
+            height: 30px;
+            background-color: bisque;
+            margin-right: 1px;
+            text-indent: 20px;
+            /* border: 1px black; */
+            /* position: absolute; */
+        }
+        #munu li a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            /* 对a标签进行一些基本样式设置 并将其改变为块级元素 
+            对其进行相对宽高设置 实现单行行级元素水平垂直居中 */
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            /* ？为什么会是按照行级元素的垂直水平居中方法设置  */
+            text-align: center;
+            line-height: 30px;
+        }
+        #menu li a:hover{
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li class = "menu-item"><a href="">Link 1</a></li>
+        <li class = "menu-item"><a href="">Link 2</a></li>
+        <li class = "menu-item"><a href="">Link 3</a></li>
+    </ul>
+</body>
+</html>

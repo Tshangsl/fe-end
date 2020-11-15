@@ -1,0 +1,23 @@
+native：涉及到一个上线发版审核的时间
+原生开发app
+语言：Object C(IOS)
+    java(Android)
+页面：存放于本地
+
+hybrid：（市面上大部分app）
+混合
+语言：Object C(IOS)+Html
+受限制于UIwebview
+
+web：
+语言：html
+受限制于UIwebview
+页面放在服务器
+
+跨端开发
+flutter weex(Vue)阿里 部分开源 RN(React)
+
+web app：指采用Html5语言写出的app，
+        不需要下载安装，类似于现在所说的轻应用
+        生存在浏览器中的应用 基本上可以说是触屏版的网页应用
+        

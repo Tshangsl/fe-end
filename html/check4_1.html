@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+    <style>
+        #box1{
+            /* transform属性要加浏览器前缀 */
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 200px auto;
+            /* 顺时针是正值 逆时针是负值 */
+            /* 不设置 默认沿着中心点旋转 */
+            /* transform: rotate(45deg)
+            translate(50px,100px); */
+            /* 设置旋转点的语法 */
+            /* transform-origin: 0 0 ; */
+            /* 位移 第一个值相对于左 第二个值相对于上
+            相对于自己原来的位置进行位移
+            */
+            /* transform: translate(50px,100px); */
+            /* transform: translateX(50px); */
+            /* transform: scale(0.5); */
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">box1</div>
+</body>
+</html>

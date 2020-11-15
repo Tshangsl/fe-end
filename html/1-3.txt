@@ -1,0 +1,97 @@
+
+catlog
+html相关
+
+ 
+官方手册
+
+实体：
+a &lt; b lt:less than
+a &gt; b gt:greater than
+
+italic 意大利 斜塔 斜体
+em和i都会使文本变斜 em会起一点强调作用 更强调用strong
+副文本编辑器 将特殊符号转化英文 存入数据库
+
+kindeditor
+
+html语义化 
+所有命名中不要用中文
+--------
+microsoft windows 中IE11 以后主推Microsoft edge
+从ie9开始追寻w3c
+
+ie:trident
+firefox:gecko
+chrome/safari:webkit
+opera:
+
+webkit内核 trident内核 双核浏览器 国内的 兼容内核不是浏览器
+
+现在只有firefox不用webkit内核 也很强大
+
+扩：微信中也带浏览器内核 微信小程序纯前端 封装
+-------
+最开始的浏览器 Netscape 网景 开发团队后来开发firefox
+
+W3school
+MDN 火狐浏览器官方网站
+
+JavaScript最开始的开发者创造者就是火狐
+
+w3c（组织 非营利性 官网 w3.org）：html css 
+	制定标准 不做具体的实现 由浏览器公司进行实现
+	w3school并非w3c的官方网站
+	
+ecma（组织）：制定JavaScript标准
+
+！ tab 英文输入法的!
+html：5 tab 可以输入html:4
+
+html网页其中一种
+
+meta：元数据
+
+属性：两个不完全一样
+	property(js 
+	attribute<meta
+	
+	charset character set 字符集
+charset
+	1.utf-8 0-655535 包括世界各地
+	2.gb2312(简体中文字符集)/gbk（简体和繁体）
+	gb国标
+	3.iso8859-1
+	emoji 小符号
+
+head
+	浏览器 搜索引擎
+
+scale 缩放 响应式设计开发时非常重要的一个属性
+
+ctrl+shift+i 打开chrom 控制台
+
+36kr.com 科技网站
+
+伪造ip访问外网
+路由器拨号 每次断电换一个ip地址
+seo搜索引擎优化 专门做运营岗
+
+搜索引擎 黑帽（ k站） 白帽 灰帽
+站长工具 百度权重值
+
+友情链接
+
+kikuu 非洲电商平台
+
+标题一共6个 div 区块 是divide缩写 
+
+html语义化
+
+Emotion UI(简称EMUI)是华为基于Android(安卓)进行开发的情感化操作系统。
+定制的android 最原始的android内置chrome
+
+js不让调摄像头 权限问题 安全性禁止 微信内核存在另外一套api
+微信 uc 有独立内核 
+
+

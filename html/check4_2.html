@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            transform: perspective(500px)
+            rotateY(30deg)
+            translateZ(100px);
+            /* 为了看出来子元素的3d效果 */
+            transform-style: preserve-3d;
+        }
+        #container{
+            width: 200px;
+            height: 200px;
+            border: black solid 1px;
+            margin: 200px auto;
+            /* 设置透视位置 */
+            /* 眼睛距离物体多远看到的效果展示到屏幕上 */
+            /* perspective: 500px; */
+        }
+        #inner{
+            width: 200px;
+            height: 200px;
+            background-color:blue;
+            transform: rotateY(30deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="box1">
+            <div id ="inner">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

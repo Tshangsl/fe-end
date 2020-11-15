@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+        }
+        #a{
+            background-color: aqua;
+            float:right;
+            /* a的空间释放了 把b盖住了
+            元素浮动后 只有字为了不被盖着 会往外挤 */
+        }
+        #b{
+           background-color: blanchedalmond; 
+           float:right;
+        }
+        #c{
+            background-color: aquamarine;
+            float: right;
+        }
+        h1{
+            background-color:purple;
+            clear:right;
+        }
+    </style>
+</head>
+<body>
+    <div id = "a">a</div>
+    <div id = "b">b</div>
+    <div id = "c">c</div>
+    <h1>h1</h1>
+</body>
+</html>

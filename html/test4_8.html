@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水平导航菜单</title>
+    <style>
+        #menu{
+            list-style: none;
+            /*1 height: 40px; */
+            /* 2float:left; */
+            /* 3overflow: hidden;技巧 */
+        }
+        #menu .menu-item{
+            float:left;
+            width:120px;
+            height:30px;
+            background-color: orange;
+            margin-right: 1px;
+            text-indent: 20px;
+            /* text-align: center; */
+        }
+        #menu li a{
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            /* 变成块级元素 */
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 30px;
+        }
+        /* 伪类选择器 ie6中只能给a加hover*/
+        #menu li a:hover{
+            background-color: purple;
+        }
+       h1{
+           /* 4 */
+            clear: both;
+       }
+       #menu.last{
+           /* 5 */
+           clear:both;
+       } 
+       .clearfix:after{
+            content:"";
+            display: block;
+            clear:both;
+            /*6 在ul的最后面插了一个块元素进去 与最后加一个li类似 */
+       }
+    </style>
+</head>
+<body>
+    <ul id="menu" class="clearfix">
+        <li class="menu-item"><a href="">Link 1</a></li>
+        <li class="menu-item"><a href="">Link 2</a></li>
+        <li class="menu-item"><a href="">Link 3</a></li>
+        <li class ="last"></li>
+        <!-- 直接目的让li在这撑着这个ul的高度 -->
+    </ul>
+    <!-- hello会上去 因为里面li都浮动了 ul没有内容撑开了 -->
+    <!-- <h1>hello</h1> -->
+</body>
+</html>
