@@ -1,0 +1,115 @@
+任何一个元素都可以使用弹性盒模型布局
+不局限于该元素是行内元素 还是块级元素
+
+flex 一维布局
+只有行的概念 没有列的概念
+
+flex：将对象作为弹性伸缩盒显示
+inline-flex:将对象作为内联弹性伸缩盒显示
+
+容器中设定属性
+------------
+row主轴 
+决定主轴的方向 项目随着主轴的方向排列
+
+主轴决定了项目（容器里面的子元素）排列的方向
+默认方向向右 
+给主轴设置
+flex-direction:row-reverse; 主轴向左
+flex-direction:column; 主轴向下
+flex-direction:column-reverse;主轴向上
+弹性盒模型是一维的
+---------------
+padding margin border都不会被挤压 被挤压的是content的值
+content最大的挤压范围 即为内容宽高
+---------------
+交叉轴决定换行时往哪个方向换行 主轴确定时 
+交叉轴值方向只有两个选择
+主轴默认方向向右 交叉轴的默认方向 向下
+交叉轴的默认方向会随着主轴的默认方向而改变 
+主轴转换方向 交叉轴会占用主轴原来的指向
+
+决定交叉轴的方向 项目沿着交叉轴的方向换行
+flex-wrap:wrap; 默认
+flex-wrap:wrap-reverse;
+
+--------
+上面两个属性的合写 flex-flow:row wrap;合写
+-------
+
+----------------
+在主轴方向的一行项目在主轴的方向上如何分布/项目在主轴上的对齐方式
+决定沿着主轴方向每一行 每一个元素 怎么分布
+justify-content: flex-start;默认 从主轴起始位置开始
+justify-content: flex-end;从主轴结束位置开始
+justify-content: center; 放在主轴中间
+justify-content: space-between; 两端对齐
+justify-content: space-around;每个元素四周空相等
+justify-content: space-evenly;均匀地 
+-----------------
+
+align-self: stretch;
+是align-items的个性化设置
+
+项目在交叉轴上如何对齐
+align-items 在每一个主轴上的项目 在垂直方向 交叉方向
+在该行中 不是整个内容区
+属性定义flex子项在flex容器的当前行的侧轴（纵轴）
+方向上的对齐方式。
+align-items:stretch; 默认 不生效的话用flex-start;
+默认高度充满父容器 
+但是如果子元素即项目设置高度 则会按照设置高度显示
+align-items:flex-start;
+align-items:flex-end;
+align-items:centers;
+align-items:baseline;元素的文本都基于第一个元素的文本基线对齐
+----------------
+项目在交叉轴方向上的每一行如何对齐
+align-content 在整个内容区的高度上
+属性在弹性容器内的各项没有占用交叉轴上所有可用的空间时对齐容器内的各项（垂直）。
+绝对交叉轴的方向 元素怎么分布 主轴只有一个 该概念不存在
+align-content:flex-start;
+align-content:flex-end;
+align-content:stretch;默认
+---------------------
+
+项目中设定属性
+-------------------
+决定弹性项目是否瓜分行内的富余空间以及如何瓜分
+flex-grow: 0;默认值
+1 把行内剩余元素均分给行内每一个元素 
+给某一个元素设置一个2 均分n+1份 分给该元素2份
+只允许设置正整数
+-------------
+决定弹性项目是否瓜分行内的负债空间以及如何瓜分
+flex-shrink: 1;默认值 
+只允许有正整数
+最多减少到内容的宽度
+----------------
+声明预先分配给弹性项目的长度 是width的替代品 
+优先级比width高
+flex-basis: auto;默认值 按设置的宽度来 如果没有设置宽度
+就是内容的宽度
+-------------
+以上三个属性可以合写成flex:0 1 auto;默认值 
+分别对应上述三个属性的默认值
+
+flex快捷键
+auto{1,1,auto}
+none{0,0,auto}
+设置最小值?
+
+order设置排列顺序
+order属性的属性值默认为0 值越小排在越前面 可以设置负数
+------------------------
+flex是可以嵌套的
+
+
+
+
+
+
+
+
+
+

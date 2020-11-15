@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性盒模型 flexible box</title>
+    <style>
+        #box1{  
+            width: 590px;
+            height: 300px;
+            border: 1px solid #ff0000;
+
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: stretch;
+            align-items: baseline;
+            align-content: stretch;
+            /* justify-content: space-between; */
+            /* flex-direction: row-reverse; */
+            /* flex-direction: column; */
+            /* flex-direction: column-reverse; */
+        }
+        .item{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            margin: 10px;
+            /* flex-grow: 1; */
+            /* padding: 20px; */
+        }
+        /* 第二个孩子那个项目 */
+        .item:nth-child(2){
+            padding: 20px 0;  
+            flex: 0 1 auto; 
+            display: flex;
+            align-self: flex-end;
+            /* order: 1; */
+            /* flex-basis: auto; */
+            /* flex-shrink: 3; */
+            /* flex-grow: 6;   */
+        }
+        .sub-item{
+            width: 30px;
+            height: 30px;
+            background-color: #ff0000;
+        }
+    </style>
+</head>
+<body>  
+     <div id="box1">
+         <div class="item">1</div>
+         <div class="item">2
+             <div class="sub-item">2_1</div>
+             <div class="sub-item">2_2</div>
+         </div>
+         <div class="item">3</div>
+         <div class="item">4</div>
+         <div class="item">3</div>
+         <div class="item">4</div>
+     </div>
+</body>
+</html>
