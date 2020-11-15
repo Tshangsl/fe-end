@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML的dom与HTML的dom</title>
+</head>
+<body>
+    <button id="btn1">
+        动态增加dom结构
+    </button>
+    <!-- <div id="div1">
+        <h1>
+            h1
+            <span>span</span>
+        </h1>
+    </div> -->
+
+    <script>
+        var oBtn1 = document.getElementById('btn1');
+        oBtn1.onclick = function(){
+            var oDiv1 = document.createElement('div');
+            //因为id是div里面自带的一个属性 可以通过下述方式给oDiv1加一个id
+            //oDiv1.id = 'div1';
+            //非浏览器自带的属性要赋值 要使用如下方法
+            oDiv1.setAttribute('id','div1'); 
+            //html dom的写法 大量简化 提高效率
+            oDiv1.innerHTML = '<h1>h1<span>span</span></h1>';
+            document.body.appendChild(oDiv1);
+
+            oDiv1.firstChild.style.background = 'red';
+            //xml dom 对想要插入的元素进行额外的操作
+            //这样的方式比较合适
+            //标准 将属性也看做一个节点 
+            //oDiv1.setAttributeNode();
+
+            //因为body只有一个 所以可以使用以下写法获取
+            //html dom语法 因为只有html中才有body
+            //xml中获取body 还是要一个id去获取它
+            // document.body.appendChild(oDiv1);
+
+            // var oH1 = document.createElement('h1');
+            // //xml中把文本也看做一个节点 还要新建一个节点
+            // var oH1Text = document.createTextNode('this is h1');
+            // oH1.appendChild(oH1Text);
+
+            // oDiv1.appendChild(oH1); 
+
+            // var oSpan = document.createElement('span');
+            // var oSpanText = document.createTextNode('this is span');
+            // oSpan.appendChild(oSpanText);
+            // oH1.appendChild(oSpan);
+            // oDiv1.appendChild(oH1);
+            }
+    </script>
+</body>
+</html>
+
+
+
+

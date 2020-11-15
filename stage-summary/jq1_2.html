@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">click me</button>
+    <script>
+        // 函数声明 js解析引擎 有一个函数提升的概念
+        //函数提升要比变量提升的优先级要高一些，
+        //且不会被变量声明覆盖，但是会被变量赋值之后覆盖。
+        function fn1() {
+
+        }
+        fn1();
+        //函数表达式 
+        //此中不存在函数提升的概念 
+        //原因：函数在js中本身也是一个值 一个对象 赋值操作
+        var fn2 = function () {
+
+        };
+        fn2();
+
+        function test() {
+            return function () {
+                console.log('hh');
+            }
+        }
+        //返回的是个函数 调用加括号
+        test()();
+
+        function test2() {
+            var a = 5;
+            console.log(a);
+        }
+        test2();
+
+        function test3() {
+            //arguments只能用在函数内部 用来获得实参的信息
+            //伪数组 能接收到所有的实参
+            //arguments[0] 'lisi' arguments[1] 23 arguments[2] male
+            //arguments.length ==3
+            console.log(arguments[0], arguments[1], arguments[2]);
+            //虽然有这样一个语法可以让我们得到实参的所有东西
+            //但是形参还是要写 给调用者使用 理解意思
+        }
+        //声明了没有赋值undefined
+        //test3('lisi');
+        test3('lisi', 23, 'male')
+
+        //如何得到函数的形参个数
+        console.log(test3.length);
+
+
+        function fac(n) {
+            if (n <= 1) {
+                return 1;
+            }
+            //arguments.callee可以用来指代函数自己
+            return n * fac(n - 1);
+            //    arguments
+        }
+        console.log(fac(5));
+        // var fa = 1;
+        // function fac(n){
+        //     var sum = 0;
+        //     for(var i = 1;i<=n;i++){
+        //         fa*=i;
+        //         sum+=fa;
+        //     }
+        //     return sum;
+        // }
+        // console.log(fac(3));
+
+        //具名函数 允许在这起名 此名不允许在外部使用
+        //只允许在函数内部调用
+        // var fn3 = function fn4(n){
+        //     if (n <= 1) {
+        //         return 1;
+        //     }
+        //     //arguments.callee可以用来指代函数自己
+        //     return n * fn4(n - 1);  
+        // };
+        // console.log(fn3(4));
+
+        //this
+        function fn6(){
+            console.log(this);
+        }
+        fn6();
+        var aa = new fn6();
+        //aa可以在任意地方访问
+        //this只能在函数内部访问
+        //this永远指向当前对象
+        var oBtn = document.getElementById('btn');
+        oBtn.onclick = function(){
+            // this.style.background = 'red';
+            var that = this;
+            // window下面的一个定时器
+            setTimeout(function(){
+                that.style.background = 'red';
+                //此时的this打印的是window
+            },2000);
+        }
+
+
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

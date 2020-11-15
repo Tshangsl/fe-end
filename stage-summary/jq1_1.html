@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+        #ul1 li:hover{
+            cursor: pointer;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        // 1.let关键字的相关使用
+        // for(let i =0;i<5;i++){
+        //     console.log(i);
+        // }
+        // console.log(i+'---');
+        // var oUl1 = document.getElementById('ul1');
+        // var aLi = oUl1.getElementsByTagName('li');
+        //关键字let会产生一个块级作用域 i会一直存在自己的作用域中
+        //不会被其他作用域所干扰 每执行一次 生成一个自己的作用域作用域 
+        //用的时候把它取出来
+        //关键字var没有块级作用域 在外面也能访问 let在后面不能访问到 
+        //闭包也可以让产生的值驻留在内存中不被释放
+        // for (let i = 0; i < aLi.length; i++) {
+        //     aLi[i].index = i;
+        //     aLi[i].onclick = function(){
+        //         console.log(aLi[i].index);
+        //     }
+        // }
+        //以后 支持es6版本中 基本上不会用var了 都是let
+
+
+        //2.基本数据类型 string number boolean 
+        //和引用数据类型 String Number Boolean
+        //各自存在的意义和js引擎底部对两者的的转换调用
+
+        // var a = 5;
+        // console.log(typeof(a));
+        //打印出来的number也是字符串类型的
+
+        //var b = 23.67;
+        // 基本数据类型 按理是不应该能使用这种方法调用它
+        //js的解析引擎（可以这么理解）在底层帮忙做的 让b重新被赋值
+        //b = new Number(a);
+        //基本数据类型的number对应成引用数据类型的Number
+        //引用数据类型就可以这样调用
+        //b = new Number();
+        //b = Number(b);//这种写法是 s强制数据类型转换
+        //console.log(typeof(b));
+
+        //Boolean String Number 
+        //分别是三个基本数据类型对应的包装类型或者说是引用类型
+        //每一个类型下面都提供了一些属性和方法
+        //来帮助我们对这几个基本类型的值 进行一些对象的操作
+        //尤其是String 提供了很多方法
+        //基本数据类型 只能是赋值和读取
+        //要进行更复杂的操作 要使用引用数据类型
+        //为什么它们是基本数据类型 因为是最简单 使用频率最高的数据类型
+        //对于这些基本数据类型 我们还需要一些复杂的操作 用过上述方法实现
+        
+        //3.函数方式调用一个函数（类） new对象方式调用一个类
+        //用new 来判断一个方法体到底定义的是类还是对象 的概念
+        //script中函数是在全局对象window下创建的一个方法的概念
+        //打印一个对象 会默认调用该对象的ToString()方法概念
+        //***当作一个普通的函数去调用和当作一个类new一个对象调用的区别
+        //toString()方法就是会自动调用 但是在控制台中设定打印出的一个对象
+        //alert()方法 打印出的是一个字符串
+
+        //如果函数不return的话 默认返回值undefined
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+            // return 'e';
+            //给window里面扔了个name 和 age
+            //但是不是一个好方法 因为污染了window
+            // return this.name+'.'+this.age;
+            //把形参返回了
+            return name+','+age;
+        }
+        Person.prototype.toString = function(){
+            return this.name + ',' + this.age;
+        }
+        //使用new关键字创建的对象 此时的this指向Person 而不是Window   
+        var p1 = new Person('lisi',23);
+        //重写了toString方法 要在打印对象时 调用 需手动调用
+        console.log(p1.toString());
+        //当作一个普通函数调用 p2就是一个xxx
+        var p2 = Person('wangwu',22);
+        console.log(p2);
+        //将这个函数定义在script下 
+        //Person是window对象下的一个方法
+        //不过是因为window是全局对象 所以可以省略不写
+
+        //对于一个类来讲 使用new关键字与否 创建出来地是不同的
+        //new出来的东西一定是一个对象
+        // var now = new Date();
+        // var noy = Date();
+        //打印的是个对象 这个对象默认地调用了toString()方法
+        //直接打印now 和打印now.toString() 是一样的
+        // console.log(now.toString());
+        // console.log(noy);
+        // console.log(window.name,window.age);
+        //真真正正判断其是不是一个类 就看他后面使没使用关键字
+        //如果new 了 是一个类 构造函数
+        //普通函数
+        //Person();不需要加new调用
+    </script>
+</body>
+
+</html>

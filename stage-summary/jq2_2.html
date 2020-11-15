@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML的dom与html的dom</title>
+    <style>
+        #tab1{
+            margin: 50px auto;
+            border-collapse: collapse;
+        }
+        #tab1,#tab1 td{
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">click me</button>
+    <table id="tab1">
+        <!-- 标准写法 -->
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var oBtn1 = document.getElementById('btn1');
+        var oTab1 = document.getElementById('tab1');
+        oBtn1.onclick = function(){
+
+            //针对xml 操作 使用xml语法操作
+
+            //xml dom 里面提供的一些标准的api
+            //创建元素 插入元素
+            //按照XML的语法创建一个元素
+            // var oTr = document.createElement('tr');
+            // oTab1.appendChild(oTr);
+
+            // var oTd1 = document.createElement('td');
+            // oTd1.innerHTML = 'a';
+            // oTr.appendChild(oTd1);
+            // var oTd2 = document.createElement('td');
+            // oTd2.innerHTML = 'b';
+            // oTr.appendChild(oTd2);
+            // var oTd3 = document.createElement('td');
+            // oTd3.innerHTML = 'c';
+            // oTr.appendChild(oTd3);
+            
+            //针对html操作 使用html语法操作
+            //看看html dom中有没有提供相应的api
+            //xml语法也可以对其进行操作 会有些啰嗦 还可能有点小问题
+
+            //html dom 里面提供的一些标准api
+            //大多情况下会方便一点
+            var oTr = oTab1.insertRow();
+            var oTd = oTr.insertCell();
+            oTd.innerHTML = 'a';
+            oTr.insertCell().innerHTML = 'b';
+            oTr.insertCell().innerHTML = 'c';
+        }
+    </script>
+</body>
+</html>

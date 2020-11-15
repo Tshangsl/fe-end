@@ -1,0 +1,56 @@
+1.dom :document object model
+万物皆对象 页面中所有 所有能看到的东西都是对象
+
+**所有的东西都是节点 节点也是对象
+节点 XML的dom 对象 html的dom
+XML的dom 包括了html文件和xml文件 
+里面提供了很多API 帮助完成对XML的操作
+html是XML的一个特例
+
+document.createElement()
+此方法必须是document下的一个方法
+
+2.dom中常见的api
+dom的查找：直接找到某一个元素
+        document.getElementById();
+        //必须在document下寻找
+        //不可以在某个元素下寻找
+        document.getElementsByClassName();
+        //[] [elem] [elem1,elem2,...]
+        //允许某一个元素下寻找
+        element.getElementsByTagName();
+        //最好写element而不是document 
+        //如果写document 会在整个文档范围内寻找标签的名字
+        //限定在某一个父元素下 能限定搜索范围 
+        document.getElementsByName();
+        //只有input才有name属性
+        document.querySelector();
+        document.querySelectorAll();
+dom遍历：找到一个元素 通过这个元素找其他元素
+    nodeType nodeValue
+
+    childNodes/children
+    children:获取当前父元素下面所有的子元素 父元素对象.children
+             只是用来获取元素对象
+    childNodes：所有的元素当节点看 
+                可能会得到文本
+
+    firstChild/firstElementChild
+    lastChlid/lastElementChild
+    nextSibling/nextElementSibling
+    previousSibling/previousElementSibling
+
+    parentNode/parentElement/offsetParent
+    parentNode/parentElement没有什么区别
+    offsetParent 最近的已定位的祖先元素
+
+    innerHTML/textContent
+    innerHTML:插带标签的元素
+    textContent:只能放文本
+
+    offsetWidth offsetHeight offsetLeft offsetTop
+    获取元素的宽高左右
+dom的操纵
+
+3.xml dom 与html dom 
+各自写法 区别 和其优势
