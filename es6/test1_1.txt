@@ -1,0 +1,21 @@
+es2015之后的版本 统称es6
+js中数据类型分两种 基本数据类型 引用数据类型
+五种基本数据类型
+boolean string number undefined null
+引用数据类型
+object
+
+js中只有 null undefine 空字符串 0 的boolean值为false
+
+函数提升优先级高于变量提升
+
+作用域
+1.全局作用域
+2.局部(函数)作用域
+3.块级作用域 es6中 一个{}即一个块级作用域 
+    let声明的变量只能在声明它的{}中获取到
+
+var和let区别
+    1.let不允许重复声明变量
+    2.let不存在变量提升
+    3.let存在块级作用域的概念
