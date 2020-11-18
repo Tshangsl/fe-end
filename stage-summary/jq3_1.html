@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ie-test</title>
+</head>
+
+<body>
+    <ul id="ul1">
+        <li class="a b">item1</li>
+        <li class="a">item2</li>
+        <li>item3</li>
+    </ul>
+    <ul id="ul2">
+        <li class="a">item1</li>
+        <li class="a">item2</li>
+        <li class="a">item3</li>
+    </ul>
+    <!-- <span class="a">item</span> -->
+    <div id="div1">
+        <!-- 这个空格+字符串+空格是一个文本节点 -->
+        <!-- 注释节点 -->
+        <h1>h1</h1>
+        sdsdd
+        <p>p</p>
+    </div>
+    <script>
+        //js 中 0 空字符串 null undefined 相当于false
+        // function getByClassName(tagName, context, className) {
+        //     var element = [];
+        //     //这个位置不要加括号 加括号是调用这个方法
+        //     //此处是判断文档中是否有这个方法
+        //     if (document.getElementsByClassName) {
+        //         element = document.getElementsByClassName(className);
+        //     } else {
+        //         var arr = context.getElementsByTagName(className);
+        //         for (var i = 0; i < arr.length; i++) {
+        //             if(arr[i].className.indexof(className)!=-1){
+        //                 element.push(arr[i]);
+        //             }
+        //         }
+        //     }
+        //     return element;
+        // }
+        // function getByClassName(tagName, context, className) {
+        //     var element = [];
+        //     context = context||document;
+        //     if (document.getElementsByClassName) {
+        //         return context.getElementsByClassName(className);
+        //     } else {
+        //         var arr = context.getElementsByTagName(tagName);
+        //         for (var i = 0; i < arr.length; i++) {
+        //             //看好字符大小写 看好字符大小写 看好字符大小写
+        //             //此处最好的处理方式 是引入正则表达式
+        //             if (arr[i].className.indexOf(className) != -1) {
+        //                 element.push(arr[i]);
+        //             }
+        //         }
+        //     }
+        //     return element;
+        // }
+        //传一个对象做参数 对象中的属性是不分顺序的
+        function getByClassName(className, tagName, context) {
+            var element = [];
+            context = context || document;
+            tagName = tagName || '*';
+            if (context.getElementsByClassName) {
+                return context.getElementsByClassName(className);
+            } else {
+                var arr = context.getElementsByTagName(tagName);
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i].className.indexOf(className) != -1) {
+                        element.push(arr[i]);
+                    }
+                }
+            }
+            return element;
+        }
+        // function first(elem) {
+        //     elem = elem.firstChild;
+        //     return elem && elem.nodeType != 1 ? this.next(elem):elem;
+        // }
+        // function next(elem) {
+        //     do {
+        //         elem = elem.nextSibling;
+        //     } while (elem && elem.nodeType != 1);
+        //     return elem;
+        // }
+        //功能 查找下一个元素节点 如果最终都没有找到目的元素 返回null
+        function next(elem) {
+            //必须要用do while循环 不止有文本节点 还有注释节点等等
+            do {
+                elem = elem.nextSibling;
+            } while (elem && elem.nodeType != 1);
+            return elem;
+        }
+        //功能 查找第一个元素节点 如果最终没有找到目的元素 返回null
+        function first(elem) {
+            elem = elem.firstChild;
+            return elem && elem.nodeType != 1 ? this.next(elem) : elem;
+        }
+        var oUl1 = document.getElementById('ul1');
+        //ie8以及ie8之前不支持
+        //封装了一个函数后 直接调用就可以 不用在某个对象下调用某个方法
+        //因为其是自己封装的函数 而不是开发者封装好的在某个对象下的方法
+        var aLi = getByClassName('a', 'li', oUl1);
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].style.background = 'red';
+        } 
+        var oDiv1 = document.getElementById('div1');
+        var elem = first(oDiv1);
+        if(elem){
+            elem.style.background = 'red';
+        }
+    </script>
+</body>
+
+</html>
