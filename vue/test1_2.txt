@@ -1,0 +1,130 @@
+view.js文件一旦引用 
+会在在全局下暴露一个变量Vue
+通过new Vue的方式 可以获得一个Vue的应用
+会返回一个对象
+被我们称为应用对象 或者是Vue.js的对象
+new Vue的时候 需要传一个对象 作为参数
+这个对象 有两个非常重要的属性
+el(element)使用id选择器的方式选中
+data用于保存数据 视图中声明的哪些变量 
+需要在data中注册这些变量 并为变量做初始化的赋值
+Vue.js的核心是一个允许采用简洁的模板语法来声明式的将数据渲染进DOM的系统
+
+每个Vue应用都是通过用Vue函数 创建一个新的Vue实例开始的
+使用一个变量来接收 vue函数被new后生成的结果
+其实就是一个vue对象
+
+vue没有严格遵守 MVVM的模型
+但是受到了其启发
+因此在文档中经常会使用vm(ViewModal的缩写)这个变量名表示vue实例
+
+vue.js的数据方法
+
+当一个Vue实例被创建时 它将data对象中的所有属性加入Vue的响应式系统中 当这些属性的
+值发生改变时 视图将会产生响应 即匹配更新为新的值
+
+除了数据属性 Vue实例还暴露了一些有用的实例和方法 它们都有前缀$以便与用户定义的属性区分开
+var data = {a:1}
+var vm = new Vue({
+	el:"#app",
+	data:data
+})
+vm.data.a ="...test";
+vm.$data ===data;//true
+vm.$el === document.getElementById("app");//true
+//$watch是一个实例方法 会观察某一个变量的变化
+//会记录变化最新的值和原来的值
+vm.$watch('a',function(newVal,oldVal){
+	//这个回调将在vm.a改变后调用
+})
+
+vue的生命周期
+每一个Vue实例在被创建的时候都要经过一系列的初始化过程 如 设置数据监听 编译模板
+将实例挂载到DOM并在数据变化是更新DOM等 同时在这个过程也会运行一些生命周期
+钩子的函数 这给用户在不同阶段添加自己代码的机会
+
+生命周期的钩子声明地点
+写在vm中 以属性的方式声明 该属性 为函数
+
+生命周期函数不能使用箭头函数是没有this的
+而生命周期内this是会反复应用的
+也有一些其他的钩子 在实例生命周期的不同阶段被调用 如mounted updated 
+和 destoryed 生命周期钩子的this上下文指向调用它的Vue实例
+
+beforeCreate
+created
+beforeMount
+mounted
+beforeUpdate
+updated
+actived
+deactived
+beforeDestory
+destoryed
+errorCapture
+
+不要再选项属性或回调上使用箭头函数 比如 
+created:()=>console.log(this.a)或
+vm.$watch('a',newValue=>this.myMethod())
+因为箭头函数并没有this this会作为变量 一致像上级词法作用域查找
+直到找到为止 经常导致
+Uncaught TypeError:Cannot read property of undefined或
+Uncaught TypeError:this.myMethod is not a function之类的错误
+
+
+
+**箭头函数-es6的新语法
+使用es6箭头函数语法定义函数 将原函数的function关键字和函数名都删掉
+并使用=>连接参数列表和函数体
+当函数参数只有一个的时候 括号可以省略 但是没有参数的时候 括号不能省略
+
+//无参
+var fn1 = function(){}
+var fn1 = ()=>{}
+//单个参数
+var fn2 = function(a){}
+var fn2 = a=>{}
+//多个参数
+var fn3 = function(a,b){}
+var fn3 = (a,b)=>{}
+//可变参数
+var fn4 = function(a,b,...args){}
+var fn4 = (a,b,...args)=>{}
+
+箭头函数相当于匿名函数 并且简化了函数定义
+箭头函数有两种格式 
+一种只能包含一个表达式
+省略掉了{...}和return
+()=> return 'hello'
+(a,b)=>a+b
+还有一种可以包含多条语句 
+这时候就不能省略{...}和return
+(a)=>{
+   a=a+1
+   return a
+}
+如果返回一个对象 需要特别注意 如果是单表达式要返回自定义对象
+不写括号会报错 因为和函数体的{...}有语法冲突
+x => ({key:x})
+//用小括号包括大括号是对象的定义 而非函数主体
+
+箭头函数看上去是匿名函数的一种简写 但实际上 箭头函数和匿名函数
+有个明显的区别 箭头函数内部的this是词法作用域 由上下文确定
+
+**词法作用域 由写代码时将变量和块作用域写在那里来决定
+
+箭头函数完全修复了this的指向 this总是指向词法作用域 外层调用者Person
+
+this在箭头函数中已经按照词法作用域绑定了 所以 用call()或者apply()
+调用箭头函数时 无法对this进行绑定 即传入的第一个参数被忽略
+
+javascript中的每一个Function对象都有一个apply()和一个call()方法
+
+
+
+
+
+
+
+
+

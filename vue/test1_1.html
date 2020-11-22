@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue的使用</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+    <div id="container">
+        <!-- 没有在el里面 -->
+        {{msg}}
+    </div>
+    <!-- vue的引入 -->
+    <script src="vue.js"></script>
+    <script>
+        //挂载vue（规定vue的作用域）
+        var vm = new Vue({
+            //element缩写 把元素挂载到哪个元素身上
+            //声明要绑定的元素
+            el:"#app",
+            data:{
+                msg:'hello world'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind</title>
+    <style>
+        .div1{
+            background-color: aqua;
+        }
+        .div2{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="div1 div2">yud</div>
+        <div v-bind:class="{div1:isDiv1,div2:isDiv2}">dds</div>
+        <div :class="{div1:isDiv1,div2:isDiv2}">def</div>
+        <div :class="['a',isDiv1?'div1':'']">ddd</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                isDiv1:true,
+                isDiv2:false,
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

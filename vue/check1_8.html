@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example1</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="" id="" v-model="msg" @keyup = "search">
+        <button @click="add">add</button>
+        <ul>
+            <li>
+                <input type="text">
+                <button @del="del">del</button>
+            </li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                list:[
+                    {
+                        content:'1',
+                        isActive:'false'
+                    }
+                ],
+                showList:[
+                    {
+                        content:'2',
+                        isActive:'true'
+                    }
+                ]
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

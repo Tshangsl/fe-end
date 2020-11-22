@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #cart{
+            margin: 50px auto ;
+            width: 400px;
+        }
+        #cart ul{
+            margin: 10px 0;
+            border-bottom: 1px solid #000;
+        }
+        #cart li{
+            height: 40px;
+            line-height: 40px;
+            background-color: pink;
+            margin-bottom: 10px;
+            padding: 0 10px;
+        }
+        .left{
+            float:left;
+        }
+        .right{
+            float:right;
+        }
+        .active{
+            background-color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="cart">
+            <h1>商品列表</h1>
+            <ul>
+                <!-- :v-bind指令的缩写 -->
+                <li v-for="(item,index) in list":key = "index" @click="select(item)":class='{active:isActive}'>
+                    <span class="left">{{item.name}}</span>
+                    <span class="right">{{item.price}}</span>
+                </li>
+            </ul>
+            <p>总价：</p>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                list:[
+                    {
+                        name:'衬衫',
+                        price:999,
+                        isActive:false,
+                    },
+                    {
+                        name:'裙子',
+                        price:299,
+                        isActive:false,
+                    },
+                    {
+                        name:'电脑',
+                        price:7999,
+                        isActive:false,
+                    },
+                    {
+                        name:'裤子',
+                        price:5999,
+                        isActive:false,
+                    },
+                ]
+            },
+            methods:{
+                select(obj){
+                    obj.isActive = !obj.isActive;
+                }
+            },
+        })
+    </script>
+</body>
+</html>

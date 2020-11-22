@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            <input type="text" v-model="str">
+        </p>
+        <p>
+            <input type="checkbox" value="tang" name="" id=""v-model="dynasty">tang
+            <input type="checkbox" value="song" name="" id=""v-model="dynasty">song
+            <input type="checkbox" value="yuan" name="" id=""v-model="dynasty">yuan
+        </p>
+        <p>
+            <input type="radio"v-model="people" value="female">女
+            <input type="radio"v-model="people" value="male">男
+        </p>
+        <select name="" id="" v-model = "color">
+            <option value="red">red</option>
+            <option value="green">green</option>
+            <option value="blue">blue</option>
+        </select>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                str:"nothing want to write",
+                dynasty:[],
+                people:'female',
+                color:'red'
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

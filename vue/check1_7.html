@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model 输入框 多选框 单选框 下拉框</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            <input type="text" v-model = "str">
+        </p>
+        <p>
+            <input type="checkbox" v-model = "aclass" value="math">math
+            <input type="checkbox" v-model = "aclass" value="english">english
+            <input type="checkbox" v-model = "aclass" value="chinese">chinese
+        </p>
+        <p>
+            <input type="radio" v-model = "study" value="hard">hard
+            <input type="radio" v-model = "study" value="easy">not that hard
+        </p>
+        <select name="" id="" v-model = "color">
+            <option value="red">red</option>
+            <option value="green">green</option>
+            <option value="blue">blue</option>
+            <option value="purple">purple</option>
+        </select>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                str:'',
+                aclass:[],
+                study:'hard',
+                color:"red"
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

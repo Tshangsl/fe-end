@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click = "add('hello vue')">add</button>
+        <ul>
+            <li v-for = "(student,index) in students">序号：{{index+1}}姓名：{{student.name}}年龄：{{student.age}}</li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                students:[
+                  {
+                      name:'wangwu',
+                      age:23
+                  }, 
+                  {
+                      name:'lisi',
+                      age:22
+                  },
+                  {
+                      name:'tianxian1',
+                      age:18
+                  }
+                ],
+            },
+            methods:{
+                //es6中函数的新写法
+                add(str){
+                    this.students.push({
+                        name:'sanqi',
+                        age:22
+                    })
+                    console.log(str);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

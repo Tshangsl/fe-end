@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="add('hello')">add</button>
+        <ul>
+            <li v-for="(student,index) in students">序号：{{index}}姓名：{{student.name}}年龄：{{student.age}}</li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                students:[
+                    {
+                        name:'zhangsan',
+                        age:22
+                    },
+                    {
+                        name:'wangwu',
+                        age:23
+                    },
+                    {
+                        name:'lisi',
+                        name:18
+                    }
+                ]
+            },
+            methods:{
+                add(str){
+                    this.students.push({
+                        name:'bhj',
+                        age:23
+                    })
+                    console.log(str);
+                },
+            }
+        })
+    </script>
+</body>
+</html>

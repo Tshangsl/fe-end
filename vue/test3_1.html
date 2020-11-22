@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='(item,index)in list' :key=index>{{item}}</li>
+        </ul>
+        <button @click='fn1'>修改</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                list:[1,2,3],
+            },
+            methods:{
+                fn1(){
+                    //监听不到 不允许
+                    // this.list[1] = 666;
+                    /*
+                    1.要修改的变量
+                    2.对应的索引
+                    3.新改的值
+                    */
+                    Vue.set(this.list,1,999);
+                    //监听到
+                    // this.list = [];
+                    this.$set(this.list,2,999);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

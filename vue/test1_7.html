@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind</title>
+    <style>
+        .div1{
+            background-color: #666;
+        }
+        .div2{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="div1 div2">dd</div>
+        <!-- 标签自带的属性都当作字符串处理 -->
+        <!-- v-bind控制字符串后面的是属性还是变量 -->
+        <!-- v-bind 缩写 : -->
+        <div v-bind:class="{div1:isDiv1 div2:isDiv2}">22</div>
+        <div :class="['aa',isDiv1?'div1':'']"></div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                isDiv1:true,
+                isDiv2:false,
+            },
+            methods:{
+
+            }      
+        })
+    </script>
+</body>
+</html>

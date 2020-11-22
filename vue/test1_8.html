@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            <input v-model='str' type="text" name="" id="">
+        </p>
+        <p>
+            <input v-model = "fruit" type="checkbox" name="" value="apple">apple
+            <input v-model = "fruit" type="checkbox" name="" value="banana">banana
+            <input v-model = "fruit" type="checkbox" name="" value="pear">pear
+        </p>
+        <p>
+            <input type="radio" v-model = 'sex' value="male">male
+            <input type="radio" v-model = 'sex' value="female">female
+        </p>
+        <p>
+            <select v-model='city' name="" id="">
+                <option value="ha">haerbin</option>
+                <option value="qi">qiqihaer</option>
+                <option value="gui">guizhou</option>
+            </select>
+        </p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                str:'',
+                // 两种引用数据类型?
+                fruit:[],
+                sex:'femal1',
+                city:'ha'
+            },
+            method:{
+
+            }
+        })
+    </script>
+</body>
+</html>

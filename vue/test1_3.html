@@ -1,0 +1,34 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-html和v-text</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 将其作为文本显示到标签中 -->
+        <!-- 三种写法都能处理标签的文本 -->
+
+        <!-- 字符串处理 -->
+        <!-- 有替换的过程 -->
+        <!-- 能看到刷新的过程 -->
+        <p>{{msg}}</p>
+        <!-- 没有替换的过程 -->
+        <p v-text = 'msg'></p>
+        <!-- 标签处理 -->
+        <!-- 可以插入一段html代码 -->
+        <p v-html = 'msg'></p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            //data是个对象
+            data:{
+                msg:'<a href="">hhh</a>',
+            }
+        })
+    </script>
+</body>
+</html>

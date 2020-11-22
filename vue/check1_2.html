@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-html v-text</title>
+    <style>
+        #app span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <p v-text="msg"></p>
+        <p v-html = "msg"></p>
+        {{msg1}}
+        <p v-text="msg1"></p>
+        <p v-html = "msg1"></p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'hello vue',
+                msg1:"<span> this is a span </span>"
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

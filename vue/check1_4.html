@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: #ff0000;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background-color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-on:click="fn1()" id="div1">
+            <!-- 当设置了once修饰符后 stop修饰符就失效了 -->
+            <div @click.stop.once = "fn2()" id="div2"></div>
+        </div>
+        <a @click.prevent = "fn3()" href="https://www.baidu.com">skip</a>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods:{
+                fn1(){
+                    console.log('1')
+                },
+                fn2(){
+                    console.log('2')
+                },
+                fn3(){
+                    console.log('3')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

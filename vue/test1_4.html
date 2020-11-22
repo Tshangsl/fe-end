@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+</head>
+<body>
+    <div id="app">
+        <!-- @click= 与下面等价-->
+        <!-- v-on:事件类型="事件处理函数" -->
+        <!-- 事件三要素 事件源 事件处理函数 事件对象 -->
+        <!-- vue中事件对象有专门的名字$event -->
+        <!-- <button v-on:click = "add('hhh,$event')">添加</button> -->
+        <button @click='add()'></button>
+        <ul>
+            <li v-for ="(item,index) in students">序号:{{index+1}}
+                姓名:{{item.name}}年龄:{{item.age}}
+            </li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                students:[{
+                    name:'lisi',
+                    age:23
+                },{
+                    name:'wangwu',
+                    age:22
+                },{
+                    name:'zhaosi',
+                    age:17
+                }
+                ],
+            },
+            methods:{
+                //es6中对于对象中方法的简写
+                add(str){
+                    //this指的是实例化的vue对象(vm)
+                    this.students.push({
+                        name:'sdd',
+                        age:'12'
+                    });
+                    console.log(str);
+                    //
+                    //获取事件对象的两种方式 此
+                    console.log(event);
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: #ff0000;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background-color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 绑定事件点击事件 -->
+        <div id="div1" @click = 'fn1'>
+            <div id="div2" @click.stop.once='fn2'>
+
+            </div>
+        </div>
+        <a href="https://www.baidu.com" @click.prevent='go'>baidu</a>   
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            //数组对象
+            data:{
+
+            },
+            //方法
+            methods:{
+                fn1(){
+                    console.log('div1');
+                },
+                fn2(){
+                    console.log('div2');
+                },
+                go(){
+                    console.log('~');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
