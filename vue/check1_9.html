@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set</title>
+</head>
+<body>
+    <!-- key和replace -->
+
+    <!-- vue实例已经创建好了，有时候需要再次给数据赋值时，并不能在视图中改变
+    如果在实例创建之后添加新的属性到实例上，它不会触发视图更新 -->
+    <!-- Vue.set() 方法
+    参数1： 要修改的对象
+    参数2： 属性
+    参数3： 属性的值是啥
+    返回值：已经修改好的值
+    
+    有三种方法可以实现，分别是Vue.set, vm.$set, replace     -->
+    <div id="app">
+        <button @click = "change">change</button>
+        <ul>
+            <!-- 要绑定一个key="index" -->
+            <li v-for="(item,index) in list" :key = "index">{{item}}</li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                list:[1,2,3]
+            },
+            methods:{
+                change(){
+                    // Vue.set(this.list,1,23);
+                    vm.$set(this.list,1,22);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

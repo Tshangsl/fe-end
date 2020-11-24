@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed&&watch</title>
+</head>
+<body>
+    <!-- 控制台打印输出的结果 -->
+    <div id="app">
+        <p>{{firstName+lastName}}</p>
+        <p>{{fullName()}}</p>
+        <p>{{fullName2}}</p>
+        <p>{{a}}</p>
+        <button @click = "add">add</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                firstName:'hu',
+                lastName:'bei',
+                a:0
+            },
+            methods:{
+                fullName(){
+                    console.log('methods');
+                    return this.firstName+this.lastName;
+                },
+                add(){
+                    this.a+=1;
+                }
+            },
+            computed:{
+                fullName2(){
+                    console.log("computed");
+                    return this.firstName+this.lastName;
+                }
+            },
+            watch:{
+                a:function(newVal,oldVal){
+                    console.log(newVal,oldVal);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

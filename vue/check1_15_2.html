@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component</title>
+</head>
+<body>
+    <body>
+        <div id="app">
+            <click-count title="vue." @clicknow = "clicknow">
+                <h2>hello slot</h2>
+            </click-count>
+            <click-count title="vue..." @clicknow = "clicknow"></click-count>
+            <test></test>
+        </div>
+    </body>
+    <script src="vue.js"></script>
+    <script>
+        //组件的全局注册
+        Vue.component('click-count',{
+            data:function(){
+                return{
+                    count:0
+                }
+            },
+            props:['title'],
+            methods:{
+                clickfun:function(){
+                    this.count++;
+                    this.$emit('clicknow',this.count);
+                }
+            },
+            template:'<div><h1>hello vue</h1><button @click="clickfun">{{title}} clicked {{count}} times</button><slot></slot></div>'
+        })
+        var vm = new Vue({
+            el:'#app',
+            methods:{
+                clicknow(e){
+                    console.log(e);
+                }
+            },
+            //组件的局部注册
+            components:{
+                test:{
+                    template:"<h2>h2...</h2>",
+                    methods:{}
+                }
+            }
+        })
+    </script>
+</body>
+</html>

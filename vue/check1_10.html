@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #cart{
+            margin: 30px auto;
+            width: 400px;
+        }
+        #cart ul{
+            border-bottom: 1px solid #000;
+        }
+        #cart li{
+            height: 40px;
+            background-color: pink;
+            margin: 10px 0;
+            padding: 0 10px;
+            line-height:40px;
+        }
+        #cart li.active{
+            background-color: red;
+        }
+        .left{
+            float:left;
+        }
+        .right{
+            float:right;
+        }
+    </style>
+</head>
+<body>
+    <!-- 这种函数调用方法是什么操作呢 -->
+    <!-- 函数this.list.foreach(function(obj,index,arr){
+
+    }) -->
+    <div id="app">
+        <div id="cart">
+            <h1>购物车</h1>
+            <ul>
+                <li v-for = "(item,index) in list" :key="index" :class="{active:item.isActive}" @click="select(item)">
+                    <!-- 要把sapn写在li里面才能取到item? -->
+                    <span class="left">{{item.name}}</span>
+                    <span class="right">{{item.price}}</span>
+                </li>
+            </ul>
+            <p>总价{{sum()}}</p>
+            <p>总价{{total}}</p>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                list:[
+                    {
+                        name:'paper',
+                        price:1,
+                        isActive:false
+                    },
+                    {
+                        name:'bottle',
+                        price:3,
+                        isActive:false
+                    },
+                    {
+                        name:'juice',
+                        price:5,
+                        isActive:false
+                    },
+                    {
+                        name:'pants',
+                        price:50,
+                        isActive:false
+                    }
+                ]
+            },
+            //computed属性
+            computed:{
+                total(){
+                    var count = 0;
+                    // forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数。
+                    this.list.forEach(function(obj,index,arr){
+                        if(obj.isActive){
+                            count+=obj.price;
+                        }
+                    })
+                    return count;
+                }
+            },
+            methods:{
+                select(obj){
+                    obj.isActive = !obj.isActive;
+                },
+                sum(){
+                    var count = 0;
+                    this.list.forEach(function(obj,index,arr){
+                        if(obj.isActive){
+                            count+=obj.price;
+                        }
+                    });
+                    return count;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component</title>
+</head>
+<body>
+    <div id="app">
+        
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let tpl1 ='<div>{{title}}hello1 vue.js</div>';
+        var vm = new Vue({
+            el:'#app',
+            components:{
+                'com':{
+                    template:tpl1,
+                    props:['title']
+                },
+                'tpl2':{
+                    template:'<div>{{title}}hello2 vue.js</div>',
+                    props:['title']
+                }
+            }
+        })
+    </script>
+</body>
+</html>

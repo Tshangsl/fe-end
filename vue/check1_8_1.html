@@ -11,20 +11,25 @@
     </style>
 </head>
 <body>
+    <!-- this的指向问题
+    filter函数
+    splice函数
+    设置showList与list两个数组的含义 -->
+    <!-- 实现功能不正确 -->
     <div id="app">
-        <input type="text" name="" id="" v-model="msg" @keyup = "search">
-        <button @click="add">add</button>
+        <input type="text" v-model = "msg" @keyup="search">
+        <button @click = "add">add</button>
         <ul>
-            <li :class="{active:item.isActive}" v-for="(item,index) in showList" @click="change(item)">
+            <li :class="{active:item.isActive}" v-for="(item,index) in showList" @click = "change(item) ">
                 {{item.content}}
-                <button @click="del(index)">del</button>
+                <button @click = "del(index)">del</button>
             </li>
         </ul>
     </div>
     <script src="vue.js"></script>
     <script>
         var vm = new Vue({
-            el:"#app",
+            el:'#app',
             data:{
                 list:[
                     {
@@ -34,36 +39,33 @@
                 ],
                 showList:[
                     {
-                        content:'2',
+                        content:'1',
                         isActive:false
                     }
                 ],
-                msg:''
+                msg:""
             },
             methods:{
                 add(){
                     this.list.push({
                         content:this.msg,
                         isActive:false
-                    });
-                    //每一次输入后 都将输入框中内容重置为空
-                    this.msg = '';
-                    this.showList = [...this.list];
-                },
-                del(index){
-                    //splice函数?
-                    this.list.splice(index,1);
-                    this.showList = [...this.list];
-                },
-                search(){
-                    //filter函数?
-                    this.showList =this.list.filter(function(obj,index,arrs){
-                        return obj.content.includes(vm.msg);
-                    })
+                    }),
+                    this.msg = '',
+                    this.showList = [...this.list]
                 },
                 change(obj){
                     obj.isActive = !obj.isActive;
                     this.list = [...this.showList];
+                },
+                del(index){
+                    this.list.splice(index,1);
+                    this.showList = [...this.list];
+                },
+                search(){
+                    this.showList = this.list.filter(function(obj,index,arr){
+                        return obj.content.includes(vm.msg);
+                    })
                 }
             }
         })

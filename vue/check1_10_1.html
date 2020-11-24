@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #cart{
+            width: 400px;
+            margin: 30px auto;
+        }
+        #cart li{
+            background-color: pink;
+            margin: 10px 0;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+        }
+        /* 选择器的问题 */
+        #cart li.active{
+            background-color: red;
+        }
+        #cart .left{
+            float: left;
+        }
+        #cart .right{
+            float:right;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="cart">
+            <h1>购物车</h1>
+            <ul>
+                <li v-for="(item,index) in list" :key="index" @click="select(item)" :class="{active:item.isActive}">
+                    <span class="left">{{item.name}}</span>
+                    <span class="right">{{item.price}}</span>
+                </li>
+            </ul>
+            <p>总价:{{sum()}}</p>
+            <p>总价:{{total}}</p>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                list:[
+                    {
+                        name:'pants',
+                        price:23,
+                        isActive:false
+                    },
+                    {
+                        name:'shirt',
+                        price:22,
+                        isActive:false
+                    },
+                    {
+                        name:'beef',
+                        price:55,
+                        isActive:false
+                    },
+                    {
+                        name:'pear',
+                        price:5,
+                        isActive:false
+                    },
+                ]
+            },
+            computed:{
+                total(){
+                    var count = 0;
+                    this.list.forEach(function(obj,index,arr){
+                        if(obj.isActive){
+                            count+=obj.price;
+                        }
+                    });
+                    return count;
+                }
+            },
+            methods:{
+                select(obj){
+                    obj.isActive = !obj.isActive;
+                },
+                sum(){
+                    var count = 0;
+                    //怎么获取到obj的呢
+                    this.list.forEach(function(obj,index,arr){
+                        if(obj.isActive){
+                            count+=obj.price;
+                        }
+                    });
+                    return count;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

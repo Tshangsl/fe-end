@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹窗组件</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #content button{
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #container{
+            width: 400px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        #container header{
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #ccc;
+            padding: 0 20px;
+        }
+        #container .close{
+            float: right;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        #container footer,#container main{
+            padding: 10px 20px;
+        }
+        #container button{
+            width: 80px;
+            height: 30px;
+            line-height: 30px;    
+            border: 1px solid #000;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .wrapper label{
+            /* 因为是行级元素 不能设置宽度 设置display为inline-block */
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="content">
+            <button @click="showLogin">登录</button>
+            <button @click="showRegist">注册</button>
+        </div>
+        <!-- 自定义事件 -->
+        <!-- closeDialog-close-hide -->
+        <dialog1 @close="hide" title="登录" v-show="isLogin">
+            <div class="wrapper">
+                <label >用户名：</label>
+                <input type="text">
+            </div>
+            <div class="wrapper">
+                <label >密码：</label>
+                <input type="text">
+            </div>
+        </dialog1>
+        <dialog1 @close="hide" title="注册" v-show="isRegist">
+            <div class="wrapper">
+                <label >用户名：</label>
+                <input type="text">
+            </div>
+            <div class="wrapper">
+                <label >密码：</label>
+                <input type="text">
+            </div>
+            <div class="wrapper">
+                <label >确认密码：</label>
+                <input type="text">
+            </div>
+        </dialog1>
+    </div>
+    <template id="tpl">
+        <div id="container">
+            <header>
+                {{title}}
+                <!-- 通过子组件单击事件触发父组件方法 -->
+                <!-- closeDialog-close -->
+                <span class="close" @click="closeDialog">X</span>
+            </header>
+            <main>
+                <slot></slot>
+            </main>
+            <footer>
+                <button @click="closeDialog">
+                    {{title}}    
+                </button>
+            </footer>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                isLogin:false,
+                isRegist:false
+            },
+            methods:{
+                //父组件里两个按钮的单击事件
+                showLogin(){
+                    this.isLogin=true;
+                    this.isRegist=false;
+                },
+                showRegist(){
+                    this.isRegist=true;
+                    this.isLogin=false;
+                },
+                hide(){
+                    this.isLogin=false;
+                    this.isRegist=false;
+                }
+            },
+            components:{
+                'dialog1':{
+                    template:'#tpl',
+                    props:['title'],
+                    methods:{
+                        closeDialog(){
+                            //colse-hide
+                            this.$emit('close')
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template</title>
+    <style>
+        .div1{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- vue.js:634 [Vue warn]: Error compiling template -->
+    <div id="app">
+        <div class="div1" v-for="(item,index) in arr" :key="index">
+            <p>{{item}}</p>
+            <p>{{item}}</p>
+        </div>
+        <template class="div1" v-for="(item,index) in arr" :key="index">
+            <p>{{item}}</p>
+            <p>{{item}}</p>
+        </template>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                //arr 是个数组
+                arr:[1,2,3]
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

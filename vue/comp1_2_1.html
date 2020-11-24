@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件间的通信</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="add1">fatherAdd</button>
+        {{count}}
+        <!-- 实现子组件中获取父组件data中值 -->
+        <!-- <comp :message="msg" :fn1="add1"></comp> -->
+        <comp :message="msg" @son="add1"></comp>
+    </div>
+    <template id="comp1">
+        <!-- <button>sonAdd</button> -->
+        <div>
+            <p>{{message}}</p>
+            <!-- 方案一 实现子组件中修改父组件的值 -->
+            <button @click="add2">sonAdd</button>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'father',
+                count:0
+            },
+            methods:{
+                add1(){
+                    this.count++;
+                }
+            },
+            components:{
+                'comp':{
+                    template:'#comp1',
+                    props:['message','fn1'],
+                    data(){
+                        return{
+                        }
+                    },
+                    methods:{
+                        add2(){
+                            // this.fn1();
+                            this.$emit('son');
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

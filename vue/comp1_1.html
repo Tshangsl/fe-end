@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slot</title>
+</head>
+<body>
+    <div id="app">
+        <com>
+            <p>
+                hello vue
+            </p>
+        </com>
+        <com1 title="title1">
+            <p slot="slot1">hello vue again</p>
+            <p slot="slot2">hello vue twice</p>
+        </com1>
+    </div>
+    <!-- 定义组件模板的另一种方式 -->
+    <!-- 如果使用div 会渲染两次 -->
+    <!-- 为什么要使用template 因为template不会被渲染出来 -->
+    <!-- 否则定义的那次也会被打出来 -->
+
+    <!-- template标签不能作为根元素 只是用作不渲染-->
+    <template id="com1">
+        <div>
+            {{title}}
+            <slot name="slot1"></slot>
+            <h1>组件</h1>
+            <p>components</p>
+            <slot name="slot2"></slot>
+            {{msg}}
+            <button @click="add">click me</button>
+            {{count}}
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+        //定义组件模板的一种方式
+        let tp1 = '<div><h1>hello </h1><slot></slot></div>';
+        var vm = new Vue({
+            el:"#app",
+            data:{
+
+            },
+            components:{
+                'com':{
+                    template:tp1,
+                },
+                'com1':{
+                    template:'#com1',
+                    //接父元素传递的值
+                    //?vue中根元素有这个属性吗
+                    props:['title'],
+                    //原因：组件是复用的 为了让组件之间数据不互相干扰
+                    //所以一个组件有一个对象
+                    //组件中data写法和父元素有些区别
+                    //必须要用一个函数 返回一个对象的方式
+                    data(){
+                        //return 的对象里的内容 属性
+                        return{
+                            msg:"hello world",
+                            count:0
+                        }
+                    },
+                    methods:{
+                        add(){
+                            this.count++;
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

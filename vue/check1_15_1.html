@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component</title>
+</head>
+<body>
+    <div id="app">
+        <click-count @clicknow = "clicknow" title="vue."></click-count>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component('click-count',{
+            data:function(){
+                return{
+                    count:0
+                }
+            },
+            props:['title'],
+            template:'<div><h1>hello</h1><button @click = "clickfun">{{title}} clicked {{count}}</button></div>',
+            methods:{
+                clickfun:function(){
+                    this.count++;
+                    this.$emit('clicknow',this.count);                    
+                }
+            }
+        })
+        var vm = new Vue({
+            el:'#app',
+            methods:{
+                clicknow:function(e){
+                    console.log(e);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
