@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>es6新语法实现类的创建继承</title>
+</head>
+<body>
+    <script>
+        //创建一个类
+        class Person{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            eat(){
+                console.log(this.name+' is eating ');
+            }
+        }
+        //继承一个类
+        class Student extends Person{
+            constructor(...param){
+                //属性继承调用super方法
+                super(...param);
+                this.school = param[2];
+            }
+            code(){
+                console.log(this.name+' is coding ');
+            }
+        }
+        let s1 = new Student('lisi',23,'nongda');
+        console.log(s1);
+        //es6中的方法会自动继承
+        s1.eat();
+        s1.code();
+    </script>
+</body>
+</html>

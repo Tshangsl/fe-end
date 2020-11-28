@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class</title>
+</head>
+<body>
+    <script>
+        //es6的方式定义一个类
+        //class 定义一个类
+        class Person{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            eat(){
+                console.log(this.name+' is eating')
+            }
+        }
+        let p1 = new Person('lisi',34);
+        console.log(p1);
+        p1.eat();
+        //继承
+        class Student extends Person{
+            //...param接参数
+            constructor(...param){
+                //继承父类的属性 param取到的是一个数组
+                super(...param);
+                this.school = param[2];
+            }
+            code(){
+                console.log(this.name+' is codeing');
+            }
+        }
+        let s1 = new Student('wanwu',11,'nongda');
+        console.log(s1);
+        //方法不用手动继承了 自动继承 属性使用super方法继承
+        s1.eat();
+    </script>
+</body>
+</html>

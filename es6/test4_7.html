@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise</title>
+</head>
+<body>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script>
+        //同步 异步
+        //js中典型的异步的例子
+        //setTimeout和AJAX是异步任务
+        //回调地域 回调函数套回调函数
+       //$.get('data/a.json',function(res1){
+           //res后端返回的数据
+            //console.log(res1);
+            //最后返回一个类型 默认处理、
+            //这个function是个回调函数 回调函数?
+            //要写在里面 因为res2的请求依赖于res1的请求结果
+    //         $.get('data/b.json',function(res2){
+    //             console.log(res2);
+    //         })
+    //    });
+       //简单的例子 创建一个promise对象
+       //promise对象 用同步的形式处理异步的问题
+       //let p1 = new Promise(function(resolve,reject){
+        //setTimeout(function(){
+            //都相当于return这两个函数
+            //成功后调用该方法 返回实参
+            //resolve('success');
+            //失败
+            //reject('fail');
+        //},1000)
+        //then里面成功的回调函数
+       //}).then(
+        //    (res)=>{
+        //        console.log(res);
+        //    }
+           //catch里面失败的回调函数
+    //    ).catch(
+    //        (err)=>{
+    //            console.log(err);
+    //        }
+    //    );
+           //链式操作 jq里面的
+
+    //    setTimeout(function(){
+    //     console.log('...');
+    //    },0)
+       //正常写的js代码都是同步任务 顺序加载
+       //console.log('aaa');
+       //aaa 对象 ...
+
+       //primise对象处理上面那个问题会长什么样
+       //promise里面才有then和cathch方法
+       function getData(url){
+           return new Promise((resolve,reject)=>{
+                if(url=='data/b.json'){
+                    reject('fail');
+                }
+                // resolve();
+                $.get(url,function(data){
+                    resolve(data)
+                })
+            })
+       }
+       //箭头函数只有一个参数 可以不写小括号 只有一样语句可以不写大括号
+       //通过promise方式执行回调地域
+       getData('data/a.json').then(res=>
+       {
+           console.log(res);
+            return getData('data/b.json')   
+        }
+       ).then(res=>{
+           console.log(res);
+           return getData('data/c.json')   
+       }).then(res=>{
+            console.log(res);    
+       }).catch(err=>{
+           console.log(err);
+       })
+
+       //三个一起请求 并行处理 时间：最长
+       let p1 = new Promise((resolve,reject)=>{
+           setTimeout(()=>{
+            console.log('p1');
+            //不调用reslve 不能进then
+            resolve();
+           },500);
+       })
+       let p2 = new Promise((resolve,reject)=>{
+           setTimeout(()=>{
+            console.log('p2');
+            resolve();
+           },1000);
+       })
+       let p3 = new Promise((resolve,reject)=>{
+           setTimeout(()=>{
+            console.log('p3');
+            resolve();
+           },2000);
+       })
+       //依赖于那些promise 传的是个数组
+       Promise.all([p1,p2,p3]).then(()=>{
+           console.log('all ready');
+       })
+       Promise.race([p1,p2,p3]).then(()=>{
+           console.log('race');
+       })
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象扩展</title>
+</head>
+<body>
+    <script>
+        /*
+        1.简写
+        */
+        let name ='lisi';
+        let age = 89;
+        let obj1={
+            name:name,
+            age:age,
+            eat:function(){
+                console.log('eat');
+            }
+        }
+        console.log(obj1);
+        //针对变量名和属性名一样的时候 可以这样写
+        let obj2 = {
+            name,
+            age,
+            eat(){
+                console.log('eating');
+            }
+        }
+        console.log(obj2);
+        /*
+        2.属性表达式
+        */
+        let x = 'sexl';
+        //x的值sex作为obj3的属性
+        let obj3={
+            [x+89]:'female'
+        }
+        console.log(obj3);
+        /*object.is()*/
+        console.log('11'==11);
+        //查一下 js中的==和===区别
+        console.log('111'===111);
+        //返回结果基本和===相同
+        console.log(Object.is('11',11));
+        //特例一
+        console.log(+0===-0);//true
+        console.log(Object.is(+0,-0));
+        console.log(NaN == NaN);//false
+        console.log(NaN === NaN);//false
+        //特例二
+        console.log(Object.is(NaN,NaN));
+
+        //对象的连接
+        //扩展运算符是浅拷贝(只拷贝第一层对象)
+        // 对象的合并 扩展运算符实现 连接多个对象和多个数组
+        //1
+        let obj4 = {...obj1,...obj3}
+        console.log(obj4); 
+        //2把obj3合并到obj1里面了
+        //可以传多个参数
+        let obj5=Object.assign({},obj1,obj3);
+        console.log(obj5);
+        console.log(obj1);
+
+        //对象的遍历 for in
+        for(let p in obj5){
+            //属性名
+            console.log(p);
+            //属性值
+            console.log(obj5[p]);
+        }
+        //数组 ["name", "age", "eat", "sexl89"]
+        console.log(Object.keys(obj5));
+        //数组 ["lisi", 89, ƒ, "female"]s
+        console.log(Object.values(obj5));
+        //属性和属性的值分别装到一个数组里
+        console.log(Object.entries(obj5));
+
+        //判断一个对象里面是不是有某个属性
+        //类似于数组和字符串中的includes
+        console.log('age' in obj5);
+        //还有一个
+    </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的扩展</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <button id="btn1">click</button>
+    <!--  -->
+    <script>
+        //1.es6中对于函数参数默认值的扩展
+        function fn1(x = 100, y = 1) {
+
+        }
+        //2.rest 不用写rest 写其他的也可以
+        function fn2(x, y = 1, ...rest) {
+
+        }
+        fn2(1, 2, 3, 4, 5);
+        //3新增两个属性
+        //可以获取到没有设定默认值的·参数的个数
+        console.log(fn2.length);
+        console.log(fn2.name);//fn2
+        //4.箭头函数
+        //es3中有两种声明函数的方式 
+        //函数声明 有函数提升的概念
+        //函数表达式
+        //let有跨级作用域 常量不更改则用const声明
+
+        //函数声明?
+        const fn3 = function (str) {
+            console.log(this,str);
+        }
+        fn3();
+        //window下的方法
+        //省略一个function 加了一个() 和正常函数使用一样
+        const fn4 = () => { }
+
+        //普通函数的this指向问题(谁调用的这个方法 谁触发的这个事件 this指向谁)
+        /*
+        1.事件处理函数中 this =>绑定事件的dom元素
+        2.定时器中 this=>window
+        3.自定义函数中 this=>window
+        4.自定义对象中 this=>该对象
+        5.自定义类中new一个对象 this=>new出来的实例化对象
+        */
+        const oBtn1 = document.getElementById('btn1');
+        oBtn1.onclick = function () {
+            console.log(this);//oBtn1
+            setTimeout(function () {//该方法是window里的方法
+                console.log(this);//window
+            }, 200)
+        }
+        const obj1 = {
+            name: 'lisi',
+            eat: function () {
+                console.log(this);//obj1
+            }
+        }
+        obj1.eat();
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            console.log(this);
+        }
+        let p1 = new Person('wangwu',23);
+        /*
+        改变this指向有三种方式
+            1.call(this,arg1,arg2,arg3)
+            2.apply(this,[arg1,arg2,arg3])其他参数以数组形式传过去
+            3.bind(this,arg1,arg2,arg3)需要手动调用
+        */
+        fn3.call(oBtn1,'a');
+        fn3.apply(oBtn1,['b']);
+        fn3.bind(oBtn1,'c')();//需要()手动调用
+
+        let aLi = document.getElementsByTagName('li');
+       for(let i = 0;i<aLi.length;i++){
+            aLi[i].onclick = function(){
+                console.log(this);//aLi[i]
+                setTimeout(function(){
+                    console.log(this);//windows
+                }.bind(this),200)
+                //使用bind不加()立即调用
+                //通过call改变this的指向 但会使延迟函数失效
+            }    
+       }
+       /*
+       箭头函数的this指向
+       1.this指向的使定义时所在的对象，而不是调用时所在对象
+       2.箭头函数没有this 它的父作用域中的this是谁 箭头函数中的this就是谁
+       3.如果箭头函数被非箭头函数包含 
+       那它的this指向的就是它最近的内层非箭头函数中的this
+       否则就是window
+       */ 
+       console.clear();//清空控制台
+       for(let i = 0;i<aLi.length;i++){
+            aLi[i].onclick = function(){
+                console.log(this);//aLi[i]
+                // setTimeout(()=>{
+                //     //写这句话的时候的this 而不是调用它时所在对象
+                //     console.log(this);//aLi[i]
+                // },200)
+                let fn = ()=>{
+                    console.log(this);
+                }
+                setTimeout(fn,timeout);
+                //使用bind不加()立即调用
+                //通过call改变this的指向 但会使延迟函数失效
+            }    
+       }
+    //    let obj2 = {
+    //        name:'zhaosi',
+    //        study:function(){
+    //            console.log(this);//obj2
+    //            let obj3 = {
+    //                name:'wangwu',
+    //                code:function(){
+    //                    console.log(this);//obj3
+    //                }
+    //            }
+    //            obj3.code();
+    //        }
+    //    }
+    //    obj2.study();
+    // let obj2 = {
+    //        name:'zhaosi',
+    //        study:function(){
+    //            console.log(this);//obj2
+    //            let obj3 = {
+    //                name:'wangwu',
+    //                code:()=>{
+    //                    console.log(this);//obj2
+    //                }
+    //            }
+    //            obj3.code();
+    //        }
+    //    }
+    //    obj2.study();
+    // let obj2 = {
+    //        name:'zhaosi',
+    //        study:function(){
+    //            console.log(this);//obj2
+    //            setTimeout(function(){
+    //             let obj3 = {
+    //                name:'wangwu',
+    //                code:()=>{
+    //                    console.log(this);//window
+    //                }
+    //            }
+    //            obj3.code();
+    //            },1000)
+    //        }
+    //    }
+    //    obj2.study();
+    let obj2 = {
+           name:'zhaosi',
+           study:()=>{//window
+               console.log(this);//obj2
+               setTimeout(()=>{
+                let obj3 = {
+                   name:'wangwu',
+                   code:()=>{
+                       console.log(this);//window
+                   }
+               }
+               obj3.code();
+               },1000)
+           }
+       }
+       obj2.study();//用1怎么解释的呢？
+    </script>
+</body>
+
+</html>

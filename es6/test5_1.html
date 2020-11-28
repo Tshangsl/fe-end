@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async await</title>
+</head>
+<body>
+    <script>
+        //generator函数 es5
+        //es7 async  其实是generator函数的一个语法糖
+
+        // 同步的代码依赖于异步的结果
+        //异步前加async 同步
+        function request1(){
+            let p = new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    console.log('1 ok');
+                    // resolve();
+                    reject('1失败');
+                },1000)
+            });
+            return p;
+        }
+        function request2(){
+            let p = new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    console.log('2 ok');
+                    resolve();
+                },500)
+            });
+            return p;
+        }
+        function request3(){
+            let p = new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    console.log('3 ok');  
+                    resolve();
+                },2000)
+            });
+            return p;
+        }
+        //await一定要要在async定义的函数中使用
+        //异步的方法
+        async function fn1(){
+            //try catch在任何地方 都可以使用
+            try{
+                console.log('request1 starts');
+                await request1();
+            }catch(error){
+                console.log(error);
+            }
+            console.log('request2 starts');
+            await request2();
+            console.log('request3 starts');
+            request3();
+            await console.log('all ready');
+        }
+        fn1();
+    </script>
+</body>
+</html>

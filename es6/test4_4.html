@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+</head>
+<body>
+    <script>
+        //定义一个类
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.eat=function(){
+            console.log(this.name+' is eating');
+        }
+        let p1 = new Person('lisi',23);
+        console.log(p1);
+        p1.eat();
+        //继承
+        //通过es3的方式实现继承
+        function Student(name,age,school){
+            //属性的继承
+            Person.call(this,name,age);
+            this.school = school;
+        }
+        //方法的继承
+        //把方法继承过来 但是会变成Person的构造函数
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+        Student.prototype.code = function(){
+            console.log(this.name+' is coding');
+        }
+        let s1 = new Student('wangwu',20,'nongda')
+        console.log(s1);
+        s1.code();
+    </script>
+</body>
+</html>

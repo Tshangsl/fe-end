@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const</title>
+</head>
+<body>
+    <script>
+        //const num = 10;
+        const num = 100;
+        console.log(num);
+
+        // console.log(str);
+        // const str = 'hello';
+        // num = 20;
+        const obj1 = {
+            name:'lisi'
+        }
+        // obj1.name = 'zhangsan';
+        //栈空间新开辟一个对象 不可行 会报错
+        // obj1 = {
+        //     age:23
+        // }
+        // console.log(obj1.name);
+        //const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址不得改动。
+        obj1.name = 'wangwu';
+        console.log(obj1.name);
+        //Uncaught TypeError: Assignment to constant variable
+        obj1 = {
+            name:'lili'
+        }
+        console.log(obj1);
+    </script>
+</body>
+</html>

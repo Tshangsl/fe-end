@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map</title>
+</head>
+<body>
+    <script>
+        // map和set和es6一样是es6新加的两个数据类型
+        //原本是7个
+        //map不允许有重名的键值
+        let m1 = new Map();
+        m1.set('name','lisi');
+        m1.set('name','wangwu')
+        console.log(m1);//键值对 类似PHP
+
+        //获取长度和set一样用size而不是length
+        console.log(m1.size);
+        //get()方法
+        console.log(m1.get('name'));
+        //delete()方法
+        // console.log(m1.delete('name'));
+        // console.log(m1);
+        //clear()方法 同set一样
+        // m1.clear();
+        //遍历方法 key和value不一样
+        console.log(m1);
+        for(let [index,value] in m1.entries){
+            console.log(index,value);
+        }
+        //WeakMap 只能用对象作为key
+        let w1 = new WeakMap();
+        w1.set({
+            name:"lsii",
+            age:22
+        },'ddd')
+        // w1.set('name','lisi');
+        //WeakMapkey值应该是对象
+        console.log(w1);
+    </script>
+</body>
+</html>

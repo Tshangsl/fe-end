@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>let和const命令</title>
+    <style>
+        li {
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
     <ul>
         <li>1</li>
@@ -49,13 +56,53 @@
         // }
         // console.log(i);
 
+        // let aLi = document.getElementsByTagName('li');
+
         //块级作用域相当于产生一个闭包
-        let aLi = document.getElementsByTagName('li');
-        for(let i = 0;i<aLi.length;i++){
-            aLi[i].onclick = function(){
-                console.log(i);
-            }
-        }
+        //let之所以能实现该功能 
+        //是由于let后面的{}是一个块级作用域的特性
+        //let后面的{}是一个局部作用域 类似于闭包中的外部函数
+        //i仅在{} 作用域里面套了一个作用域{{}}
+        // for(let i =0;i<aLi.length;i++){
+        //     aLi[i].onclick = function(){
+        //         console.log(i);
+        //     }
+        //     console.log(i);
+        // }
+
+        //闭包 
+        //外部函数中声明了内部函数 
+        //内部函数中引用了外部函数中的局部变量
+        //这样外部函数执行完毕后 内存不释放
+        // for (var i = 0; i < aLi.length; i++) {
+        //     (function (index) {
+        //         //因为需要是外部函数中声明的局部变量
+        //         //所以要传参
+        //         this.index = i;//外部函数声明的局部变量
+        //         //外部函数中创建的内部函数
+        //         aLi[i].onclick = function () {
+        //             console.log(index);
+        //             //内部函数引用了外部函数中的局部变量
+        //             //外部函数执行完毕后 内存不释放
+        //         }
+        //         console.log(index);
+        //     })(i);
+        // }
+
+        // var a = 88;
+        // function fn1(){
+        //     console.log(a);
+        //     var a = 888;
+        // }
+        // fn1();
+
+        // var a = 88;
+        // function fn1(){
+        //     console.log(a);
+        //     let a = 888;
+        // }
+        // fn1();
     </script>
 </body>
+
 </html>

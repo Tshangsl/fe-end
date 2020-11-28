@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set</title>
+</head>
+<body>
+    <script>
+        let arr1 = [1,1,2,3,3,5];
+        //size属性4 一个新的数据结构
+        //不是一个数组 而是一个类数组 
+        //没有Array对象带的方法
+        //特点：不允许成员重复
+        let s1=new Set(arr1);
+        console.log(s1);
+        //使用扩展运算符 把类数组转化成数组
+        let arr2 = [...s1];
+        console.log(arr2);
+        //通过s1自己的添加方法 不会添加重复的
+        s1.add(6);
+        console.log(s1);
+        //该add方法是有返回值的 是操作完的set
+        console.log(s1.add(5));
+        //delete 返回值true false
+        console.log(s1.delete(1));
+        console.log(s1);
+        console.log(s1.delete(1));
+        //方法has 返回值 true false
+        console.log(s1.has(3));
+        //属性size
+        console.log(s1.size);
+        //方法clear() 该方法没有返回值
+        // s1.clear();
+        console.log(s1);
+        //遍历set for of方法 遍历
+        //key value一样的
+        for(let [index,value] of s1.entries()){
+            console.log(index,value);
+        }
+        //WeakSet 只允许添加对象
+        //只能以对象作为成员
+        let w1 = new WeakSet();
+        let obj = {
+            name:'lisi',
+            age:5
+        }
+        // w1.add(8);//报错
+        w1.add(obj)
+        console.log(w1);
+    </script>
+</body>
+</html>

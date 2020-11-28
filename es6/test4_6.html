@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX原理</title>
+</head>
+<body>
+    <!-- xml是html的一个儿子 -->
+    <script>
+        // 1.创建对象
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        //标准浏览器
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //2.向服务器发送请求 get post
+        //能够显示在地址栏里面的参数 get传参 不安全
+        //通过?方式连接 参数通过&符号连接
+        //post请求 不会把它放在地址栏中
+        //get一般是4kb
+
+        //后端接口很多个
+
+        //接口请求都在XHR中间
+        //网页中的数据不是写死的 是发送请求 请求来的
+
+        //get (type,url)
+        var baseUrl= ""
+        xmlhttp.open("GET",baseUrl+'接口?参数&'+true);
+        xmlhttp.send();
+
+        //post 针对post有两种请求头
+        xmlhttp.open("POST",baseUrl+'接口',true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        //拼的参数
+        xmlhttp.send("fname=Bill&lname=Gates");
+        //3.服务器响应
+        //network里的xml中
+        /*
+        http状态码
+            200：一切正常
+            500：服务器方面问题（例如后端代码写错了）
+            404：找不到资源（一般是地址写错了 或者其被从服务器下架了）
+            301：永久重定向
+            302：临时重定向
+            304：缓存（文件名不变认为是之前缓存的文件）
+            403：参数传错了
+        */
+        xmlhttp.onreadystatechange=function()
+        {
+            //200 http状态码
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+                //text xml json(最常用)
+            document.getElementById("myDiv").innerHTML=
+            xmlhttp.responseText;
+            //后端返回的数据通过response属性获取到
+            }
+        }
+
+        //以前没有框架的时候使用jq封装好的工具函数
+    </script>
+</body>
+</html>

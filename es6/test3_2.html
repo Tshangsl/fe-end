@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的扩展</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+
+        //1.创建数组的方式
+        let arr1 = [1,2,3];
+        //单个参数 数组长度 多个参数 当作数组中的具体值
+        let arr2 = new Array(5,345);
+        console.log(arr2);
+        //2.类数组 => 数组
+        let aLi = document.getElementsByTagName('li');
+        console.log(aLi);
+        //类数组转化成数组的一种方式
+        console.log(Array.from(aLi));
+        //...扩展运算符方式
+        console.log(...aLi);
+        //json比起数组来讲更像一个对象 属性的名字要用引号引上
+        let j1 ={
+            "0":1,
+            "1":2,
+            "2":3,
+            length:3
+        }
+        console.log(Array.from(j1));
+        //3.将一组值转化为数组 传一个值得时候也是值 而不是长度
+        console.log(Array.of(2,4,6));
+        console.log(Array.of(2));
+        console.log([0,1,2,3,4,5].copyWithin(1,3,5));
+        //数组实例得find和findIndex()fill()
+        //includes(x)遍历数组中是否包含x
+        //indexOf(x)
+        //4.数组的遍历
+        //for in遍历对象
+        //for of遍历数组
+        //entries() keys() values()
+        //for od
+        let list = ['a','b','c'];
+        for(let p of list){
+            console.log(p);
+        }
+        //values()
+        for(let value of list.values()){
+            console.log(value);
+        }
+        //keys
+        for(let key of list.keys()){
+            console.log(key);
+        }
+        //entries
+        for(let [index,value] of list.entries()){
+            console.log(index);
+            console.log(value);
+        }
+        //forEach 只是循环数组 不会改变原数组
+        list.forEach(function(value,index,arr){
+            value+=1;
+        })
+        console.log(list);
+        let list1 = [
+            {
+                name:'lisi',
+                age:11     
+            },
+            {
+                name:'wangwus',
+                age:11     
+            }
+        ]
+        //这里会改变 因为是对象？
+        list1.forEach(function(value,index,arr){
+            value.age+=1;
+        })
+        console.log(list1);
+        //map 与forEach的区别 这个方法有返回值
+        //要一个回调函数做参数 只是这个回调函数是用箭头函数写的
+        let list3 = list1.map((value,index,arr)=>{
+            if(value.age==12){
+                return value.age;
+            }
+        });
+        console.log(list3);
+        //filter 和map很像 返回的不满足的不会返回undefined
+        let list4 = list1.filter((value,index,arr)=>{
+            // if(value.age==12){
+                return value.age==12;
+            // }
+        });
+        console.log(list4);
+    </script>
+</body>
+</html>

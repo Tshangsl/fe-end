@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深拷贝浅拷贝</title>
+</head>
+<body>
+    <script>
+        let obj1={
+            name:'lisi',
+            age:23,
+            brother:{
+                name:'wangwu',
+                age:25
+            }
+        }
+        //这是赋值 不是拷贝
+        //obj1与obj2地址一样 指向同一块堆空间
+        // let obj2 = obj1;
+        // obj2.name = 'zhangsan';
+        // console.log(obj1.name,obj1.age);
+
+        function clone(obj){
+            let o = obj.constructor==Array?[]:{};
+            //p取到的是对象中的属性名
+            //循环对象要用for in 规定因为对象不像数组
+            //没有索引 要用for in循环对象中的属性
+            for(let p in obj){
+                //浅拷贝
+                //此会把obj1里面的brother赋值给o的brother
+
+                //此处是深拷贝
+                if(typeof obj[p]=='object'){
+                    o[p] = clone(obj[p]);
+                }else{
+                    //如果不加else的话会重复赋值的
+                    o[p] = obj[p];
+                }
+                // console.log(obj[p]);
+            }
+            return o;
+        }
+        // let obj2 = clone(obj1);//{name:lisi,age:23}
+        // console.log(obj2);
+        // obj2.age = 99;
+        // console.log(obj1.age);
+        // obj2.brother.name="jianqiao";
+        // console.log(obj1.brother.name);
+        let arr1 = [1,2,[2,3]];
+        let arr2 = clone(arr1);
+        arr2[2][1]=6;
+        console.log(arr1);
+        console.log(arr2);
+        //obj.p和obj[p]的差别？
+    </script>
+</body>
+</html>
