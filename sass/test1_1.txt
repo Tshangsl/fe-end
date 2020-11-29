@@ -1,0 +1,35 @@
+css预处理器有很多种 常用的两种 sass/less
+css预处理器定义了一种新的语言
+其基本思想是 用一种专门的编程语言
+为css新增加一些编程的特性
+将css作为目标生成文件
+然后开发者就只要使用这种语言进行编码工作
+
+css预处理器用一种专门的编程语言
+进行Web网页样式设计 然后再编译成正常的css文件
+以供项目使用
+
+css预处理器为css增加了一些编程的特性
+无需考虑浏览器的兼容性问题
+例如你可以在css中使用变量 简单的逻辑程序 函数
+等等在编程语言中的一些基本特性
+可以让你的css更加简洁 适应性更强 可读性更加
+更易于代码的维护等诸多好处
+
+查看ruby是否安装成功
+ruby-v
+安装sass
+gem install sass
+
+查看sass是否安装成功
+sass -v查看版本号
+
+更新:gem update sass
+卸载:gem uninstall sass
+
+sass编译成css
+文件编译
+sass<要编译的Sass文件路径>/style.scss:<要输出css文件路径>/style.css预处理器为css增加了一些编程的特性
+实时
+sass--watch<要编译的Sass文件路径>/style.scss:<要输出的css文件路径>/style.css预处理器为css增加了一些编程的特性
+sass --watch style:css

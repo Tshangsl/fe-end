@@ -1,0 +1,32 @@
+Sass VS SCSS
+Sass和SCSS其实是同一种东西，我们平时都称之为Sass
+两者之间的不同之处有以下两点
+文件扩展名不同 
+Sass是以.sass后缀为扩展名
+SCSS是以.scss后缀为扩展名
+语法书写方式不同 
+Sass是以严格的缩进式语法规则来书写的
+不带大括号({})和分号(;)
+SCSS的语法书写和我们的CSS语法书写方式非常类似
+
+编译
+sass 文件目录
+
+
+sass可以定义变量
+$变量名:;(不用加"")
+$color:#fff;
+#container{
+    background-color:$color;
+}
+
+-w是--watch的缩写
+
+css输出格式
+1.嵌套输出方式 nested 默认
+2.展开输出方式 expanded 正常css文件格式
+3.紧凑输出方式 compact 每个选择器的属性都放在一行
+4.压缩输出方式 compressed 都在一行 以压缩的方式输出css文件
+
+输出格式的转化
+sass src:dist -w --style expanded

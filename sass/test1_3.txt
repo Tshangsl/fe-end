@@ -1,0 +1,72 @@
+sass src:dist -w
+sass基本功能 
+1.文件的引入
+2.变量的使用和选择器嵌套
+3.输出格式
+4.注释
+css中只有/**/注释方式
+sass中有//和/**/注释
+sass中使用//注释 注释内容不会在css中显示
+/**/注释内容会在css中显示
+5.&符号 对当前元素的引用
+引用父选择器
+6.属性嵌套
+7.特殊变量
+复杂的选择器定义成一个变量
+在三个地方都可以使用
+属性的值
+属性
+选择器
+注释中也可以使用
+8.默认变量
+
+三种变量 普通变量 默认变量 特殊变量
+9.mixin混合 可传参 可设置默认值
+一旦变量设置默认值 则所有的变量都要设置默认值
+传实参的时候 参数不传完全 则参数需指定
+后面的的参数要指定
+定义
+@mixnin name($color:#ccc,$back){}
+引用
+Selector{
+    @include name(#fff,#ccc);
+}
+10.继承
+@extend #div1
+11.数字
++ - *
+/：1.()2.除数不能有单位
+百分比：percentage
+12.字符串运算
+拼字符串
+content下面的方法
+转换大小写 
+to-upper-case
+to-lower-case
+返回字符串长度
+str-length
+
+str-index
+13.颜色
+color下面的方法
+14.列表
+15.map键值对的方式
+16.布尔
+17.interpolation
+18.Data_type
+sass -i
+type-of()
+数字 
+字符串 分有引号的字符串 和没有引号的字符串
+ 颜色 布尔值 空值 值列表 
+ map +()
+19.控制命令
+if else if else
+each用来循环列表
+while
+20.函数
+@function
+@warn
+@error
+定义变量的方式都一样
+引用的方式不一样

@@ -1,0 +1,156 @@
+//sass用到语句 都要用@
+//引入其他css文件 import
+//将main.scss引入到index.scss中
+// @import 'main.scss';
+
+//文件的引入
+@import 'main.scss';
+//变量的使用
+//默认变量
+$color:#009756!default;
+$color:#007855;
+$student:'#student-list li';
+$attr:width;
+#conatiner{
+    width:100px;
+    height: 100px;
+    background-color: $color;
+    border: 1px solid #fff;
+    font-size: 20px;
+    //编译成css文件 是以后代选择器的方式加的
+    //而不是子代选择器
+    //scss最好不用标签选择器 编译出来是后代的那种方式
+
+    /*选择器的嵌套*/
+    .box1{
+        font-size: 14px;
+        width: 300px;
+        height: 300px;
+        background-color: #ccc;
+        border: 1px solid #fff;
+        a{
+            background-color: #ff0000;
+            &:hover{
+                background-color: #0000ff;
+            }
+        }
+        &-item{
+            color: #666;
+            padding: {
+                top: 20px;
+                left: 50px;
+            };
+        }
+        /*#{$student}*/
+        //特殊变量
+        #{$student}{
+            list-style: none;
+            #{$attr}:200px;
+            color: #{$color};
+        }
+    }
+    @mixin box($w:200px,$h:300px,$p:10px) {
+        width: $w;
+        height: $h;
+        padding: $p;
+    }
+    .box2{
+        @include box(300px,200px,20px);
+        background-color: #ff0000;
+    }
+    .box3{
+        @include box($h:20px,$p:30px);
+        background-color: #00ff00;
+    }
+    .box4{
+        width: 10px;
+    }
+    /*box5继承于box4 采用分组选择器方式*/
+    .box5{
+        @extend .box4;
+        font-size: 30px;
+    }
+    .box6{
+        width: 20px*8;
+        height: (90px/3);
+        padding: percentage(800px/600px);
+    }
+    $img:'bg';
+    $str:'hello world';
+    .box7{
+        background-image: #ccc url('images/'+$img+'.jpg');
+        &::after{
+            content: to-upper-case($str);
+            //返回的长度没有单位不能直接作为属性的值
+            font-size: str-length($str);
+            //从1开始数
+            content: str-index($string: $str, $substring: "o");
+            content: str-insert($string: $str, $insert: 'a', $index: 1);
+        }
+    }
+    .box8{
+        color: $color;
+        color: lighten($color: $color, $amount: 50%);
+        color: darken($color: $color, $amount: 20%);
+        //此处要写小小数
+        color: opacify($color: $color, $amount: 0.5);
+        color: transparentize($color: $color, $amount: 0.3);
+    }
+    $list1:1px solid #000;
+    $list2:1px solid ;
+    $list3:blue;
+    .box9{
+        border: $list1;
+        border: append($list2,  red );
+        border: index($list1, solid);
+        border: join($list3,$list2);
+        color: nth($list1,3);
+        z-index: length($list: $list1);
+    }
+    $map:(color1:red,color2:green,color3:blue);
+    // $map2:(color4:purple);
+    .box10{
+        color: map-keys($map: $map);   
+        color: map-values($map: $map);
+        color: map-has-key($map: $map, $key: color3);
+        // color: map-merge($map1:$map , $map2:$map2) ;
+        // color: map-remove($map: map, $keys: );
+    }
+    //from to [)
+    //from throw []
+    @for $i from 1 to 10{
+        .item#{$i}{
+            width: 100px*$i;
+
+        }
+    }
+    @each $item in $list1{
+        .item-#{$item}{
+            width: #{$item};
+
+        }
+    }
+    $i:1;
+    @while $i<5{
+        .student-#{$i}{
+            padding: 10px;
+        }
+        $i:$i+1;
+    } 
+    @function fn1($n){
+        @if($n==0){
+            @return red;
+        }@else if($n==1){
+            @return green;
+        }@else{
+            // @warn 'look here';
+
+            // @error 'wrong';
+            @return blue;
+        }
+    }
+    .box11{
+        color: fn1(3);
+        border: 1px solid #000;
+    }
+}
