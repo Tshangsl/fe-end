@@ -1,20 +1,27 @@
 <template>
-  <div>
-    <h1>发表文章</h1>
-    <p>标题：<input type="text" v-model="title" /></p>
-    <p>
-      内容：<textarea
-        name=""
-        id=""
-        cols="30"
-        rows="10"
-        v-model="content"
-      ></textarea>
-    </p>
-    <!-- <input type="hidden" value="5"> -->
-    <p>
-      <button @click="postBlog">发表</button>
-    </p>
+  <div class="container">
+    <div class="art-related">
+      <div class="art-title">
+        <el-input
+          v-model="title"
+          placeholder="请输入标题"
+          style="width: 200px"
+        ></el-input>
+      </div>
+      <div class="art-content">
+        <el-input
+          type="textarea"
+          :rows="10"
+          placeholder="请输入内容"
+          v-model="content"
+          style="width: 636px"
+        >
+        </el-input>
+      </div>
+      <el-row>
+        <el-button @click="postBlog" plain>发表文章</el-button>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -26,9 +33,7 @@ export default {
       content: "",
     };
   },
-  created() {
-
-  },
+  created() {},
   methods: {
     postBlog() {
       let loginUser = this.$store.state.loginUser;
@@ -47,9 +52,9 @@ export default {
               alert("发表文章失败!");
             }
           });
-      }else{
-          alert('请登陆后再进行操作!!');
-          this.$router.push('/login');
+      } else {
+        alert("请登陆后再进行操作!!");
+        this.$router.push("/login");
       }
     },
   },
@@ -57,4 +62,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  .art-related {
+    margin: 20px auto;
+    width: 800px;
+    height: 400px;
+    border-radius: 10px;
+    background-color: #32c1fb;
+    overflow: hidden;
+    .art-title {
+      margin: 30px auto;
+    }
+    .art-content {
+      margin: 20px auto;
+    }
+  }
+}
 </style>

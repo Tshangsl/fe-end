@@ -1,5 +1,5 @@
 const router = require('koa-router')()
-const user = require('../controllors/user')
+const user = require('../controllers/user')
 // 路由前缀
 router.prefix('/user')
 
