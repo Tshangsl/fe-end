@@ -31,22 +31,10 @@ router.prefix("/blog");
 
 router.get("/list", verifyToken, blog.listBlog);
 
-// router.get('/delete',verifyToken,blog.delete)
 
-router.get("/detail", verifyToken, async (ctx, next) => {
-  
-  let blog = {
-    blog_id: ctx.query.blogId,
-    title: '标题11',
-    content: '内容111',
-    post_time: new Date()
-  };
-  
-  ctx.body = {
-    state: "success",
-    blog,
-  };
-});
+router.get("/detail", verifyToken, blog.getBlogDetail);
+
+// router.get('/del',verifyToken,blog.changeBlog)
 
 router.post('/post', blog.postBlog);
 

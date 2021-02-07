@@ -31,7 +31,6 @@ instance.interceptors.response.use(
         return response;
     }, function (error) {
         // 对响应错误做点什么
-        console.log('what');
         let {status} = error.response;
         if(status == 401){
             // 把token清空

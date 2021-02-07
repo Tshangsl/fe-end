@@ -3,18 +3,14 @@
     <el-row>
       <el-button @click="goPostBlog" plain>发表文章</el-button>
     </el-row>
-    <!-- <button @click="goPostBlog">发表文章</button> -->
     <div class="blog-list">
       <div class="blog" v-for="item in blogList" :key="item.blogId">
         <h3 class="blog-title">
-          <!-- <a href="/blog/detail/">{{item.title}}</a> -->
-          <router-link :to="{ path: '/blog/detail/' + item.blogId }">{{
-            item.title
-          }}</router-link>
+          <span @click="goDetail(item.blog_id)">{{ item.title }}</span>
         </h3>
         <p class="blog-content">{{ item.content }}</p>
         <span class="post-time">{{ item.postTime }}</span>
-        <!-- <el-button @click="deleteBlog" plain>删除文章</el-button> -->
+        <el-button plain>删除文章</el-button>
       </div>
     </div>
   </div>
@@ -44,9 +40,20 @@ export default {
     goPostBlog() {
       this.$router.push("/blog/post");
     },
-    deleteBlog(){
+    goDetail(id) {
+      this.$router.push("/blog/detail/" + id);
+    },
 
-    }
+    // deleteBlog(id) {
+    //   this.$http
+    //     .get("/blog/del", {
+    //       params: {
+    //         blog_id: id,
+    //       },
+    //     }).then(res=>{
+    //       console.log(res);
+    //     })
+    // },
   },
 };
 </script>

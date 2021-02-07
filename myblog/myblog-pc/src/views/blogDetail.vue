@@ -2,17 +2,20 @@
   <div class="container">
     <div class="blog">
       <div class="blog-title">
+        <h3 style="color: red">{{ blog && blog.blog_id }}</h3>
         <h3>{{ blog && blog.title }}</h3>
         <span>{{ blog && blog.post_time }}</span>
       </div>
+      <!-- <span>'blog_id'+{{blog&&blog.blog_id}}</span> -->
       <div class="blog-content">{{ blog && blog.content }}</div>
       <div class="comments">
         <h4>评论</h4>
-        <div class="comment">
-          <div class="comment-content"></div>
+        <div class="comment" v-for="item in blog.comments" :key="item.blog_id">
+          <div class="comment-id">{{item&& item.comm_id}}</div>
+          <div class="comment-content">{{item&&item.comm_content}}</div>
           <div class="comment-info">
-            <span class="userinfo"></span>
-            <span class="post-time"></span>
+            <span class="userinfo">{{item&&item.username}}</span>
+            <span class="post-time">{{item&&item.comm_post_time}}</span>
           </div>
         </div>
       </div>
@@ -23,7 +26,7 @@
 export default {
   data() {
     return {
-      blog: "",
+      blog: null,
     };
   },
   created() {
@@ -31,24 +34,23 @@ export default {
   },
   methods: {
     getBlogDetail() {
-      let blogId = this.$route.params.blogId;
-      this.$http
-        .get({
-          url: "/blog/detail",
+      let blog_id = this.$route.params.blog_id;
+      console.log(blog_id);
+       this.$http
+         .get("/blog/detail", {
           params: {
-            blogId: blogId,
+            blog_id: blog_id,
           },
         })
         .then((res) => {
           let { state, blog } = res.data;
-          if (state == "success") {
+          if(state == 'auth-fail'){
+            alert('请求未授权!')
+          }else if (state == "success") {
             this.blog = blog;
+            console.log(blog);
           }
-        })
-        // .catch((err) => {
-        //   console.log(err);
-        //   this.$router.push("/login");
-        // });
+        });
     },
   },
 };
@@ -58,7 +60,7 @@ export default {
 .blog {
   margin: 20px auto;
   padding: 20px;
-  background: #cccccc;
+  background: #32c1fb;
 }
 .blog-title {
   padding: 10px;
