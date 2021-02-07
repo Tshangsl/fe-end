@@ -10,7 +10,7 @@
         </h3>
         <p class="blog-content">{{ item.content }}</p>
         <span class="post-time">{{ item.postTime }}</span>
-        <el-button plain>删除文章</el-button>
+        <el-button @click="delMyBlog(item.blog_id)" plain>删除文章</el-button>
       </div>
     </div>
   </div>
@@ -43,17 +43,25 @@ export default {
     goDetail(id) {
       this.$router.push("/blog/detail/" + id);
     },
-
-    // deleteBlog(id) {
-    //   this.$http
-    //     .get("/blog/del", {
-    //       params: {
-    //         blog_id: id,
-    //       },
-    //     }).then(res=>{
-    //       console.log(res);
-    //     })
-    // },
+    delMyBlog(id) {
+      this.$http
+        .get("/blog/del", {
+          params: {
+            blog_id: id,
+          },
+        })
+        .then((res) => {
+          let { state } = res.data;
+          if (state == "auth-fail") {
+            alert("请求未授权-then!");
+          } else if (state == "success") {
+            alert('删除成功!')
+            // let { blogs } = res.data;
+            // this.blogList = blogs;
+            this.getData();
+          }
+        });
+    },
   },
 };
 </script>

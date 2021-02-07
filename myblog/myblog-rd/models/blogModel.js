@@ -1,17 +1,3 @@
-// const db = require("./db")
-
-// module.exports = {
-//     saveBlog(title,content,userId){
-//         return db.query('insert into t_blog set ?',{
-//             title,
-//             content,
-//             user_id:userId
-//         });
-//     },
-//     getBlogs(){
-//         return db.query('select * from t_blog order by post_time desc');
-//     }
-// }
 const db = require('../models/db');
 
 module.exports = {
@@ -32,8 +18,8 @@ module.exports = {
         ON comm.blog_id=blog.blog_id 
         LEFT JOIN t_user usr ON comm.user_id=usr.user_id
         WHERE blog.blog_id=?`, [blogId]);
+    },
+    deleteBlog(blog_id) {
+        return db.query('delete from t_blog where blog_id = ?',[blog_id])
     }
-    // deleteBlog(blog_id) {
-    //     return db.query('delete from t_blog where blog_id = ?',[blog_id])
-    // }
 }

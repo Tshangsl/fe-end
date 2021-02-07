@@ -1,4 +1,3 @@
-
 const blogModel = require("../models/blogModel");
 
 module.exports = {
@@ -64,26 +63,36 @@ module.exports = {
           blog: blogInfo
         }
       } else {
-        await ctx.render("error", {
-          message: '该条文章不存在！'
-        });
+        ctx.body={
+          state:'fail',
+          blog:'the blog is not exist!!!'
+        }
       }
     } catch (err) {
       ctx.status = 500;
       console.log(err);
     }
   },
-  // changeBlog:async (ctx,next)=>{
-  //   try{
-  //     // 接收数据
-  //     let { blog_id } = ctx.query;
-  //     // 连接数据库
-  //     let results = await blogModel.deleteBlog(blog_id);
-  //     // 根据数据库操作的结果返回相关信息
-  //     console.log(results);  
-  //   }catch(err){
-  //     ctx.status = 500;
-  //     console.log(err);
-  //   }
-  // }
+  changeBlog:async (ctx,next)=>{
+    try{
+      // 接收数据
+      let { blog_id } = ctx.query;
+      // 连接数据库
+      let results = await blogModel.deleteBlog(blog_id);
+      // 根据数据库操作的结果返回相关信息
+      if(results.affectedRows){
+        ctx.body = {
+          state: 'success',
+          blog: results
+        }
+      }else{
+        ctx.body={
+          state:'fail',
+        }
+      }
+    }catch(err){
+      ctx.status = 500;
+      console.log(err);
+    }
+  }
 };
