@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <!-- 引入prop-types 用于对组件标签属性进行限制 全局多了一个对象PropTypes-->
+
+
+    <script type="text/babel">
+        // 创建组件
+        class Person extends React.Component {
+            /*
+                通常 在React中 构造函数仅用于以下两种情况
+                    1.通过给this.state赋值对象初始化内部的state
+                    2.为事件处理函数绑定实例
+            */
+            // constructor 不必要写 但如果写了 一定要调用super
+            // 且传参props
+            // 类中的构造器能省略就省略
+            // 构造器是否接受props 是否传递给super 取决于 是否希望在构造器中通过this访问props
+            constructor(props) {
+                super(props);
+            }
+            static protoTypes = {
+                //16版本之前都挂载在React对象下 
+                // name:React.PropTypes.string,
+                name: PropTypes.string.isRequired,//限制name必传 且为字符串
+                sex: PropTypes.string,//限制性别
+                age: ProtoTypes.number,//限制age为数组
+                speak: ProtoTypes.func//限制speak为函数
+            }
+            // 没有static则是在其实例上添加属性 有static是在其类本身上添加属性
+            static default = {
+                sex: 'male',//sex默认值为男
+                age: 18//age默认值18
+            }
+
+            state = {}
+            render() {
+                console.log(this);
+                const { name, sex, age } = this.props;
+                // props是只读的 下面方式书写报错
+                // this.props.name= "jack";
+                return (
+                    <ul>
+                        <li>姓名:{name}</li>
+                        <li>性别:{sex}</li>
+                        <li>年龄:{age + 1}</li>
+                    </ul>
+                )
+            }
+        }
+
+        ReactDOM.render(<Person name="tom" age={18} sex="female" speak={speak} />, document.getElementById('test'))
+    </script>
+</body>
+
+</html>

@@ -7,16 +7,17 @@
     <title>滑动轮播图</title>
     <style>
         /* 通配符 所有元素都选中 */
+        
         * {
             margin: 0;
             padding: 0;
         }
-
+        
         li {
             list-style: none;
         }
-
         /* 块级元素默认宽度是父元素的100% */
+        
         #container {
             margin: 50px auto;
             width: 750px;
@@ -24,6 +25,7 @@
             position: relative;
             overflow: hidden;
         }
+        
         #img-box {
             /* 带单位运算 */
             width: calc(750px*5);
@@ -33,14 +35,15 @@
             /* 想要元素有动画效果就对相应选择器加 */
             transition: ease 1s left;
         }
+        
         #img-box img {
             float: left;
         }
-
+        
         #img-box img:first-child {
             display: block;
         }
-
+        
         #tab li {
             width: 20px;
             height: 20px;
@@ -52,18 +55,18 @@
             float: left;
             margin-right: 5px;
         }
-
         /* relative相对定位此空间不能被释放 */
+        
         #tab {
             position: absolute;
             right: 50px;
             bottom: 40px;
         }
-
+        
         #tab li.active {
             background-color: rgba(255, 0, 0, 0.8);
         }
-
+        
         .btn {
             /* 尖括号本来就相对于文字往下一点 */
             display: inline-block;
@@ -83,11 +86,11 @@
             /* 方法3 css3写法 */
             /* transform: translateY(-50%); */
         }
-
+        
         #prev {
             left: 0;
         }
-
+        
         #next {
             right: 0;
         }
@@ -118,61 +121,66 @@
         var curIndex = 0;
         var oContainer = document.getElementById('container');
         // id只能通过document来找 一个documnet只有一个 不能通过其他去找
+
         var oTab = document.getElementById('tab');
         var aLi = oTab.getElementsByTagName('li');
+
         var oImgBox = document.getElementById('img-box');
         var aImg = oImgBox.getElementsByTagName('img');
+
         var oPrev = document.getElementById('prev');
         var oNext = document.getElementById('next');
-        function changeImg(){
+
+        function changeImg() {
             //清空列表类名和图片样式
             for (var j = 0; j < aLi.length; j++) {
-                    aLi[j].className = '';
-                    // aImg[j].style.display = 'none';
-                }
+                aLi[j].className = '';
+                // aImg[j].style.display = 'none';
+            }
             aLi[curIndex].className = 'active';
-            oImgBox.style.left = -750*curIndex+'px';
+            oImgBox.style.left = -750 * curIndex + 'px';
             // aImg[curIndex].style.display = 'block';
         }
         //设置点击li 到相应的图片
         for (var i = 0; i < aLi.length; i++) {
             aLi[i].index = i;
-            aLi[i].onclick = function () {
+            aLi[i].onclick = function() {
                 curIndex = this.index;
                 changeImg()
             }
         }
         //设置点击右边的图标进行图片切换
-        oNext.onclick = function(){
-            curIndex++;
-            if(curIndex > 4){
-                curIndex = 0;
+        oNext.onclick = function() {
+                curIndex++;
+                if (curIndex > 4) {
+                    curIndex = 0;
+                }
+                changeImg()
             }
-            changeImg()
-        }
-        //设置点击左边的图标进行图片切换
-        oPrev.onclick = function(){
-            curIndex--;
-            if(curIndex < 0){
-                curIndex = 4;
+            //设置点击左边的图标进行图片切换
+        oPrev.onclick = function() {
+                curIndex--;
+                if (curIndex < 0) {
+                    curIndex = 4;
+                }
+                changeImg()
             }
-            changeImg()
-        }
-        // 声明一个定时器 实现定时切换图片的效果
+            // 声明一个定时器 实现定时切换图片的效果
         var timer1;
-        function go(){
-            timer1 = setInterval(function(){
+
+        function go() {
+            timer1 = setInterval(function() {
                 oNext.onclick();
-            },2000)
+            }, 2000)
         }
         go()
-        //使用mouseover 对计时器进行清除
-        oContainer.onmouseover = function(){
-            clearInterval(timer1);
-        }
-        //使用mouseout事件 调用go()函数 新建一个函数
-        oContainer.onmouseout = function(){
-           go()
+            //使用mouseover 对计时器进行清除
+        oContainer.onmouseover = function() {
+                clearInterval(timer1);
+            }
+            //使用mouseout事件 调用go()函数 新建一个函数
+        oContainer.onmouseout = function() {
+            go()
         }
     </script>
 </body>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        收集表单数据
+            包含表单的组件分类
+                1.受控组件
+                2.非受控组件
+     -->
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+        // 创建组件
+        // 页面中所有输入型dom 如input radio 现用现取就是非受控组件
+        class Login extends React.Component {
+            handleSubmit=(event)=>{
+                event.preventDefault();//阻止表单的提交
+                const {username,password} = this;
+                console.log(`你输入的用户名是:${username.value},你输入的密码是:${password.value}`);
+            }
+            render() {
+                return (
+                    <form action="http://www.baidu.com" onSubmit={this.handleSubmit}>
+                        用户名:<input ref={c=>{this.username = c}} type="text" name="username" />
+                        密码:<input ref={c=>{this.password = c}} type="password" name="password"/>
+                        <button>登录</button>
+                    </form>
+                )
+            }
+        }
+        // 渲染组件
+        ReactDOM.render(<Login/>,document.getElementById('test'));
+
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

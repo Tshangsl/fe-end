@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <!-- 引入prop-types 用于对组件标签属性进行限制 全局多了一个对象PropTypes-->
+    
+
+    <script type="text/babel">
+        // 创建组件
+        class Person extends React.Component {
+            render() {
+                console.log(this);
+                const {name,sex,age} = this.props; 
+                // props是只读的 下面方式书写报错
+                // this.props.name= "jack";
+                return (
+                    <ul>
+                        <li>姓名:{name}</li>
+                        <li>性别:{sex}</li>
+                        <li>年龄:{age+1}</li>
+                    </ul>
+                )
+            }
+        }
+        // 对标签属性进行类型 必要性的限制
+        Person.protoTypes ={
+            //16版本之前都挂载在React对象下 
+            // name:React.PropTypes.string,
+            name:PropTypes.string.isRequired,//限制name必传 且为字符串
+            sex:PropTypes.string,//限制性别
+            age:ProtoTypes.number,//限制age为数组
+            speak:ProtoTypes.func//限制speak为函数
+        }
+        // 指定默认标签属性值
+        Person.default={
+            sex:'male',//sex默认值为男
+            age:18//age默认值18
+        }
+        ReactDOM.render(<Person name="tom" age={18} sex="female" speak={speak}/>,document.getElementById('test'))
+        // 渲染组件到页面
+        // 写一个Person标签 React new一次组件实例
+        const p ={name:'zhangsan',age:23,sex:'male'}
+        // react+babel 运行使用展开运算符展开一个对象且仅适用于标签属性的传递 原生语法不支持
+        // 批量传递props/批量传递标签属性
+        ReactDOM.render(<Person {...p}/>,document.getElementById('test'));
+        function speak(){
+            console.log('//');
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

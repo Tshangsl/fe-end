@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dom遍历</title>
 </head>
+
 <body>
     <h1 id="h11">
         h1
@@ -20,13 +22,14 @@
         //ie8及ie8之前都不支持
         console.log(oH1.nextElementSibling);
         //封装next方法 在所有浏览器中都能返回下一个兄弟7u元素节点
-        function next(elem){
-            do{
+        function next(elem) {
+            do {
                 elem = elem.nextSibling;
-            }while(elem && elem.nodeType != 1);
+            } while (elem && elem.nodeType != 1);
             return elem;
         }
         next(oP2).style.background = 'red';
     </script>
 </body>
+
 </html>

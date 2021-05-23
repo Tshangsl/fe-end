@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 有状态简单组件 函数组件
+        无状态复杂组件 类组件 -->
+    <!-- 组件 状态 驱动 页面 -->
+    <!-- 组件的状态存储数据 数据的改变驱动页面的展示 -->
+    <!-- state不是组件该类身上的 是该类实例化的对象身上的 -->
+    <!-- 组件实例的三大核心属性之一 state -->
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+        // 类中所有定义的方法都在局部开启了严格模式
+        // 1.创建组件
+        class Weather extends React.Component {
+            // 构造器上调用1次
+            constructor(props) {
+                // 构造器中的this是组件实例对象
+                super(props);
+                // 关于this的操作必须放在super后面 其他可以放在super前方
+                // 初始化状态
+                this.state = {
+                    isHot: false,
+                    wind: '微风'
+                };
+                // 挂在实例自身上的changeWeather
+                // 解决changeWeather中的this指向
+                this.changeWeather = this.changeWeather.bind(this);
+            }
+
+            // render指向Weather实例对象 写了一个组件标签 React中new了一个Weather 赋给w1 通过w1.render调用render
+            // render调用1+n次 1 初始化次数 n是状态更新的次数
+            render() {
+                // render中的this是组件实例对象
+                console.log(this);
+                // 读取状态
+                const { isHot,wind } = this.state;
+                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'},{wind}</h1>
+            }
+
+            // changeWeather点击几次调用几次
+            // 通过Weather实例调用changeWeather时 changeWeather中的this就是Weather实例
+            changeWeather() {
+                // changeWeather放在Weather的原型对象上 供实例使用
+                //由于changeWeather是作为onClick的回调 所以不是实例调用的 是直接应用
+                // 类中的方法默认开启了局部严格模式 所以changeWeather中的this为undefined
+                
+                // 获取原来的isHot数值
+                const isHot = this.state.isHot;
+                // 状态state中的数据不可直接更改 要借助一个内置的API去更改
+                // 状态必须通过setState方法修改 且更新是一种合并 不是替换
+                this.setState({isHot:!isHot});                
+                // 错误的写法
+                this.state.isHot = !isHot; 
+            }
+        }
+        ReactDOM.render(<Weather />, document.getElementById('test'));
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

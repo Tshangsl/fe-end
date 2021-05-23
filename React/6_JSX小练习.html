@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+        /*
+            一定注意区分:[JS语句代码]和[JS表达式]
+                1.表达式:一个表达式会产生一个值 可以放在任何一个需要值的地方
+                    下面这些都是表达式
+                        1.a
+                        2.a+b
+                        3.demo(1) 函数调用表达式
+                        4.arr.map()
+                        5.function test(){}
+                2.语句/代码
+                    下面这些都是语句/代码 控制代码语句 没有一个值
+                        1.if(){}
+                        2.for(){}
+                        3.switch(){case:xxx}
+                        */
+        // 模拟一些数据
+        // 数组结构 react可以帮忙遍历 对象结构 react不会显示并会报错
+        const data = ['Angular', 'React', 'Vue']
+        const VDOM = (
+            <div>
+                <h1>前端JS框架</h1>
+                <ul>
+                    {
+                        data.map((item,index) => {
+                            return <li key={index}>{item}</li>
+                        })
+                    }
+                </ul>
+            </div>
+        )
+        ReactDOM.render(VDOM, document.getElementById('test'));
+    </script>
+</body>
+
+</html>

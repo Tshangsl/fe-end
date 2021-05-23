@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+        /*
+            挂载 mount
+                当组件第一次被渲染到DOM时 就为其设置一个定时器 这在React中被称为挂载(mount)
+            卸载 unmount
+                当DOM中组件被删除的时候 应该清除计时器 这在React中被称为卸载
+        */
+        // 创建组件
+        // 生命周期 准确 生命周期回调函数 react帮忙调用 <=>生命周期钩子函数<=>生命周期函数<=>生命周期钩子
+        // react会在一个合适的时间点 会把这个函数钩出来执行一下
+        class Life extends React.Component{
+            state={opacity:1};
+            // 作为一个事件的回调在用 this指向会丢? 写赋值语句加箭头函数形式
+            stopRainning=()=>{
+                // 卸载组件
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'));
+            }
+
+            // 组件挂载完毕时调用
+            componentDidMount(){
+                this.timer = setInterval(()=>{
+                    // 获取原状态
+                    let {opacity} = this.state;
+                    //减小0.1
+                    opacity-=0.1;
+                    if(opacity<=0) opacity=1;
+                    this.setState({opacity:opacity});
+                },200)
+            }
+
+            // 组件将要卸载调用 
+            componentWillUnmount(){
+                // 清除定时器
+                clearInterval(this.timer);
+            }
+
+            // render调用时机 初始化渲染 状态更新后
+            render(){
+                return(
+                    <div>
+                        <h1 style={{opacity:this.state.opacity}}>今天下雨了</h1>
+                        <button onClick={this.stopRainning}>雨停了</button>
+                    </div>
+                )
+            }
+        }
+        // 渲染组件
+        ReactDOM.render(<Life/>,document.getElementById('test'));
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

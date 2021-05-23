@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        展开运算符
+        1.数组匹配使用 
+            展开一个数组
+            拼接两个数组
+        2.函数中使用
+        3.构造字面量对象时使用展开语法
+            合并
+     -->
+     <script>
+         let arr1 = [1,2,3,4];
+         let arr2 = [2,3,4];
+         console.log(...arr1);
+         let arr3 = [...arr1,...arr2];
+         console.log(...arr3);
+         function sum(...numbers){
+            console.log('@',numbers);
+            return numbers.reduce((preValue,curVlaue)=>{
+                return preValue+curVlaue;
+            })
+         }
+         console.log(sum(1,2,3,4))
+
+        //  展开运算符不能展开对象
+         let person = {name:'tom',age:18}
+        //  外面包含一个{}字面量的形式复制一个变量
+        // ...代表展开一个对象 无法展开
+        // {...}字面量复制一个对象 可以展开
+         let person3 = {...person};
+         let person2 = person;
+        //  console.log(...person);
+        person.name = 'lisi';
+         console.log(...person2.name);
+
+        // 合并
+        let person4 = {...person,name:'jack'};
+        console.log(person4);
+     </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

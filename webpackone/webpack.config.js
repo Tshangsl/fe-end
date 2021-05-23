@@ -34,7 +34,7 @@ module.exports={
             template: "./src/index.html",
             minify:{
                 //各配置项
-                //对html文件进行压缩 去掉属性的双引号
+                   //对html文件进行压缩 去掉属性的双引号
                 removeAttributeQuotes:true,
                 //去掉所有的空格和换行
                 // collapseWhitespace:true,

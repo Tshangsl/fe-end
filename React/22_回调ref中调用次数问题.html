@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+        class Demo extends React.Component {
+            state = { isHot: true }
+            showInfo = () => {
+                const { input1 } = this;
+                console.log(input1.value);
+            }
+            /*
+                如果ref回调函数是以内联函数的方式定义的
+                在更新的过程中它会被执行两次
+                第一次传入参数null 第二次传入参数DOM元素
+                这是因为每次渲染时会创建一个新的函数实例
+                所以React清空旧的ref且设置新的
+                通过及那个ref的回调函数定义为class的绑定函数的方式可以解决上述问题
+                但是大多数情况下 它是无关紧要的
+            */
+            changeWeather = () => {
+                const { isHot } = this.state;
+                this.setState({ isHot: !isHot });
+            }
+            saveInput = (c)=>{
+                this.input1 = c;
+                console.log('@',c);
+            }
+            //    JSX中写注释
+            render() {
+                const { isHot } = this.state;
+                return (
+                    <div>
+                        <h2>今天天气很{isHot ? "炎热" : "凉爽"}</h2>
+                        {/* <input ref={(curNode)=>{this.input1 = curNode;console.log('@',curNode);}} type="text" /><br/>*/}
+                        <input ref={this.saveInput} type="text"></input>
+                        <button onClick={this.showInfo}>click me</button>
+                        <button onClick={this.changeWeather}>change weather</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Demo />, document.getElementById('test'));
+    </script>
+</body>
+
+</html>

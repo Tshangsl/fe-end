@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+        class Demo extends React.Component {
+            // 展示左侧输入框的值
+            showData = () => {
+                // this指向demo实例对象
+                //    console.log(this.refs.input1);
+                // const { input1 } = this.refs;
+                // console.log(input1.value);
+                const { input1 } = this;
+                console.log(input1.value);
+            }
+            // 展示右侧输入框的数值
+            showData2 = () => {
+                // const { input2 } = this.refs;
+                // console.log(input2.value);
+                const { input2 } = this;
+                console.log(input2.value);
+            }
+            // 该函数时一个回调函数 React会帮助调用该函数
+            render() {
+                return (
+                    <div>
+                        <input ref={(currentNode)=>{this.input1 = currenrNode}} type="text" placeholder="点击按钮提示数据" />
+                        <button onClick={this.showData}>click me</button>
+                        <input ref={c=>{this.input2 = c}} onBlur={this.showData2} type="text" placeholder="失去焦点提示数据" />
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Demo />, document.getElementById('test'));
+    </script>
+</body>
+
+</html>
+
+
+
+
+

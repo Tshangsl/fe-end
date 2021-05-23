@@ -54,11 +54,11 @@
         //封装自己的getElementsByClassName方法
         //**js中方法也是一种属性 特殊的属性
         /**
-        *
-        *@param className 要查找的类的名称
-        *@param tagName 限定的标签名称
-        *@param context 搜索的上下文（搜索范围）
-        */
+         *
+         *@param className 要查找的类的名称
+         *@param tagName 限定的标签名称
+         *@param context 搜索的上下文（搜索范围）
+         */
         function getByClassName(className, tagName, context) {
             var elements = [];
             context = context || document;
@@ -94,10 +94,10 @@
         //是元素 不是数组 只能找到第一个
         //var oBtn = document.querySelector('#btn');
         //console.log(oBtn);
-        
+
         //5.querySelectorAll
         var aLi = document.querySelectorAll('.item');
-        for(var i = 0;i<aLi.length;i++){
+        for (var i = 0; i < aLi.length; i++) {
             aLi[i].style.background = 'red';
         }
     </script>
