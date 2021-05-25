@@ -14,30 +14,16 @@
     <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
     <script type="text/babel">
-        /*
-            生命周期的三个阶段(旧)
-                1.初始化阶段 由ReactDOM.render()触发--初次渲染
-                    1.constructor()
-                    2.componentWillMount() 
-                    3.render()
-                    4.componentDidMount() 常用 页面一上来做点什么
-                        一般在这个钩子中做一些初始化的事情 
-                        例如 开启定时器 发起网络请求 订阅消息
-                2.更新阶段 由组件内部this.setState()或父组件更新render函数
-                    1.shoudComponentUpdate()
-                    2.componentWillUpdate()
-                    3.render() 必要
-                    4.componentDidUpdate()
-                3.卸载组件 由ReactDOM.unmountComponentAtNode()触发
-                    1.componentWillUnMount() 常用
-                        一般在这个钩子中做一些收尾的事
-                        关闭定时器 取消订阅消息
-        */
-        
+        // 新的钩子相对于旧的钩子 废弃了三个 新提出了两个
         // 创建组件
         class Count extends React.Component {
-
-            // 1.
+            /*
+                新版本中前缀加UNSAFE_
+                componentWillMount
+                componentWillRecieveProps
+                componentWillUpdate
+                除了componentWillUnmount
+            */
             constructor(props) {
                 console.log('Count-Constructor');
                 super(props);

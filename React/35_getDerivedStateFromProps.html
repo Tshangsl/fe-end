@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+        // 新的钩子相对于旧的钩子 废弃了三个 新提出了两个
+        // 创建组件
+        class Count extends React.Component {
+            /*
+                新版本中前缀加UNSAFE_
+                componentWillMount
+                componentWillRecieveProps
+                componentWillUpdate
+                除了componentWillUnmount
+            */
+            constructor(props) {
+                console.log('Count-Constructor');
+                super(props);
+                // 初始化状态
+                this.state = { count: 0 }
+            }
+
+            add = () => {
+                // 获取原状态
+                const { count } = this.state;
+                // 更新状态
+                this.setState({ count: count + 1 });
+            }
+
+            // 卸载组件按钮的回调
+            death = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'));
+                return null;
+            }
+
+            // 强制更新按钮的回调
+            force = () => {
+                this.forceUpdate();
+            }
+
+            // 从props中得到一个衍生的状态 state的数值在任何时期都取决于props 可以使用
+            // 即state的值在任何时候都取决于props
+            // 派生状态会导致代码冗余 并使组件难以维护
+            static getDerivedStateFromProps(props,state){
+                console.log('Count---getDerivedStateFromProp',props,state);
+                return props;
+            }
+
+            // 4.组件挂载完毕的钩子
+            componentDidMount() {
+                console.log('Count-ComponentDidMount');
+            }
+
+            // 组件将要卸载的钩子
+            componentWillUnmount() {
+                console.log('Count-ComponentWillUnmount')
+            }
+
+            // 不写 底层默认给弥补一次 默认为true
+            // 书写函数不书写返回值 undefined
+            // 控制组件更新的阀门
+            shouldComponentUpdate() {
+                console.log('Count---shouldComponentUpdate');
+                return true;
+            }
+
+            // 组件更新完毕的钩子
+            componentDidUpdate() {
+                console.log('Count-componentDidUpdate');
+            }
+
+            // 
+            render() {
+                console.log('Count---Render');
+                const { count } = this.state;
+                return (
+                    <div>
+                        <h2>当前求和为:{count}</h2>
+                        <button onClick={this.add}>click+1</button>
+                        <button onClick={this.death}>卸载组件</button>
+                        <button onClikc={this.force}>不更改状态数据强制更新</button>
+                    </div>
+                )
+            }
+        }
+
+
+        // 渲染组件
+        ReactDOM.render(<Count name="tom"/>, document.getElementById('test'));
+    </script>
+</body>
+
+</html>
