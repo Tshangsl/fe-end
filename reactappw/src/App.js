@@ -14,14 +14,26 @@ function App() {
     <div className="App">
       <Link to='/'>首页</Link>|
       <Link to='/course'>课程</Link>|
+      {/* Link传参 this.props.location/this.props.history.location获取 */}
       <Link to={{
         pathname:'/about',
-        search:'?id'
+        search:'?id=666age=888',
+        hash:'hash',
+        // 如果用HashRouter 页面刷新 参数丢失
+        state:{
+          name:'zhangsan1',
+          age:24
+        },
+        // 页面刷新 参数丢失
+        query:{
+          name:'lisi',
+          age:23
+        }
       }}>关于我们</Link>|
 
       <Route path="/" exact component={Home} />
       <Route path="/course" component={Course} />
-      {/* url传参 */}
+      {/* url传参 this.props.match获取 */}
       <Route path="/course/:id" component={Details} />
       <Route path="/about" component={About} />
       
