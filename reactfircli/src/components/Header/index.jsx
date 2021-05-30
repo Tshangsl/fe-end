@@ -5,6 +5,11 @@ import './index.css'
 
 // 实现父子组件传参 父给子传一个函数 子调用该函数给父传递数据
 export default class Header extends Component {
+    // 对接收的props进行 类型 必要性的限制
+    static propTypes = {
+        addTodo:propTypes.func.isRequired
+    }
+    // 键盘时间的回调
     handleKeyUp = (event) => {
         // 解构赋值获取keyCode target
         const { keyCode, target } = event;

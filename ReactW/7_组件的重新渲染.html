@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        let root = document.getElementById('app');
+        class Child extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    count: 0
+                }
+                this.add = this.add.bind(this);
+                this.num2 = 2
+            }
+            add() {
+                // this.setState({
+                //     count: this.state.count + 1
+                // })
+                this.num2++;
+                this.forceUpdate();
+            }
+            render() {
+                console.log('render');
+                return (
+                    <div>
+                        <h4>Child</h4>
+                        <p>count:{this.state.count}</p>
+                        <button onClick={this.add}>count+1</button>
+                        <p>number:{this.props.number}</p>
+                        <p>num2:{this.num2}</p>
+                        </div>
+                )
+            }
+        }
+        class Parent extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    num: 0
+                }
+                this.addFn = this.addFn.bind(this);
+            }
+            addFn(){
+                this.setState({
+                    num:this.state.num+1
+                })
+            }
+            render() {
+                return (
+                    <div>
+                        <h3>Parent</h3>
+                        <p>num:{this.state.num}</p>
+                        <button onClick={this.addFn}>num+1</button>
+                        <Child number={this.state.num} />
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Child />, root);
+        ReactDOM.render(<Parent />, root);
+    </script>
+</body>
+
+</html>

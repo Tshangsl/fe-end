@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        let root = document.getElementById('app');
+        class Parent extends React.Component {
+            constructor(params) {
+                super(params);
+                this.state = {
+                    count:0
+                }
+                this.addFn = this.addFn.bind(this);
+            }
+            addFn(){
+                this.setState({
+                    count:this.state.count+1
+                })
+            }
+            render() {
+                return (
+                    <div>
+                        <div>父组件</div>
+                        <p>count:{this.state.count}</p>
+                        <Child parent={this} addFn={this.addFn}/>
+                    </div>
+                )
+            }
+        }
+        class Child extends React.Component {
+            constructor(params) {
+                super(params);
+                this.state = {
+
+                }
+                this.add = this.add.bind(this);
+            }
+            add(){
+                this.props.addFn();
+                // 能实现但是不推荐这样使用
+                // let {parent} = this.props; 
+                // parent.setState({
+                //     count:parent.state.count+1
+                // })
+            }
+            render() {
+                return (
+                    <div>
+                        <div>子组件</div>
+                        <button onClick={this.add}>点击父组件count+1</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Parent />, root);
+    </script>
+</body>
+
+</html>

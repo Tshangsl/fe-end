@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        let root = document.getElementById('app');
+        class Com extends React.Component {
+            constructor(params) {
+                super(params);
+                this.state = {
+
+                };
+            }
+            render() {
+                // 列表循环的一种方式 
+                // 官方不推荐for循环 推荐map
+                let arr = [1, 2, 3, 4, 5];
+                let a1 = [];
+                for (let i = 0; i < arr.length; i++) {
+                    a1[i] = <li key={i}>{arr[i]}</li>
+                }
+
+                let list = [
+                    {
+                        name: 'lisi',
+                        age: 10
+                    },
+                    {
+                        name: 'we',
+                        age: 10
+                    },
+                    {
+                        name: 'he',
+                        age: 10
+                    },
+                ]
+                // map函数默认带return 不用自己写return
+                let _list = list.map((item, index) => {
+                    <li key={index}>
+                        <p>姓名:{item.name}</p>
+                        <p>年龄:{item.age}</p>
+                    </li>
+                })
+
+                return (
+                    <div>
+                        {/*第一种方法*/}
+                        <ul>
+                            {a1}
+                        </ul>
+                        {/*第二种方法*/}
+                        <ul>
+                            {_list}
+                        </ul>
+                        {/*第三种方法*/}
+                        <ul>
+                            {
+                                list.map((item, index) => {
+                                    <li key={index}>
+                                        <p>姓名:{item.name}</p>
+                                        <p>年龄:{item.age}</p>
+                                    </li>
+                                })
+                            }
+                        </ul>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Com />, root);
+    </script>
+</body>
+
+</html>

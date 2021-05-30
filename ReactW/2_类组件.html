@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        let root = document.getElementById('app');
+        /*
+            class组件(有状态组件)
+                1.class组件必须要有render方法
+                2.class组件中通过this.props来接收引用组件时传递的所有参数 props本身是一个对象
+                3.class组件中通过props.children属性来获取调用这个组件时 开始标签和结束标签中传的内容
+        */
+        
+        class Component1 extends React.Component{
+            constructor(params){
+                super(params);
+            }
+            render(){
+                return(
+                    <div>
+                        Hello World    
+                        <p>姓名:{this.props.name}</p>
+                        <p>年龄:{this.props.age}</p>
+                        <p>arr:{this.props.arr}</p>
+                        {/*用children来接受组件中传递的DOM结构*/}
+                        {this.props.children}
+                    </div>
+                )
+            }
+        }
+        
+        ReactDOM.render(
+            <Component1 name="wangwu" age={23} arr={[1,2,3,4,5]}>
+                <div>今天是个好天气</div>    
+            </Component1>,
+            root);
+    </script>
+</body>
+
+</html>

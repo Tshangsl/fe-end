@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        // 条件渲染 1.if语句 2.三项表达式(三目运算符)
+        let root = document.getElementById('app');
+        class Com extends React.Component {
+            constructor(params) {
+                super(params);
+                this.state = {};
+                this.change = this.change.bind(this);
+            }
+            change() {
+                this.setState({
+                    isLogin: !this.state.isLogin
+                })
+                console.log(this.state.isLogin);
+            }
+            render() {
+                let tp1;
+                if (this.state.isLogin) {
+                    tp1 = <p>你好 欢迎登录</p>;
+                } else {
+                    tp1 = <p>请登录</p>;
+                }
+                return (
+                    <div>
+                        <button onClick={this.change}>切换登录状态</button>
+                        {tp1}
+                        {/*                        {
+                            this.state.isLogin?<p>你好 欢迎登录</p>:tp1 = <p>请登录</p>
+                        }*/}
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Com />, root);
+    </script>
+</body>
+
+</html>
