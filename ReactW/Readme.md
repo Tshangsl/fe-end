@@ -141,7 +141,7 @@ State&事件处理
             一般在这个钩子中做一些收尾的事
             关闭定时器 取消订阅消息
 生命周期(新)
-常用的三个生命周期钩子
+        常用的三个生命周期钩子
         render
         componentDidMount
         componentWillUnmount

@@ -40,3 +40,33 @@ Switch仅会渲染它所包裹的route当中最先匹配到的那个页面
         获取参数
             this.props.location
             this.props.history.location
+路由嵌套
+    1.Router和Link组件可以在任何组件中使用 在使用前需要先引入
+    2.组件嵌套匹配路由信息时 路径最好不要固定写死 防止后期修改时造成麻烦
+    3.Router配置组件
+        component
+        render render属性值是一个方法 可以传参同时注意props属性值
+路由跳转
+    Redirect
+    Link
+编程式导航
+    go
+    goForward
+    goBack
+    push
+    replace
+
+redux & react redux
+类似axios & vue axios&react axios
+
+Redux
+    是JS状态容器 提供可预测化的状态管理
+
+Redux应用场景
+    1.用户的使用方式复杂
+    2.不同身份的用户有不同的使用方式(比如普通用户和管理员)
+    3.多个用户之间可以协作
+    4.与服务器大量加护 或使用了WebSocket
+    5.View要从多个来源获取数据
+安装
+    npm install redux react-redux
