@@ -15,13 +15,13 @@ tsc --init
 
 typescript是javascript的一个超集
 对js弱类型语言做的一个增强
-js ecma维护
-typescript 微软开发
-node node维护
-java oracle维护
-ts在前端开发中受限制
+JS ECMA维护
+TypeScript 微软开发
+Node Node维护
+Java Oracle维护
+Ts在前端开发中受限制
 
-ts通过类型注解
+Ts通过类型注解
 
 前端客户端 后端服务器端
 
@@ -33,4 +33,4 @@ ts通过类型注解
 动态类型：执行阶段确定所有变量的类型 --js
 静态类型：编译阶段确定所有变量的类型
 
-ts只是给一个警告的提醒 该生成还是生成
+TS只是给一个警告的提醒 该生成还是生成

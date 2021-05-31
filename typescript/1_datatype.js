@@ -1,6 +1,6 @@
 /*
 基本类型
-number string boolean array tuple enum any
+number string boolean array tuple(元组) enum any
 void null/undefined never obj
 类型推论：它是一种特性而非语法
 联合类型
@@ -25,7 +25,7 @@ console.log(arr2);
 let tuple1 = ['abc', 123, true];
 // tuple1[0]=true;
 tuple1.push('def');
-//可以通过push方法向元组中push新的元素怒 并且没有任何警告
+//可以通过push方法向元组中push新的元素 并且没有任何警告
 console.log(tuple1);
 // enum枚举 底层 0 1 
 // enum Gender{
@@ -90,4 +90,3 @@ let str = 'abc';
 // let str1 = <string>str.length;
 let length = str;
 console.log(length);
-export {};
